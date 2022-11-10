@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheStore"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="1000">
+    <Window.Resources>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition MinHeight="300"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" x:Name="Header" >
+            <!--Område för header startar-->
+            <Button>Header</Button>
+            <Button>Header</Button>
+            <!--Område för header slutar-->
+        </StackPanel>
+
+        <Grid Grid.Row="1" x:Name="Body">
+            <!--Område för Body startar-->
+
+            <Button>Body</Button>
+            <!--Område för Body slutar-->
+        </Grid>
+
+        <Grid  Grid.Row="2" x:Name="Footer"> 
+            <!--Område för footer startar-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.ColumnSpan="2">footer</Button>
+            <!--Område för footer slutar-->
+        </Grid>
     </Grid>
 </Window>
