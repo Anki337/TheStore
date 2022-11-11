@@ -62,6 +62,13 @@ namespace TheStore
             createNewUser.Show();
         }
 
+
+        private void shoppingCart_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            OrderWindow orderWindow = new OrderWindow();
+            orderWindow.Show();
+
         private void logOutButton_Click(object sender, RoutedEventArgs e)
         {
             mailBox.Visibility = Visibility.Visible;
@@ -70,6 +77,7 @@ namespace TheStore
             logButton.Visibility = Visibility.Visible;
             createButton.Visibility = Visibility.Visible;
             logOutButton.Visibility = Visibility.Collapsed;
+
         }
     }
 }

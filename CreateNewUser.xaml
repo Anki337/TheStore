@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="CreateNewUser" Height="450" Width="800">
     <Grid>
-        <!--<Grid.Background>
+        <Grid.Background>
             <ImageBrush ImageSource="pack://application:,,,/Images/Toys.png" Stretch="UniformToFill"/>
-        </Grid.Background>-->
+        </Grid.Background>
         <Grid Height="300" Width="600">
             <TextBlock Height="25" x:Name="firstName" HorizontalAlignment="left" Text="First Name:" Margin="50 5 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="white" FontFamily="Arial"/>
             <TextBlock Height="25" x:Name="lastName" HorizontalAlignment="left" Text="Last Name:" Margin="50 35 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="White" FontFamily="Arial"/>
