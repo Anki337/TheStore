@@ -30,6 +30,7 @@ namespace TheStore
             User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590);
             userList.Add(user);
             InitializeComponent();
+
         }
 
         private void logButton_Click(object sender, RoutedEventArgs e)
