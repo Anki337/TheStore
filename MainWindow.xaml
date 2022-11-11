@@ -40,7 +40,7 @@
                     <Image Source="pack://application:,,,/Images/thunder.png"></Image>
                 </StackPanel>
             </Label>
-            <Button x:Name="logCreateButton"  Grid.Column="6" Grid.Row="0" Margin=" 1,1,1,1" VerticalAlignment="center" Height="25">
+            <Button x:Name="logCreateButton" Click="logCreateButton_Click"  Grid.Column="6" Grid.Row="0" Margin=" 1,1,1,1" VerticalAlignment="center" Height="25">
                 Log in/Create User</Button>
             <TextBox x:Name="unBox" Grid.Column="5" Grid.Row="0" Margin="1,1,1,1" TextAlignment="Left" VerticalAlignment="Center" Height="25">
                 Mäjladress
