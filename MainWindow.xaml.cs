@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +26,8 @@ namespace TheStore
         public MainWindow()
         {
             InitializeComponent();
+
+         
         }
 
         private void logCreateButton_Click(object sender, RoutedEventArgs e)
