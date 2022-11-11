@@ -24,12 +24,20 @@ namespace TheStore
     public partial class MainWindow : Window
     {
         List<User> userList = new List<User>();
+        ArrayList AvailableItemsList = new ArrayList();
+        
 
         public MainWindow()
         {
             User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590);
+            AvailableItemsList.Add(new Item("Bobby car", "Fun car to play with", 5, 500, 7, "Big"));
+            AvailableItemsList.Add(new Item("Bouncy ball", "Small ball to bounce around", 75, 5, 2, "Small"));
+            AvailableItemsList.Add(new Item("Bucket", "Great to play with sand", 27, 42, 7, "Outdoor"));
+            AvailableItemsList.Add(new Item("Spade", "Digging it", 38, 342, 3, "Outdoor"));
+            AvailableItemsList.Add(new Item("Batman", "Digging it", 38, 342, 3, "Dockor"));
             userList.Add(user);
             InitializeComponent();
+            listAllItemsInMainWindowBody();
 
         }
 
@@ -38,8 +46,8 @@ namespace TheStore
 
             string mail = mailBox.Text;
             string password = pwBox.Password;
-            
-           
+
+
             foreach (User user in userList)
             {
                 if (mail.Equals(user.getEmail()) && password.Equals(user.getPassword()))
@@ -69,6 +77,8 @@ namespace TheStore
             OrderWindow orderWindow = new OrderWindow();
             orderWindow.Show();
 
+
+        }
         private void logOutButton_Click(object sender, RoutedEventArgs e)
         {
             mailBox.Visibility = Visibility.Visible;
@@ -78,6 +88,43 @@ namespace TheStore
             createButton.Visibility = Visibility.Visible;
             logOutButton.Visibility = Visibility.Collapsed;
 
+        }
+
+        private void listAllItemsInMainWindowBody()
+        {
+            foreach(Item item in AvailableItemsList)
+            {
+                Label toyName = new Label();
+                Label saldo = new Label();
+                TextBox textBox = new TextBox();
+                textBox.MaxWidth = 20;
+                toyName.Content = item.getName();
+                saldo.Content = item.getQuantity();
+                if (item.getCategory().Equals("Outdoor"))
+                {
+                    OutLeksakStack.Children.Add(toyName);
+                    OutAntalStack.Children.Add(saldo);
+                    OutInputStack.Children.Add(textBox);
+                }
+                if (item.getCategory().Equals("Big"))
+                {
+                    BigLeksakStack.Children.Add(toyName);
+                    BigAntalStack.Children.Add(saldo);
+                    BigInputStack.Children.Add(textBox);
+                }
+                if (item.getCategory().Equals("Small"))
+                {
+                    SmallLeksakStack.Children.Add(toyName);
+                    SmallAntalStack.Children.Add(saldo);
+                    SmallInputStack.Children.Add(textBox);
+                }
+                if (item.getCategory().Equals("Dockor"))
+                {
+                    DockLeksakStack.Children.Add(toyName);
+                    DockAntalStack.Children.Add(saldo);
+                    DockInputStack.Children.Add(textBox);
+                }
+            }
         }
     }
 }

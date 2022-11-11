@@ -61,7 +61,7 @@
                 </StackPanel>
             </Label>
 
-            <Label Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center">
+            <Label Grid.Row="2" Grid.Column="6" HorizontalAlignment="Center">
                 <Button x:Name="shoppingCart" Click="shoppingCart_Click" BorderThickness="0">
                     <Image Height="30" VerticalAlignment="Center" Source="pack://application:,,,/Images/cart.jpg"></Image>
                 </Button>
@@ -73,9 +73,102 @@
         </Grid>
 
         <Grid Grid.Row="1" x:Name="Body">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <!--Område för Body startar-->
+            
+            <!--Stack för kategori Outdoor -->
+            <StackPanel x:Name="Outdoor" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Orientation="Horizontal" Grid.ColumnSpan="2" >
+                <StackPanel x:Name="OutLeksakStack">
+                    <Label Content="Leksak">
+                    </Label>
+                </StackPanel>
+                <StackPanel x:Name="OutAntalStack">
+                    <Label Content="Antal">
+                    </Label>
+                </StackPanel>
+                <StackPanel Name="OutInputStack">
+                    <Label Content="Beställ">
+                    </Label>
+                    <TextBox MaxWidth="20" Visibility="Hidden">
+                        
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+            
+            <!--Stack för kategori Big -->
+            <StackPanel x:Name="Big" Grid.Column="3" Grid.Row="1" Grid.RowSpan="5" Orientation="Horizontal" Grid.ColumnSpan="2">
+                <StackPanel x:Name="BigLeksakStack">
+                    <Label Content="Leksak">
+                    </Label>
+                </StackPanel>
+                <StackPanel x:Name="BigAntalStack">
+                    <Label Content="Antal">
+                    </Label>
+                </StackPanel>
+                <StackPanel Name="BigInputStack">
+                    <Label Content="Beställ">
+                    </Label>
+                    <TextBox MaxWidth="20" Visibility="Hidden">
 
-            <Button>Body</Button>
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+            
+            <!--Stack för kategori Small -->
+            <StackPanel x:Name="Small" Grid.Column="5" Grid.Row="1" Grid.RowSpan="5" Orientation="Horizontal" Grid.ColumnSpan="2">
+                <StackPanel x:Name="SmallLeksakStack" >
+                    <Label Content="Leksak">
+                    </Label>
+                </StackPanel>
+                <StackPanel x:Name="SmallAntalStack">
+                    <Label Content="Antal">
+                    </Label>
+                </StackPanel>
+                <StackPanel Name="SmallInputStack">
+                    <Label Content="Beställ">
+                    </Label>
+                    <TextBox MaxWidth="20" Visibility="Hidden">
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+            
+            <!--Stack för kategori dockor -->
+            <StackPanel x:Name="Dockor" Grid.Column="7" Grid.Row="1" Grid.RowSpan="5" Orientation="Horizontal" Grid.ColumnSpan="2">
+                <StackPanel x:Name="DockLeksakStack" >
+                    <Label Content="Leksak">
+                    </Label>
+                </StackPanel>
+                <StackPanel x:Name="DockAntalStack">
+                    <Label Content="Antal">
+                    </Label>
+                </StackPanel>
+                <StackPanel Name="DockInputStack">
+                    <Label Content="Beställ">
+                    </Label>
+                    <TextBox MaxWidth="20" Visibility="Hidden">
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+                
+            
+            
             <!--Område för Body slutar-->
         </Grid>
 

@@ -28,7 +28,7 @@ namespace TheStore
             UserId = UserId + 1;
         }
 
-        public String getName()
+        public string getName()
         { 
             return name;
         }
