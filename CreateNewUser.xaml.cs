@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,29 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TheStore;
 
 
 namespace TheStore
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CreateNewUser.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CreateNewUser : Window
     {
-        public MainWindow()
+        public CreateNewUser()
         {
             InitializeComponent();
-
-         
-        }
-
-        private void logCreateButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            CreateNewUser createNewUser = new CreateNewUser();
-            createNewUser.Show();
         }
     }
 }
