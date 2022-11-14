@@ -51,13 +51,6 @@
                         <TextBlock x:Name="userNameText">Max</TextBlock>
                     </StackPanel>
                 </Label>
-                <Label Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center">
-                    <Button x:Name="shoppingCart" Click="shoppingCart_Click">
-                        <Image Height="30" VerticalAlignment="Center" Source="pack://application:,,,/Images/cart.jpg"></Image>
-                    </Button>
-                </Label>
-
-
                 <!--Område för header slutar-->
             </Grid>
 
