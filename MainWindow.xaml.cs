@@ -65,18 +65,17 @@ namespace TheStore
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
 
-            this.Hide();
             CreateNewUser createNewUser = new CreateNewUser();
             createNewUser.Show();
+            this.Close();
         }
 
 
         private void shoppingCart_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
             OrderWindow orderWindow = new OrderWindow();
             orderWindow.Show();
-
+            this.Close();
 
         }
         private void logOutButton_Click(object sender, RoutedEventArgs e)
