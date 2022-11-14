@@ -22,6 +22,7 @@ namespace TheStore
         public OrderWindow()
         {
             InitializeComponent();
+            
         }
 
         private void logCreateButton_Click(object sender, RoutedEventArgs e)
@@ -31,13 +32,7 @@ namespace TheStore
             createNewUser.Show();
         }
 
-        private void shoppingCart_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            OrderWindow orderWindow = new OrderWindow();
-            orderWindow.Show();
-        }
-
+        
        
     }
 }
