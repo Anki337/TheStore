@@ -27,12 +27,17 @@ namespace TheStore
 
         private void logCreateButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            //Send the current itemlist in shoppingcart with the constructor.
             CreateNewUser createNewUser = new CreateNewUser();
             createNewUser.Show();
+            this.Close();
         }
 
-        
-       
+        private void ContinueShopping_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.Show();
+            this.Close();
+        }
     }
 }
