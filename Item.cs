@@ -42,8 +42,5 @@ namespace TheStore
             return category;
         }
 
-        //Read items from file, this is a testlist
-
-
     }
 }

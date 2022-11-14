@@ -65,7 +65,6 @@ namespace TheStore
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
 
-            
             CreateNewUser createNewUser = new CreateNewUser();
             createNewUser.Show();
             this.Close();
@@ -74,7 +73,6 @@ namespace TheStore
 
         private void shoppingCart_Click(object sender, RoutedEventArgs e)
         {
-            
             OrderWindow orderWindow = new OrderWindow();
             orderWindow.Show();
             this.Close();
