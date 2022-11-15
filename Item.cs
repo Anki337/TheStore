@@ -9,10 +9,10 @@ namespace TheStore
 {
     public class Item
     {
-        public string name;
+        private string name;
         private string description;
         private int quantity;
-        private int price;
+        public int price;
         private double weight;
         private string category;
         private string toyPic;
@@ -34,15 +34,56 @@ namespace TheStore
 
             return name;
         }
+        public void setName(string name)
+        {
+            this.name = name;
+        }
+        public string getDescription()
+        {
+
+            return description;
+        }
+        public void setDescription(string description)
+        {
+            this.description = description;
+        }
+
         public int getQuantity()
         {
 
             return quantity;
         }
+        public void setQuantity(int quantity)
+        {
+            this.quantity=quantity;
+        }
+        public int getPrice()
+        {
+
+            return price;
+        }
+        public void setPrice(int price)
+        {
+            this.price = price;
+        }
+        public double getWeight()
+        {
+
+            return weight;
+        }
+        public void setWeight(double weight)
+        {
+            this.weight = weight;
+        }
+
         public string getCategory()
         {
 
             return category;
+        }
+        public void setCategory(string category)
+        {
+            this.category = category;
         }
 
     }
