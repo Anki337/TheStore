@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Xml.Linq;
 
 
 namespace TheStore
@@ -25,9 +26,8 @@ namespace TheStore
     public partial class MainWindow : Window
     {
 
-        ArrayList userList = new ArrayList();
-        //List<User> userList = new List<User>(); I have commented this list out as the arrayList is the same as used in CreateNewUser-logic and has to be dynamic /Linnea
-        ArrayList availableItemsList = new ArrayList();
+        List<User> userList = new List<User>();
+        List<Item> availableItemsList = new List<Item>();
     
         public MainWindow()
         {
@@ -35,9 +35,10 @@ namespace TheStore
             
 
 
-            User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590);
+            User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590); //test User
 
-            userList.Add(user);
+            userList.Add(user); //for testing
+            user.setLoggedIn(true); //for testing, will be set in loggin
 
             InitializeComponent();
             availableItemsList.Add(new Item("Bobby car", "Fun car to play with", 5, 500, 7, "Big"));
@@ -68,7 +69,8 @@ namespace TheStore
                 {
                     mailBox.Visibility = Visibility.Collapsed;
                     pwBox.Visibility = Visibility.Collapsed;
-                    userNameText.Text = " back " + user.getName();
+                    //user.setLoggedIn(true);
+                    userNameText.Text = " back " + user.getName(); 
                     logButton.Visibility = Visibility.Collapsed;
                     createButton.Visibility = Visibility.Collapsed;
                     logOutButton.Visibility = Visibility.Visible;
@@ -79,9 +81,9 @@ namespace TheStore
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
 
-            CreateNewUser createNewUser = new CreateNewUser(userList);
+            CreateNewUser createNewUser = new CreateNewUser(this, userList);
             createNewUser.Show();
-            this.Close();
+            this.Hide();
         }
 
 
@@ -96,6 +98,7 @@ namespace TheStore
         {
             mailBox.Visibility = Visibility.Visible;
             pwBox.Visibility = Visibility.Visible;
+            //user.setLoggedIn(false);
             userNameText.Text = "";
             logButton.Visibility = Visibility.Visible;
             createButton.Visibility = Visibility.Visible;
@@ -156,6 +159,25 @@ namespace TheStore
             }
         }
 
+        private void readUsersFromFile()
+        {
+            string path = "C:\\Users\\linnea\\source\\repos\\TheStore\\Files\\Users.txt";
+            string itemPath = path + @"\Items.txt";
+            string[] readLine = File.ReadAllLines(path);
+
+            foreach (string itemLine in readLine)
+            {
+                string[] itemData = itemLine.Split(',');
+                string name = itemData[0];
+                string password = itemData[1];
+                string email = itemData[2];
+                string address = itemData[3];
+                double phone = Convert.ToDouble(itemData[4]);
+                userList.Add(new User(name, password, email, address, phone));
+            }
+        }
+
+      
 
     }
 }
