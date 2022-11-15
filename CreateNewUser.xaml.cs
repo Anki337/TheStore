@@ -22,13 +22,15 @@ namespace TheStore
     /// </summary>
     public partial class CreateNewUser : Window
     {
-        private ArrayList userList;
+        public List<User> userList;
         User user = new User();
+        Window parent;
 
-        public CreateNewUser(ArrayList userList)
+        public CreateNewUser(Window mainWindow, List<User> userList)
         {
             InitializeComponent();
             this.userList = userList;
+            parent = mainWindow;
         }
 
         public CreateNewUser() 
@@ -90,30 +92,31 @@ namespace TheStore
             else
             {
                 createPassword();
-                user.setLoggedIn(true);
-                userList.Add(user);
-                returnText.Text = "Registration success";
-
-                //MainWindow.Show();
-                //this.Close();
+                returnText.Text = createUser();
+                submitButton.Visibility = Visibility.Collapsed;
+                resetButton.Visibility = Visibility.Collapsed;
+                cancelButton.Visibility = Visibility.Collapsed;
+                goBackButton.Visibility = Visibility.Visible;
             }
         }
 
         private void clickResetButton(object sender, RoutedEventArgs e)
         {
-            firstNameBox.Text = null;
-            lastNameBox.Text = null;
-            emailBox.Text = null;
-            addressBox.Text = null;
-            phoneBox.Text = null; 
-            passwordBoxOne.Password = null;
-            passwordBoxTwo.Password = null;
+            foreach (TextBox box in boxes.Children)
+            {
+                box.Clear();
+            }
+
+            foreach (PasswordBox pBox in boxes.Children)
+            {
+                pBox.Clear();
+            }
         }
 
         private void clickCancelButton(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            //MainWindow mainWindow = new MainWindow();
+            parent.Show();
             this.Close();
         }
 
@@ -149,10 +152,26 @@ namespace TheStore
 
         private void createPhone()
         {
-            int phone = int.Parse(phoneBox.Text);
+            double phone = double.Parse(phoneBox.Text);
             user.setPhone(phone);
             returnText.Text = "";
         }
 
+        private string createUser() 
+        {
+            user.setLoggedIn(true);
+            user.setUserId();
+            userList.Add(user);
+            return "Registration success";
+        }
+
+        private void ClickGoBackButton(object sender, RoutedEventArgs e)
+        {
+            returnText.Text = "Go Back";
+            parent.Show();
+            this.Close();
+        }
+
+       
     }
 }
