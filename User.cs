@@ -101,6 +101,9 @@ namespace TheStore
             loggedIn = _loggedIn;
         }
 
+        public User() 
+        { 
+        }
         public User(string name, string password, string email, string address, int phone)
         {
             if (password != null && password.Length > 6)
@@ -115,8 +118,8 @@ namespace TheStore
                 this.address = address;
                 this.phone = phone;
                 UserId = UserId + 1;
-                loggedIn = true;
-                //userList.add();
+                loggedIn = false;
+                //userList.Add();
         }
        
     }

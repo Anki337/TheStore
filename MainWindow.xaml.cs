@@ -25,12 +25,13 @@ namespace TheStore
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<User> userList = new List<User>();
+
         List<Item> availableItemsList = new List<Item>();
 
-        
-
-
+        ArrayList userList = new ArrayList();
+        //List<User> userList = new List<User>(); I have commented this list out as the arrayList is the same as used in CreateNewUser-logic and has to be dynamic /Linnea
+        ArrayList AvailableItemsList = new ArrayList();
+    
         public MainWindow()
         {
             readItemsFromFile();
@@ -72,7 +73,7 @@ namespace TheStore
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
 
-            CreateNewUser createNewUser = new CreateNewUser();
+            CreateNewUser createNewUser = new CreateNewUser(userList);
             createNewUser.Show();
             this.Close();
         }
