@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-                <!--Område för header startar-->
+            <!--Område för header startar-->
             <Label VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20">
                 <StackPanel Orientation="Horizontal">
                     <AccessText>
@@ -67,19 +67,19 @@
                 </Button>
 
             </Label>
-            
-            
-                <!--Område för header slutar-->
+
+
+            <!--Område för header slutar-->
         </Grid>
 
         <Grid Grid.Row="1" x:Name="Body">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition/>
+                <RowDefinition Height="64.007"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -92,26 +92,53 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <!--Område för Body startar-->
-            
+            <ListBox x:Name="testListBox" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock"></Style>
+                            </StackPanel.Resources>
+                            <TextBlock  Text="{Binding Path=Name}" />
+                            <TextBlock  Text="{Binding Category}" />
+                            <TextBlock  Text="{Binding Price}" />
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
             <!--Stack för kategori Outdoor -->
-            <StackPanel x:Name="Outdoor" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Orientation="Horizontal" Grid.ColumnSpan="2" >
-                <StackPanel x:Name="OutLeksakStack">
-                    <Label Content="Leksak">
-                    </Label>
-                </StackPanel>
-                <StackPanel x:Name="OutAntalStack">
-                    <Label Content="Antal">
-                    </Label>
-                </StackPanel>
-                <StackPanel Name="OutInputStack">
-                    <Label Content="Beställ">
-                    </Label>
-                    <TextBox MaxWidth="20" Visibility="Hidden">
-                        
-                    </TextBox>
-                </StackPanel>
+            <StackPanel x:Name="Outdoor" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Background="Beige" >
+                <Border x:Name="ItemList" Background="Aqua" Margin="10, 10, 10, 0" CornerRadius="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Antal" Grid.Column="1">
+                        </Label>
+                        <Label Content="Bild" Grid.Column="2">
+                        </Label>
+                    </Grid>
+                </Border>
+                <ListBox x:Name="outdoorList" d:ItemsSource="{d:SampleData ItemCount=5}"  >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate >
+
+                            <StackPanel>
+
+                                <TextBlock Foreground="DarkCyan" Text="{Binding Name}" />
+
+
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
-            
+
             <!--Stack för kategori Big -->
             <StackPanel x:Name="Big" Grid.Column="3" Grid.Row="1" Grid.RowSpan="5" Orientation="Horizontal" Grid.ColumnSpan="2">
                 <StackPanel x:Name="BigLeksakStack">
@@ -130,7 +157,7 @@
                     </TextBox>
                 </StackPanel>
             </StackPanel>
-            
+
             <!--Stack för kategori Small -->
             <StackPanel x:Name="Small" Grid.Column="5" Grid.Row="1" Grid.RowSpan="5" Orientation="Horizontal" Grid.ColumnSpan="2">
                 <StackPanel x:Name="SmallLeksakStack" >
@@ -148,31 +175,15 @@
                     </TextBox>
                 </StackPanel>
             </StackPanel>
-            
-            <!--Stack för kategori dockor -->
-            <StackPanel x:Name="Dockor" Grid.Column="7" Grid.Row="1" Grid.RowSpan="5" Orientation="Horizontal" Grid.ColumnSpan="2">
-                <StackPanel x:Name="DockLeksakStack" >
-                    <Label Content="Leksak">
-                    </Label>
-                </StackPanel>
-                <StackPanel x:Name="DockAntalStack">
-                    <Label Content="Antal">
-                    </Label>
-                </StackPanel>
-                <StackPanel Name="DockInputStack">
-                    <Label Content="Beställ">
-                    </Label>
-                    <TextBox MaxWidth="20" Visibility="Hidden">
-                    </TextBox>
-                </StackPanel>
-            </StackPanel>
-                
-            
-            
+
+
+
+
+
             <!--Område för Body slutar-->
         </Grid>
 
-        <Grid  Grid.Row="2" x:Name="Footer"> 
+        <Grid  Grid.Row="2" x:Name="Footer">
             <!--Område för footer startar-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
