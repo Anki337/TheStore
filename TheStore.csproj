@@ -83,6 +83,7 @@
     <Compile Include="OrderWindow.xaml.cs">
       <DependentUpon>OrderWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PaymentOptions.cs" />
     <Compile Include="User.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -155,6 +156,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\OrderWindow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Files\Items.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
