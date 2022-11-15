@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 
 namespace TheStore
@@ -29,9 +30,12 @@ namespace TheStore
 
         public MainWindow()
         {
+            readItemsFromFile();
+            
+
 
             User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590);
-       
+
             userList.Add(user);
 
             InitializeComponent();
@@ -39,6 +43,8 @@ namespace TheStore
             availableItemsList.Add(new Item("Bouncy ball", "Small ball to bounce around", 75, 5, 2, "Small"));
             availableItemsList.Add(new Item("Bucket", "Great to play with sand", 27, 42, 7, "Outdoor"));
             availableItemsList.Add(new Item("Spade", "Digging it", 38, 342, 3, "Outdoor"));
+
+
 
 
             testListBox.ItemsSource = availableItemsList;
@@ -96,9 +102,29 @@ namespace TheStore
 
         }
 
+        private void readItemsFromFile()
+        {
+            string path = "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering grund 2\\Inlämningsuppgift\\The Store\\Files";
+            string itemPath = path + @"\Items.txt";
+            string[] readLine = File.ReadAllLines(itemPath);
+
+            foreach (string itemLine in readLine)
+            {
+                string[] itemData = itemLine.Split(',');
+                string name = itemData[0];
+                string description = itemData[1];
+                int quantity = Convert.ToInt32(itemData[2]);
+                int price = Convert.ToInt32(itemData[3]);
+                double weight = Convert.ToDouble(itemData[4]);
+                string category = itemData[5];
+                //string toyPic = itemdata[6] ej implementerat
+                availableItemsList.Add(new Item(name, description, quantity, price, weight, category));
+            }
+        }
+
         private void listAllItemsInMainWindowBody()
         {
-            foreach(Item item in availableItemsList)
+            foreach (Item item in availableItemsList)
             {
                 Label toyName = new Label();
                 Label saldo = new Label();
@@ -125,10 +151,10 @@ namespace TheStore
                     SmallAntalStack.Children.Add(saldo);
                     SmallInputStack.Children.Add(textBox);
                 }
-               
+
             }
         }
 
-     
+
     }
 }
