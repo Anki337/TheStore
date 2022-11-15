@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
+
 
 
 namespace TheStore
@@ -28,12 +30,10 @@ namespace TheStore
 
         List<User> userList = new List<User>();
         List<Item> availableItemsList = new List<Item>();
-    
+        
         public MainWindow()
         {
             readItemsFromFile();
-            
-
 
             User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590); //test User
 
@@ -41,13 +41,6 @@ namespace TheStore
             user.setLoggedIn(true); //for testing, will be set in loggin
 
             InitializeComponent();
-            availableItemsList.Add(new Item("Bobby car", "Fun car to play with", 5, 500, 7, "Big"));
-            availableItemsList.Add(new Item("Bouncy ball", "Small ball to bounce around", 75, 5, 2, "Small"));
-            availableItemsList.Add(new Item("Bucket", "Great to play with sand", 27, 42, 7, "Outdoor"));
-            availableItemsList.Add(new Item("Spade", "Digging it", 38, 342, 3, "Outdoor"));
-
-
-
 
             testListBox.ItemsSource = availableItemsList;
             outdoorList.ItemsSource = availableItemsList;
@@ -106,7 +99,45 @@ namespace TheStore
 
         }
 
-        private void readItemsFromFile()
+        private void editItemInFile(Item item, int quantityToBuy, int index) //Tar en item, hur många som ska dras bort, och vilken plats i listan/textfilen den har.
+        {
+            int Currentquantity = item.getQuantity();
+            if (Currentquantity >= quantityToBuy)
+            {
+                item.setQuantity(Currentquantity - quantityToBuy); //Uppdaterar antalet i objektet.
+                
+                string name = item.getName();
+                string description = item.getDescription();
+                int quantity = item.getQuantity();
+                int price = item.getPrice();
+                double weight = item.getWeight();
+                string category = item.getCategory();
+                string itemLines = name + "," + description + "," + quantity + ","  + price + "," + weight + "," + category; //En ny string som ska ersätta raden i textfilen
+
+                lineChanger(itemLines, index); // Uppdaterar textfilen. 
+
+                if (item.getQuantity() == 0) //Om saldot på item blir noll tas den bort från listan och från textfilen
+                {
+                    availableItemsList.Remove(item);
+                    lineChanger(null, index);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Not enough " + item.getName() + " in store" + Environment.NewLine + "Current balance is: " + Currentquantity);
+            }
+        }
+        static void lineChanger(string newText, int line_to_edit)
+        {
+            string path = "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering grund 2\\Inlämningsuppgift\\The Store\\Files";
+            string itemPath = path + @"\Items.txt";
+            string[] arrLine = File.ReadAllLines(itemPath); //Hämtar hela textfilen och läser in varje rad som en egen string i en array.
+            string[] trimmed = arrLine.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray(); //Trimmar bort den första tomma raden om ett saldo skulle gå ner till noll.
+            trimmed[line_to_edit] = newText; //Ändrar den stringen i arrayen som motsvarar platsen för den item vi vill ändra
+            File.WriteAllLines(itemPath, trimmed); //Skriver en ny textfil med arrayen vi skapade två rader upp.
+        }
+
+        private void readItemsFromFile() //Läser in alla items från textfilen
         {
             string path = "C:\\Users\\linnea\\source\\repos\\TheStore\\Files\\Items.txt";
             string itemPath = path + @"\Items.txt";
@@ -114,8 +145,12 @@ namespace TheStore
 
             foreach (string itemLine in readLine)
             {
-                string[] itemData = itemLine.Split(',');
-                string name = itemData[0];
+                if (String.IsNullOrEmpty(itemLine))
+                {
+                    break;
+                }
+                string[] itemData = itemLine.Split(','); //Varje string som separeras med ett komma blir en string i denna array.
+                string name = itemData[0]; //Platsen för var i arrayen avgör vilken typ av string det är.
                 string description = itemData[1];
                 int quantity = Convert.ToInt32(itemData[2]);
                 int price = Convert.ToInt32(itemData[3]);
@@ -159,6 +194,7 @@ namespace TheStore
             }
         }
 
+
         private void readUsersFromFile()
         {
             string path = "C:\\Users\\linnea\\source\\repos\\TheStore\\Files\\Users.txt";
@@ -178,6 +214,16 @@ namespace TheStore
         }
 
       
+        private void BuyButton_Click(object sender, RoutedEventArgs e)
+        {
+            int quantityToBuy = 1;
+            editItemInFile((Item)availableItemsList[0], quantityToBuy, availableItemsList.IndexOf(availableItemsList[0]));
+            string näjm = availableItemsList[0].getName();
+          
+            
+            
+            MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + ""); ;
+        }
 
     }
 }

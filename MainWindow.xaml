@@ -189,7 +189,7 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.ColumnSpan="2">footer</Button>
+            <Button x:Name="BuyButton" Grid.ColumnSpan="2" Click="BuyButton_Click">Buy Toy</Button>
             <!--Område för footer slutar-->
         </Grid>
     </Grid>
