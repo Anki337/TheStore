@@ -157,5 +157,8 @@
   <ItemGroup>
     <Resource Include="Images\OrderWindow.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Files\Items.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

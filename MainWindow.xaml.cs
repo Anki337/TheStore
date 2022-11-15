@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 
 namespace TheStore
@@ -24,19 +25,32 @@ namespace TheStore
     public partial class MainWindow : Window
     {
         List<User> userList = new List<User>();
-        ArrayList AvailableItemsList = new ArrayList();
-        
+        ArrayList availableItemsList = new ArrayList();
+
 
         public MainWindow()
         {
+            readItemsFromFile();
+            
+
+
             User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590);
-            AvailableItemsList.Add(new Item("Bobby car", "Fun car to play with", 5, 500, 7, "Big"));
-            AvailableItemsList.Add(new Item("Bouncy ball", "Small ball to bounce around", 75, 5, 2, "Small"));
-            AvailableItemsList.Add(new Item("Bucket", "Great to play with sand", 27, 42, 7, "Outdoor"));
-            AvailableItemsList.Add(new Item("Spade", "Digging it", 38, 342, 3, "Outdoor"));
-            AvailableItemsList.Add(new Item("Batman", "Digging it", 38, 342, 3, "Dockor"));
+
             userList.Add(user);
+
             InitializeComponent();
+            availableItemsList.Add(new Item("Bobby car", "Fun car to play with", 5, 500, 7, "Big"));
+            availableItemsList.Add(new Item("Bouncy ball", "Small ball to bounce around", 75, 5, 2, "Small"));
+            availableItemsList.Add(new Item("Bucket", "Great to play with sand", 27, 42, 7, "Outdoor"));
+            availableItemsList.Add(new Item("Spade", "Digging it", 38, 342, 3, "Outdoor"));
+
+
+
+
+            testListBox.ItemsSource = availableItemsList;
+            outdoorList.ItemsSource = availableItemsList;
+            outdoorList.Items.Refresh();
+
             listAllItemsInMainWindowBody();
 
         }
@@ -46,7 +60,6 @@ namespace TheStore
 
             string mail = mailBox.Text;
             string password = pwBox.Password;
-
 
             foreach (User user in userList)
             {
@@ -65,7 +78,6 @@ namespace TheStore
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
 
-            
             CreateNewUser createNewUser = new CreateNewUser();
             createNewUser.Show();
             this.Close();
@@ -74,7 +86,6 @@ namespace TheStore
 
         private void shoppingCart_Click(object sender, RoutedEventArgs e)
         {
-            
             OrderWindow orderWindow = new OrderWindow();
             orderWindow.Show();
             this.Close();
@@ -91,22 +102,43 @@ namespace TheStore
 
         }
 
+        private void readItemsFromFile()
+        {
+            string path = "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering grund 2\\Inlämningsuppgift\\The Store\\Files";
+            string itemPath = path + @"\Items.txt";
+            string[] readLine = File.ReadAllLines(itemPath);
+
+            foreach (string itemLine in readLine)
+            {
+                string[] itemData = itemLine.Split(',');
+                string name = itemData[0];
+                string description = itemData[1];
+                int quantity = Convert.ToInt32(itemData[2]);
+                int price = Convert.ToInt32(itemData[3]);
+                double weight = Convert.ToDouble(itemData[4]);
+                string category = itemData[5];
+                //string toyPic = itemdata[6] ej implementerat
+                availableItemsList.Add(new Item(name, description, quantity, price, weight, category));
+            }
+        }
+
         private void listAllItemsInMainWindowBody()
         {
-            foreach(Item item in AvailableItemsList)
+            foreach (Item item in availableItemsList)
             {
                 Label toyName = new Label();
                 Label saldo = new Label();
-                TextBox textBox = new TextBox();
-                textBox.MaxWidth = 20;
+                CheckBox textBox = new CheckBox();
+                textBox.MaxWidth = 15;
+                textBox.MaxHeight = 15;
                 toyName.Content = item.getName();
                 saldo.Content = item.getQuantity();
-                if (item.getCategory().Equals("Outdoor"))
+                /*if (item.getCategory().Equals("Outdoor"))
                 {
                     OutLeksakStack.Children.Add(toyName);
                     OutAntalStack.Children.Add(saldo);
                     OutInputStack.Children.Add(textBox);
-                }
+                }*/
                 if (item.getCategory().Equals("Big"))
                 {
                     BigLeksakStack.Children.Add(toyName);
@@ -119,13 +151,10 @@ namespace TheStore
                     SmallAntalStack.Children.Add(saldo);
                     SmallInputStack.Children.Add(textBox);
                 }
-                if (item.getCategory().Equals("Dockor"))
-                {
-                    DockLeksakStack.Children.Add(toyName);
-                    DockAntalStack.Children.Add(saldo);
-                    DockInputStack.Children.Add(textBox);
-                }
+
             }
         }
+
+
     }
 }

@@ -9,12 +9,13 @@ namespace TheStore
 {
     public class Item
     {
-        private string name;
+        public string name;
         private string description;
         private int quantity;
         private int price;
         private double weight;
         private string category;
+        private string toyPic;
 
         public Item(string name, string description, int quantity, int price, double weight, string category)
         {
@@ -24,6 +25,8 @@ namespace TheStore
             this.price = price;
             this.weight = weight;
             this.category = category;
+            //this.toyPic = imagePath;
+
         }
 
         public string getName()
@@ -41,9 +44,6 @@ namespace TheStore
 
             return category;
         }
-
-        //Read items from file, this is a testlist
-
 
     }
 }
