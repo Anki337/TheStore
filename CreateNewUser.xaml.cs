@@ -90,9 +90,7 @@ namespace TheStore
             else
             {
                 createPassword();
-                user.setLoggedIn(true);
-                userList.Add(user);
-                returnText.Text = "Registration success";
+                returnText.Text = createUser();
 
                 //MainWindow.Show();
                 //this.Close();
@@ -149,10 +147,17 @@ namespace TheStore
 
         private void createPhone()
         {
-            int phone = int.Parse(phoneBox.Text);
+            double phone = double.Parse(phoneBox.Text);
             user.setPhone(phone);
             returnText.Text = "";
         }
 
+        private string createUser() 
+        {
+            user.setLoggedIn(true);
+            user.setUserId();
+            userList.Add(user);
+            return "Registration success";
+        }
     }
 }

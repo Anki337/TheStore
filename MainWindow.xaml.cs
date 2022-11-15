@@ -27,7 +27,7 @@ namespace TheStore
 
         ArrayList userList = new ArrayList();
         //List<User> userList = new List<User>(); I have commented this list out as the arrayList is the same as used in CreateNewUser-logic and has to be dynamic /Linnea
-        ArrayList AvailableItemsList = new ArrayList();
+        ArrayList availableItemsList = new ArrayList();
     
         public MainWindow()
         {
@@ -105,9 +105,9 @@ namespace TheStore
 
         private void readItemsFromFile()
         {
-            string path = "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering grund 2\\Inlämningsuppgift\\The Store\\Files";
+            string path = "C:\\Users\\linnea\\source\\repos\\TheStore\\Files\\Items.txt";
             string itemPath = path + @"\Items.txt";
-            string[] readLine = File.ReadAllLines(itemPath);
+            string[] readLine = File.ReadAllLines(path);
 
             foreach (string itemLine in readLine)
             {
