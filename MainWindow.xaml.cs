@@ -23,7 +23,7 @@ namespace TheStore
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<User> userList = new List<User>();
+        ArrayList userList = new ArrayList();
         ArrayList AvailableItemsList = new ArrayList();
         
 
@@ -65,7 +65,7 @@ namespace TheStore
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
 
-            CreateNewUser createNewUser = new CreateNewUser();
+            CreateNewUser createNewUser = new CreateNewUser(userList);
             createNewUser.Show();
             this.Close();
         }
