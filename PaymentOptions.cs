@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,33 +9,46 @@ namespace TheStore
 {
     public class PaymentOptions
     {
+        ArrayList cardsOptions = new ArrayList();
+        string[] paymentOpt = new string[] { "Klarna, Lån", "Mastercard, Kredit", "Bankkonto, Tillgångar" };
+        string[] paymentOpt2 = new string[] { "Visa , Creditkort", "Mastercard, Kredit", "Black card, Tillgångar" };
+
+
+
+
         public string name { get; set; }
         public string description { get; set; }
 
         public PaymentOptions(string name, string description)
         {
+
+            
             this.name = name;
             this.description = description;
-        }
+            cardsOptions.Add(paymentOpt);
+            cardsOptions.Add(paymentOpt2);
 
-        PaymentOptions paymentOptionsOne = new PaymentOptions("Klarna", "Lån");
-        PaymentOptions paymentOptionsTwo = new PaymentOptions("Mastercard", "Kredit");
-        PaymentOptions paymentOptionsThree = new PaymentOptions("Bankkonto", "Tillgångar");
-
-        public string PayInfoOne
+        }  
+        
+        public string ListPaymentOptions(string paylist)
         {
-            get { return paymentOptionsOne.PayInfoOne; }
+            for(int i = 0; i < cardsOptions.Count; i++)
+            {
+                i= cardsOptions.ToString().Length;
+                i++;
+                string payList = i.ToString();
+                return payList;
+            }
+            return paylist;
 
         }
-        public string PayInfoTwo
-        {
-            get { return paymentOptionsTwo.PayInfoTwo; }
-        }
-        public string PayInfoThree
-        {
-            get { return paymentOptionsThree.PayInfoThree; }
-        }
+        
 
+
+
+        
+    
+    
     }
 
 

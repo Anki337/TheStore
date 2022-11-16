@@ -37,7 +37,7 @@ namespace TheStore
         {
             InitializeComponent();
         }
-
+     
         private void clickSubmitButton(object sender, RoutedEventArgs e)
         {
             
@@ -120,6 +120,9 @@ namespace TheStore
             this.Close();
         }
 
+ 
+
+
         private void createName()
         {
             string name = firstNameBox.Text + " " + lastNameBox.Text;
@@ -171,6 +174,7 @@ namespace TheStore
             parent.Show();
             this.Close();
         }
+
 
        
     }
