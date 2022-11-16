@@ -25,7 +25,7 @@ namespace TheStore
         {
             InitializeComponent();
         }
-
+ /*      
         private void clickSubmitButton(object sender, RoutedEventArgs e)
         {
             if (firstNameBox.Text == "" || lastNameBox.Text == "")
@@ -87,7 +87,7 @@ namespace TheStore
             mainWindow.Show();
             this.Close();
         }
-
+ */
 
     }
 }
