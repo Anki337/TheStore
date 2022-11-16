@@ -17,18 +17,23 @@
             <TextBlock Height="25" x:Name="lastName" HorizontalAlignment="left" Text="Last Name:" Margin="50 35 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="White" FontFamily="Arial"/>
             <TextBlock Height="25" x:Name="Email" HorizontalAlignment="left" Text="Email Adress:" Margin="50 65 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="White" FontFamily="Arial"/>
             <TextBlock Height="25" x:Name="Adress" HorizontalAlignment="left" Text="Adress:" Margin="50 95 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="White" FontFamily="Arial"/>
-            <TextBlock Height="25" x:Name="passwordOne" HorizontalAlignment="left" Text="Password:" Margin="50 125 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="White" FontFamily="Arial"/>
-            <TextBlock Height="25" x:Name="passwordTwo" HorizontalAlignment="left" Text="Confirm Password:" Margin="50 155 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="White" FontFamily="Arial"/>
-            <TextBlock Height="25" x:Name="returnText" HorizontalAlignment="Left" Text="Output" Margin="50 185 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="White" FontFamily="Arial" />
-            <TextBox Height="20" x:Name="firstNameBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 5 20 0" />
-            <TextBox Height="20" x:Name="lastNameBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 33 20 0" />
-            <TextBox Height="20" x:Name="emailBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 63 20 0" />
-            <TextBox Height="20" x:Name="addressBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 93 20 0" />
-            <PasswordBox Height="20" x:Name="passwordBoxOne" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="5 0 20 35"/>
-            <PasswordBox Height="20" x:Name="passwordBoxTwo" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="5 20 20 00"/>
-            <Button Height="20" x:Name="submitButton" Click ="clickSubmitButton" Width="100" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50" Background="Green"/>
-            <Button Height="20" x:Name="resetButton" Click ="clickResetButton" Width="100" Content="Reset" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20 0 200 50" Background="Yellow"/>
-            <Button Height="20" x:Name="cancelButton" Click="clickCancelButton" Width="100" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="40 0 0 50" Background="red"/>
+            <TextBlock Height="25" x:Name="Phone" HorizontalAlignment="left" Text="Phone:" Margin="50 125 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="White" FontFamily="Arial"/>
+            <TextBlock Height="25" x:Name="passwordOne" HorizontalAlignment="left" Text="Password:" Margin="50 155 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="White" FontFamily="Arial"/>
+            <TextBlock Height="25" x:Name="passwordTwo" HorizontalAlignment="left" Text="Confirm Password:" Margin="50 185 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="White" FontFamily="Arial"/>
+            <TextBlock Height="25" x:Name="returnText" HorizontalAlignment="Left" Text="" Margin="50 215 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="White" FontFamily="Arial" />
+            <StackPanel x:Name="boxes">
+                <TextBox Height="20" x:Name="firstNameBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 2 20 0" />
+                <TextBox Height="20" x:Name="lastNameBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 10 20 0" />
+                <TextBox Height="20" x:Name="emailBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 10 20 0" />
+                <TextBox Height="20" x:Name="addressBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 10 20 0" />
+                <TextBox Height="20" x:Name="phoneBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 10 20 0" />
+                <PasswordBox Height="20" x:Name="passwordBoxOne" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 10 20 0"/>
+                <PasswordBox Height="20" x:Name="passwordBoxTwo" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 10 20 0"/>
+            </StackPanel>
+            <Button Height="20" x:Name="submitButton" Click ="clickSubmitButton" Width="100" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50 0 200 30" Background="Green" Visibility="Visible"/>
+            <Button Height="20" x:Name="goBackButton" Click ="ClickGoBackButton" Width="100" Content="Go Back" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50 0 200 30" Background="Green" Visibility="Hidden"/>
+            <Button Height="20" x:Name="resetButton" Click ="clickResetButton" Width="100" Content="Reset" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20 0 200 30" Background="Yellow" Visibility="Visible"/>
+            <Button Height="20" x:Name="cancelButton" Click="clickCancelButton" Width="100" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="40 0 0 30" Background="red" Visibility="Visible"/>
         </Grid>
     </Grid>
 </Window>

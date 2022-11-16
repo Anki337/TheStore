@@ -1,0 +1,6 @@
+﻿"Johan Johansson", "qwerty", "johan@son", "Street 2", 12345678
+"Max Maxsson", "qwerty", "max@son", "Street 5", 23456789
+"David Davidsson", "qwerty", "david@son", "Small road", 34567890
+"Trampo Line", "qwerty", "@5", "Middle earth", 45678901
+"Tree House", "qwerty", "@5", "Big junction", 56789012
+"Chain Saw", "qwerty", "@5", "No idea", 67890123

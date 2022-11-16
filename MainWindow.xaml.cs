@@ -15,7 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
+
 
 
 namespace TheStore
@@ -25,12 +27,10 @@ namespace TheStore
     /// </summary>
     public partial class MainWindow : Window
     {
+
         List<User> userList = new List<User>();
         List<Item> availableItemsList = new List<Item>();
-
         
-
-
         public MainWindow()
         {
             InitializeComponent();
@@ -38,9 +38,10 @@ namespace TheStore
             outdoorList.ItemsSource = availableItemsList;
             outdoorList.Items.Refresh();
 
-            User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590);
+            User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590); //test User
 
-            userList.Add(user);
+            userList.Add(user); //for testing
+            user.setLoggedIn(true); //for testing, will be set in loggin
 
             listAllItemsInMainWindowBody();
 
@@ -58,7 +59,11 @@ namespace TheStore
                 {
                     mailBox.Visibility = Visibility.Collapsed;
                     pwBox.Visibility = Visibility.Collapsed;
+
                     userNameText.Text = " back " + user.Name;
+
+                    //user.setLoggedIn(true);
+
                     logButton.Visibility = Visibility.Collapsed;
                     createButton.Visibility = Visibility.Collapsed;
                     logOutButton.Visibility = Visibility.Visible;
@@ -69,9 +74,9 @@ namespace TheStore
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
 
-            CreateNewUser createNewUser = new CreateNewUser();
+            CreateNewUser createNewUser = new CreateNewUser(this, userList);
             createNewUser.Show();
-            this.Close();
+            this.Hide();
         }
 
 
@@ -86,6 +91,7 @@ namespace TheStore
         {
             mailBox.Visibility = Visibility.Visible;
             pwBox.Visibility = Visibility.Visible;
+            //user.setLoggedIn(false);
             userNameText.Text = "";
             logButton.Visibility = Visibility.Visible;
             createButton.Visibility = Visibility.Visible;
@@ -136,6 +142,7 @@ namespace TheStore
             DirectoryInfo currentdirectory = new DirectoryInfo(".");
             string itemPath = currentdirectory.FullName + "\\Files" + @"\Items.txt";
             string[] readLine = File.ReadAllLines(itemPath);
+
             foreach (string itemLine in readLine)
             {
                 if (String.IsNullOrEmpty(itemLine))
@@ -187,6 +194,26 @@ namespace TheStore
             }
         }
 
+
+        private void readUsersFromFile()
+        {
+            string path = "C:\\Users\\linnea\\source\\repos\\TheStore\\Files\\Users.txt";
+            string itemPath = path + @"\Items.txt";
+            string[] readLine = File.ReadAllLines(path);
+
+            foreach (string itemLine in readLine)
+            {
+                string[] itemData = itemLine.Split(',');
+                string name = itemData[0];
+                string password = itemData[1];
+                string email = itemData[2];
+                string address = itemData[3];
+                double phone = Convert.ToDouble(itemData[4]);
+                userList.Add(new User(name, password, email, address, phone));
+            }
+        }
+
+      
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
             int quantityToBuy = 1;
@@ -197,6 +224,7 @@ namespace TheStore
             
             MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + ""); ;
         }
+
 
         private void outdoorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

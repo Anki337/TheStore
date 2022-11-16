@@ -39,7 +39,7 @@
                         <Image Source="pack://application:,,,/Images/thunder.png"></Image>
                     </StackPanel>
                 </Label>
-                <Button x:Name="logCreateButton" Click="logCreateButton_Click"  Grid.Column="6" Grid.Row="0" Margin="1,0,1,4" VerticalAlignment="Bottom" Height="25">
+                <Button x:Name="logCreateButton" Click="logCreateButton_Click" Grid.Column="6" Grid.Row="0" Margin="1,0,1,4" VerticalAlignment="Bottom" Height="25">
                     Log in/Create User</Button>
                 <TextBox x:Name="unBox" Grid.Column="5" Grid.Row="0" Margin="1,1,1,1" TextAlignment="Left" VerticalAlignment="Center" Height="25">
                     Mäjladress
@@ -60,15 +60,108 @@
                 <Grid.Background>
                     <ImageBrush ImageSource="pack://application:,,,/Images/Checkout.png" Stretch="UniformToFill"/>
                 </Grid.Background>
-                <Grid x:Name="PurchasedItems" HorizontalAlignment="Center" VerticalAlignment="Center" Height="300" Width="750">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                </Grid>
-                <!--Område för Body slutar-->
-            </Grid>
+                <Grid x:Name="PurchasedItems" HorizontalAlignment="Center"
+                      VerticalAlignment="Center" Height="300" Width="750">
+                    <Grid VerticalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Här börjar första stackpanel för vad och hur många man har beställt av varje leksak.-->
+                        <StackPanel Margin="5 0 0 0" x:Name="PurchasedItemsList" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5"
+                                    Orientation="Horizontal" Grid.ColumnSpan="2" Background="DarkGray">
+                            <StackPanel x:Name="ToysInCart" Width="140">
+                                <Label Foreground="white" 
+                                  FontWeight="Bold"
+                                >Leksak</Label>
+                            </StackPanel>
+                            <StackPanel x:Name="NumberOfGoods">
+                                <Label Foreground="white" 
+                                  FontWeight="Bold"
+                                >Antal</Label>
+                            </StackPanel>
+                        </StackPanel>
+                        <!--Slut på produktspecifikation-->
 
+                        <!--Här är stackpanel för information om vart man skall skicka alla produkter!-->
+                        <StackPanel x:Name="ProductShippingInformation" Grid.Column="3" Grid.Row="0" Grid.RowSpan="5"
+                                    Orientation="Horizontal" Grid.ColumnSpan="2" Background="DarkGray">
+                            <Label Foreground="White" VerticalAlignment="Top" FontWeight="bold" Height="26"
+                            >Försändelse information</Label>
+                            <Button Height="20" Width="30" Content="Save" x:Name="SaveButton" Click="SaveButton_Click" VerticalAlignment="top" Margin="0 5 0 0"></Button>
+                        </StackPanel>
+                        <Grid Grid.Column="2" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="94,32,94,0">
+                            <TextBlock Margin="5 0 0 0" Foreground="green" FontWeight="Bold" TextDecorations="Underline" 
+                                       FontStyle="Italic" FontSize="11">Privatperson</TextBlock>
+                            <TextBlock Margin="5 20 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="8">Adress:</TextBlock>
+                            <TextBlock Margin="5 40 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="8">Post nr:</TextBlock>
+                            <TextBlock Margin="5 60 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="8">Ort:</TextBlock>
+                            <TextBlock Margin="5 80 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="8">Telefon Nr:</TextBlock>
+                            <TextBlock Margin="5 100 0 0" Foreground="Blue" FontWeight="Bold" TextDecorations="Underline"
+                                       FontStyle="Italic" FontSize="11" >Företagskund</TextBlock>
+                            <TextBlock Margin="5 120 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="8">Faktura Adress:</TextBlock>
+                            <TextBlock Margin="5 140 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="8">Adress:</TextBlock>
+                            <TextBlock Margin="5 160 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="8">Post nr:</TextBlock>
+                            <TextBlock Margin="5 180 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="8">Ort:</TextBlock>
+                            <TextBlock Margin="5 200 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="8">Telefon Nr:</TextBlock>
+                            <TextBox x:Name="OrderWinAdress" Height="15" Width="120" Margin="48,22,-11,178" TextChanged="OrderWinAdress_TextChanged"></TextBox>
+                            <TextBox x:Name="OrderWinPostNr" Height="15" Width="120" Margin="63,40,4,160" TextChanged="OrderWinPostNr_TextChanged"></TextBox>
+                            <TextBox x:Name="OrderWinOrt" Height="15" Width="120" Margin="63,60,4,143" TextChanged="OrderWinOrt_TextChanged"></TextBox>
+                            <TextBox x:Name="OrderWinTele" Height="15" Width="120" Margin="63,77,4,123" TextChanged="OrderWinTele_TextChanged"></TextBox>
+                            <TextBox x:Name="OrderWinCompFaktAdress" Height="15" Width="120" Margin="63,120,4,83" TextChanged="OrderWinCompFaktAdress_TextChanged"></TextBox>
+                            <TextBox x:Name="OrderWinCompAdress" Height="15" Width="120" Margin="63,139,4,64"></TextBox>
+                            <TextBox x:Name="OrderWinCompPostNr" Height="15" Width="120" Margin="63,159,4,44"></TextBox>
+                            <TextBox x:Name="OrderWinCompOrt" Height="15" Width="120" Margin="63,179,4,24"></TextBox>
+                            <TextBox x:Name="OrderWinCompTele" Height="15" Width="120" Margin="63,199,4,4"></TextBox>
+                        </Grid>
+                        <!--Slut på delen för beställningsinformation-->
+                        <StackPanel Margin="0 0 5 0" x:Name="PaymentOptions" Grid.Column="6" Grid.Row="0" Grid.RowSpan="5"
+                                    Orientation="Horizontal" Grid.ColumnSpan="2" Background="DarkGray">
+                            <Label Foreground="White" VerticalAlignment="Top" FontWeight="bold" Height="26"
+                            >Betalningsalternativ</Label>
+                        </StackPanel>
+                        <Grid Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="5" Margin="93,32,5,0">
+                            <!--Inne i Combobox Binding skall det finnas en binding till en klass som innehåller betalnings objekt, ex Mastercard / klarna -->
+                            <ComboBox x:Name="PaymentBox" Width="100" Height="15" HorizontalAlignment="Center" VerticalAlignment="Top"
+                                      Margin="0 20 0 0" Text="" BorderBrush="#FF1B45C7" FontSize="10"
+                                      ItemsSource="{Binding ComboBoxPay, RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Mode=OneWay}">
+                                <ComboBox.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFF0F0F0"/>
+                                        <GradientStop Color="#FF264BBF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ComboBox.Background>
+                            </ComboBox>
+                            <Label FontSize="8" FontWeight="Bold" Foreground="green" HorizontalAlignment="Center"
+                                   VerticalAlignment="Top" FontStyle="Italic">Välj betalningssätt</Label>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--Område för Body slutar-->
             <Grid  Grid.Row="2" x:Name="Footer">
                 <!--Område för footer startar-->
                 <Grid.ColumnDefinitions>
