@@ -92,21 +92,6 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <!--Område för Body startar-->
-            <ListBox x:Name="testListBox" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" d:ItemsSource="{d:SampleData ItemCount=5}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <StackPanel.Resources>
-                                <Style TargetType="TextBlock"></Style>
-                            </StackPanel.Resources>
-                            <TextBlock  Text="{Binding Path=Name}" />
-                            <TextBlock  Text="{Binding Category}" />
-                            <TextBlock  Text="{Binding Price}" />
-                        </StackPanel>
-
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
             <!--Stack för kategori Outdoor -->
             <StackPanel x:Name="Outdoor" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Background="Beige" >
                 <Border x:Name="ItemList" Background="Aqua" Margin="10, 10, 10, 0" CornerRadius="5">
@@ -123,17 +108,10 @@
                         </Label>
                     </Grid>
                 </Border>
-                <ListBox x:Name="outdoorList" d:ItemsSource="{d:SampleData ItemCount=5}"  >
+                <ListBox SelectionChanged="outdoorList_SelectionChanged"  x:Name="outdoorList" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
                     <ListBox.ItemTemplate>
-                        <DataTemplate >
-
-                            <StackPanel>
-
-                                <TextBlock Foreground="DarkCyan" Text="{Binding Name}" />
-
-
-                            </StackPanel>
-
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=name}"></TextBlock>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

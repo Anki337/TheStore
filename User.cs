@@ -10,13 +10,14 @@ namespace TheStore
     public class User
     {
         private int UserId = 0;
-        private string name;
+        //private string name;
         private string password;
         private string email;
         private string address;
         private double phone;
         private bool loggedIn = false;
 
+        public string Name { get; set; }
 
         public int getUserId()
         {
@@ -28,7 +29,7 @@ namespace TheStore
             UserId = UserId + 1;
         }
 
-        public string getName()
+        /*public string getName()
         { 
             return name;
         }
@@ -36,7 +37,7 @@ namespace TheStore
         public void setName(string _name) 
         {
             name = _name;
-        }
+        }*/
 
         public string getPassword()
         {
@@ -114,7 +115,7 @@ namespace TheStore
             {
                 this.email = email;
             }
-                this.name = name;
+                this.Name = name;
                 this.address = address;
                 this.phone = phone;
                 UserId = UserId + 1;
