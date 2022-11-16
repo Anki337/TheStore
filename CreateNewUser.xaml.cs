@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,13 +22,25 @@ namespace TheStore
     /// </summary>
     public partial class CreateNewUser : Window
     {
-        public CreateNewUser()
+        public List<User> userList;
+        User user = new User();
+        Window parent;
+
+        public CreateNewUser(Window mainWindow, List<User> userList)
+        {
+            InitializeComponent();
+            this.userList = userList;
+            parent = mainWindow;
+        }
+
+        public CreateNewUser() 
         {
             InitializeComponent();
         }
- /*      
+     
         private void clickSubmitButton(object sender, RoutedEventArgs e)
         {
+            
             if (firstNameBox.Text == "" || lastNameBox.Text == "")
             {
                 returnText.Text = "Please enter your first and last name";
@@ -35,19 +48,17 @@ namespace TheStore
             }
             else
             {
-                string firstName = firstNameBox.Text;
-                string lastName = lastNameBox.Text;
-                returnText.Text = "";
+                createName();
             }
-            if (emailBox.Text.Equals(""))
+            if (emailBox.Text.Equals("") && !emailBox.Text.Contains("@"))
             {
-                returnText.Text = "Please enter your email address";
+                returnText.Text = "Please enter a correct email address";
                 return;
             }
             else
             {
-                string email = emailBox.Text;
-                returnText.Text = "";
+                createEmail();
+
             }
             if (addressBox.Text.Equals(""))
             {
@@ -56,38 +67,115 @@ namespace TheStore
             }
             else
             {
-                string address = addressBox.Text;
-                returnText.Text = "";
+                createAddress();
             }
+            if (phoneBox.Text.Equals(""))
+            {
+                returnText.Text = "Please enter a phonenumber";
+                return;
+            }
+            else
+            {
+                createPhone();
+            }
+
             if (passwordBoxOne.Password.Equals("") || passwordBoxTwo.Password.Equals("") || !passwordBoxOne.Password.Equals(passwordBoxTwo.Password))
             {
                 returnText.Text = "Please enter the same password twice";
                 return;
             }
+            else if (passwordBoxOne.Password.Length < 6)
+            {
+                returnText.Text = "The password must be at least 6 caracters long";
+                return;
+            }
             else
             {
-                string password = passwordBoxOne.Password;
-                returnText.Text = "Registration success";
+                createPassword();
+                returnText.Text = createUser();
+                submitButton.Visibility = Visibility.Collapsed;
+                resetButton.Visibility = Visibility.Collapsed;
+                cancelButton.Visibility = Visibility.Collapsed;
+                goBackButton.Visibility = Visibility.Visible;
             }
         }
 
         private void clickResetButton(object sender, RoutedEventArgs e)
         {
-            firstNameBox.Text = null;
-            lastNameBox.Text = null;
-            emailBox.Text = null;
-            addressBox.Text = null;
-            passwordBoxOne.Password = null;
-            passwordBoxTwo.Password = null;
+            foreach (TextBox box in boxes.Children)
+            {
+                box.Clear();
+            }
+
+            foreach (PasswordBox pBox in boxes.Children)
+            {
+                pBox.Clear();
+            }
         }
 
         private void clickCancelButton(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            //MainWindow mainWindow = new MainWindow();
+            parent.Show();
             this.Close();
         }
- */
 
+ 
+
+
+        private void createName()
+        {
+            string name = firstNameBox.Text + " " + lastNameBox.Text;
+            user.setName(name);
+            returnText.Text = "";
+        }
+
+        private void createEmail()
+        {
+            string email = emailBox.Text;
+            if (user.setEmail(email))
+            {
+                user.setEmail(email);
+                returnText.Text = "";
+            }
+        }
+
+        private void createPassword()
+        {
+            string password = passwordBoxOne.Password;
+            user.setPassword(password);
+        }
+
+        private void createAddress()
+        {
+            string address = addressBox.Text;
+            user.setAddress(address);
+            returnText.Text = "";
+        }
+
+        private void createPhone()
+        {
+            double phone = double.Parse(phoneBox.Text);
+            user.setPhone(phone);
+            returnText.Text = "";
+        }
+
+        private string createUser() 
+        {
+            user.setLoggedIn(true);
+            user.setUserId();
+            userList.Add(user);
+            return "Registration success";
+        }
+
+        private void ClickGoBackButton(object sender, RoutedEventArgs e)
+        {
+            returnText.Text = "Go Back";
+            parent.Show();
+            this.Close();
+        }
+
+
+       
     }
 }

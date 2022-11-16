@@ -14,7 +14,7 @@ namespace TheStore
         private string password;
         private string email;
         private string address;
-        private int phone;
+        private double phone;
         private bool loggedIn = false;
 
 
@@ -81,12 +81,12 @@ namespace TheStore
             address = _address;
         }
         
-        public int getPhone()
+        public double getPhone()
         {
             return phone;
         }
 
-        public void setPhone(int _phone) 
+        public void setPhone(double _phone) 
         {
             _phone = phone;
         }
@@ -101,7 +101,10 @@ namespace TheStore
             loggedIn = _loggedIn;
         }
 
-        public User(string name, string password, string email, string address, int phone)
+        public User() 
+        { 
+        }
+        public User(string name, string password, string email, string address, double phone)
         {
             if (password != null && password.Length > 6)
             {
@@ -115,8 +118,7 @@ namespace TheStore
                 this.address = address;
                 this.phone = phone;
                 UserId = UserId + 1;
-                loggedIn = true;
-                //userList.add();
+                loggedIn = false;
         }
        
     }

@@ -12,9 +12,10 @@ namespace TheStore
         private string name;
         private string description;
         private int quantity;
-        private int price;
+        public int price;
         private double weight;
         private string category;
+        private string toyPic;
 
         public Item(string name, string description, int quantity, int price, double weight, string category)
         {
@@ -24,6 +25,8 @@ namespace TheStore
             this.price = price;
             this.weight = weight;
             this.category = category;
+            //this.toyPic = imagePath;
+
         }
 
         public string getName()
@@ -31,19 +34,57 @@ namespace TheStore
 
             return name;
         }
+        public void setName(string name)
+        {
+            this.name = name;
+        }
+        public string getDescription()
+        {
+
+            return description;
+        }
+        public void setDescription(string description)
+        {
+            this.description = description;
+        }
+
         public int getQuantity()
         {
 
             return quantity;
         }
+        public void setQuantity(int quantity)
+        {
+            this.quantity=quantity;
+        }
+        public int getPrice()
+        {
+
+            return price;
+        }
+        public void setPrice(int price)
+        {
+            this.price = price;
+        }
+        public double getWeight()
+        {
+
+            return weight;
+        }
+        public void setWeight(double weight)
+        {
+            this.weight = weight;
+        }
+
         public string getCategory()
         {
 
             return category;
         }
-
-        //Read items from file, this is a testlist
-
+        public void setCategory(string category)
+        {
+            this.category = category;
+        }
 
     }
 }
