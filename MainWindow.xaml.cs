@@ -139,7 +139,7 @@ namespace TheStore
 
         private void readItemsFromFile() //Läser in alla items från textfilen
         {
-            string path = "C:\\Users\\linnea\\source\\repos\\TheStore\\Files\\Items.txt";
+            string path = "C:\\Users\\David\\Source\\Repos\\TheStore\\Files\\Items.txt";
             string itemPath = path + @"\Items.txt";
             string[] readLine = File.ReadAllLines(path);
 

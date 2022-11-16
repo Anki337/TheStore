@@ -146,13 +146,8 @@
                         <Grid Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="5" Margin="93,32,5,0">
                             <!--Inne i Combobox Binding skall det finnas en binding till en klass som innehåller betalnings objekt, ex Mastercard / klarna -->
                             <ComboBox x:Name="PaymentBox" Width="100" Height="15" HorizontalAlignment="Center" VerticalAlignment="Top"
-                                      Margin="0 20 0 0" Text="" BorderBrush="#FF1B45C7" FontSize="10" ItemsSource="{Binding Payment}">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="Payment"></TextBlock>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                                <TextBlock Text=""></TextBlock>
+                                      Margin="0 20 0 0" Text="" BorderBrush="#FF1B45C7" FontSize="10"
+                                      ItemsSource="{Binding ComboBoxPay, RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Mode=OneWay}">
                                 <ComboBox.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="#FFF0F0F0"/>
