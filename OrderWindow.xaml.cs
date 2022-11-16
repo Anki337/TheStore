@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -21,37 +22,35 @@ namespace TheStore
     public partial class OrderWindow : Window
     {
 
-        List<string> shippingInfoList = new List<string>();
-
-
-        public string AdressInput { get; set; }
+       List<string> shippingInfoList = new List<string>();
+       ObservableCollection<string> comboBoxPay = new ObservableCollection<string>();
+       
+       
+       public string AdressInput { get; set; }
        public string PostNrInput { get; set; }
        public string OrtInput { get; set; }
        public string TelefonNrInput { get; set; }
        public string FakturaAdressInput { get; set; }
-
+        public ObservableCollection<string> ComboBoxPay
+        {
+            get { return comboBoxPay; }
+            set
+            {
+                comboBoxPay = value;
+            }
+        }
 
         public OrderWindow()
         {
-
-            
+         
             InitializeComponent();
-
-            /* Dessa TextBoxar finns i OrderWindow.
-             * 
-            "OrderWinAdress"
-            "OrderWinPostNr"
-            "OrderWinOrt"
-            "OrderWinTele"
-            "OrderWinCompFaktAdress"
-            "OrderWinCompAdress"
-            "OrderWinCompPostNr"
-            "OrderWinCompOrt"
-            "OrderWinCompTele"
-            */
-
-            
-
+            comboBoxPay.Add("Klarnare, Lån");
+            comboBoxPay.Add("MasterofCards, Kredit med 200% ränta");
+            comboBoxPay.Add("Bankkonto, Tillgångar");
+            comboBoxPay.Add("Visaren, Kreditkort");
+            comboBoxPay.Add("Megacard, Kredit");
+            comboBoxPay.Add("Blackcard, Tillgångar");
+            comboBoxPay.Add("Kasscard, Kreditkort");
         }
 
         private void LogCreateButton_Click(object sender, RoutedEventArgs e)
@@ -70,8 +69,7 @@ namespace TheStore
         }
     
         public string TextBoxInfo()
-        {
-                  
+        {                  
             shippingInfoList.Add(this.AdressInput);
             shippingInfoList.Add(this.PostNrInput);
             shippingInfoList.Add(this.OrtInput);
@@ -113,7 +111,7 @@ namespace TheStore
 
             if ((OrderWinAdress.Text == "") && (OrderWinPostNr.Text == "") && (OrderWinOrt.Text == "") && (OrderWinTele.Text == ""))
             {
-                MessageBox.Show("Skriv in i alla fält för att spara användare!");
+                MessageBox.Show("Skriv in i alla fält för att spara Användare!");
                 
             }
             else
