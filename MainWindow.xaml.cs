@@ -33,17 +33,14 @@ namespace TheStore
 
         public MainWindow()
         {
+            InitializeComponent();
             readItemsFromFile();
+            outdoorList.ItemsSource = availableItemsList;
+            outdoorList.Items.Refresh();
 
             User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590);
 
             userList.Add(user);
-
-            InitializeComponent();
-
-            testListBox.ItemsSource = availableItemsList;
-            outdoorList.ItemsSource = availableItemsList;
-            outdoorList.Items.Refresh();
 
             listAllItemsInMainWindowBody();
 
@@ -61,7 +58,7 @@ namespace TheStore
                 {
                     mailBox.Visibility = Visibility.Collapsed;
                     pwBox.Visibility = Visibility.Collapsed;
-                    userNameText.Text = " back " + user.getName();
+                    userNameText.Text = " back " + user.Name;
                     logButton.Visibility = Visibility.Collapsed;
                     createButton.Visibility = Visibility.Collapsed;
                     logOutButton.Visibility = Visibility.Visible;
@@ -98,22 +95,22 @@ namespace TheStore
 
         private void editItemInFile(Item item, int quantityToBuy, int index) //Tar en item, hur många som ska dras bort, och vilken plats i listan/textfilen den har.
         {
-            int Currentquantity = item.getQuantity();
+            int Currentquantity = item.quantity;
             if (Currentquantity >= quantityToBuy)
             {
                 item.setQuantity(Currentquantity - quantityToBuy); //Uppdaterar antalet i objektet.
                 
-                string name = item.getName();
-                string description = item.getDescription();
-                int quantity = item.getQuantity();
+                string name = item.name;
+                string description = item.description;
+                int quantity = item.quantity;
                 int price = item.getPrice();
-                double weight = item.getWeight();
-                string category = item.getCategory();
+                double weight = item.weight;
+                string category = item.category;
                 string itemLines = name + "," + description + "," + quantity + ","  + price + "," + weight + "," + category; //En ny string som ska ersätta raden i textfilen
 
                 lineChanger(itemLines, index); // Uppdaterar textfilen. 
 
-                if (item.getQuantity() == 0) //Om saldot på item blir noll tas den bort från listan och från textfilen
+                if (item.quantity == 0) //Om saldot på item blir noll tas den bort från listan och från textfilen
                 {
                     availableItemsList.Remove(item);
                     lineChanger(null, index);
@@ -121,13 +118,13 @@ namespace TheStore
             }
             else
             {
-                MessageBox.Show("Not enough " + item.getName() + " in store" + Environment.NewLine + "Current balance is: " + Currentquantity);
+                MessageBox.Show("Not enough " + item.name + " in store" + Environment.NewLine + "Current balance is: " + Currentquantity);
             }
         }
         static void lineChanger(string newText, int line_to_edit)
         {
-            string path = "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering grund 2\\Inlämningsuppgift\\The Store\\Files";
-            string itemPath = path + @"\Items.txt";
+            DirectoryInfo currentdirectory = new DirectoryInfo(".");
+            string itemPath = currentdirectory.FullName + "\\Files" + @"\Items.txt";
             string[] arrLine = File.ReadAllLines(itemPath); //Hämtar hela textfilen och läser in varje rad som en egen string i en array.
             string[] trimmed = arrLine.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray(); //Trimmar bort den första tomma raden om ett saldo skulle gå ner till noll.
             trimmed[line_to_edit] = newText; //Ändrar den stringen i arrayen som motsvarar platsen för den item vi vill ändra
@@ -136,10 +133,9 @@ namespace TheStore
 
         private void readItemsFromFile() //Läser in alla items från textfilen
         {
-            string path = "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering grund 2\\Inlämningsuppgift\\The Store\\Files";
-            string itemPath = path + @"\Items.txt";
+            DirectoryInfo currentdirectory = new DirectoryInfo(".");
+            string itemPath = currentdirectory.FullName + "\\Files" + @"\Items.txt";
             string[] readLine = File.ReadAllLines(itemPath);
-
             foreach (string itemLine in readLine)
             {
                 if (String.IsNullOrEmpty(itemLine))
@@ -167,21 +163,21 @@ namespace TheStore
                 CheckBox textBox = new CheckBox();
                 textBox.MaxWidth = 15;
                 textBox.MaxHeight = 15;
-                toyName.Content = item.getName();
-                saldo.Content = item.getQuantity();
+                toyName.Content = item.name;
+                saldo.Content = item.quantity;
                 /*if (item.getCategory().Equals("Outdoor"))
                 {
                     OutLeksakStack.Children.Add(toyName);
                     OutAntalStack.Children.Add(saldo);
                     OutInputStack.Children.Add(textBox);
                 }*/
-                if (item.getCategory().Equals("Big"))
+                if (item.category.Equals("Big"))
                 {
                     BigLeksakStack.Children.Add(toyName);
                     BigAntalStack.Children.Add(saldo);
                     BigInputStack.Children.Add(textBox);
                 }
-                if (item.getCategory().Equals("Small"))
+                if (item.category.Equals("Small"))
                 {
                     SmallLeksakStack.Children.Add(toyName);
                     SmallAntalStack.Children.Add(saldo);
@@ -195,11 +191,18 @@ namespace TheStore
         {
             int quantityToBuy = 1;
             editItemInFile((Item)availableItemsList[0], quantityToBuy, availableItemsList.IndexOf(availableItemsList[0]));
-            string näjm = availableItemsList[0].getName();
+            string näjm = availableItemsList[0].name;
           
             
             
             MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + ""); ;
+        }
+
+        private void outdoorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox box = (ListBox)sender;
+            var value = (Item)box.SelectedItem;
+            MessageBox.Show(value.name);
         }
     }
 }

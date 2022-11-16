@@ -9,13 +9,13 @@ namespace TheStore
 {
     public class Item
     {
-        private string name;
-        private string description;
-        private int quantity;
-        public int price;
-        private double weight;
-        private string category;
-        private string toyPic;
+        public string name { get; set; }
+        public string description { get; set; }
+        public int quantity { get; set; }
+        public int price { get; set; }
+        public double weight { get; set; }
+        public string category { get; set; }
+        public string toyPic;
 
         public Item(string name, string description, int quantity, int price, double weight, string category)
         {
@@ -29,14 +29,14 @@ namespace TheStore
 
         }
 
-        public string getName()
+        /*public string getName()
         {
 
-            return name;
+            return Name;
         }
         public void setName(string name)
         {
-            this.name = name;
+            this.Name = name;
         }
         public string getDescription()
         {
@@ -52,7 +52,7 @@ namespace TheStore
         {
 
             return quantity;
-        }
+        }*/
         public void setQuantity(int quantity)
         {
             this.quantity=quantity;
@@ -61,7 +61,7 @@ namespace TheStore
         {
 
             return price;
-        }
+        }/*
         public void setPrice(int price)
         {
             this.price = price;
@@ -84,7 +84,7 @@ namespace TheStore
         public void setCategory(string category)
         {
             this.category = category;
-        }
+        }*/
 
     }
 }

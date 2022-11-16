@@ -157,7 +157,9 @@
     <Resource Include="Images\OrderWindow.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Files\Items.txt" />
+    <Content Include="Files\Items.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
