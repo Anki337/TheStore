@@ -41,6 +41,7 @@ namespace TheStore
         }
         public void AddToShoppingCartList(Item item)
         {
+            item.quantity = 1;
             shoppingCartList.Add(item);
         }
         public List<Item> getShoppingCartList()

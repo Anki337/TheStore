@@ -88,7 +88,7 @@
                                 <Label Foreground="white" 
                                   FontWeight="Bold"
                                 >Leksak</Label>
-                                <ListBox x:Name="shoppingCartWindow" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
+                                <ListBox x:Name="itemNameWindow" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -97,7 +97,6 @@
 
                                                     </Label>
                                                 </Border>
-
                                             </StackPanel>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
@@ -107,6 +106,19 @@
                                 <Label Foreground="white" 
                                   FontWeight="Bold"
                                 >Antal</Label>
+                                <ListBox x:Name="itemQuantityWindow" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Border CornerRadius="5" Margin="5,5,5,5" Background="LightGray">
+                                                    <Label Content="{Binding Path=quantity}">
+
+                                                    </Label>
+                                                </Border>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </StackPanel>
                         </StackPanel>
                         <!--Slut på produktspecifikation-->

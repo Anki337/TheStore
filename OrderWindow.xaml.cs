@@ -47,8 +47,10 @@ namespace TheStore
         {
             this.list = list;
             InitializeComponent();
-            shoppingCartWindow.ItemsSource = list.getShoppingCartList();
-            shoppingCartWindow.Items.Refresh();
+            itemNameWindow.ItemsSource = list.getShoppingCartList();
+            itemNameWindow.Items.Refresh();
+            itemQuantityWindow.ItemsSource = list.getShoppingCartList();
+            itemQuantityWindow.Items.Refresh();
             comboBoxPay.Add("Klarnare, Lån");
             comboBoxPay.Add("MasterofCards, Kredit med 200% ränta");
             comboBoxPay.Add("Bankkonto, Tillgångar");
