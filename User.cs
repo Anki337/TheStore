@@ -10,7 +10,7 @@ namespace TheStore
     public class User
     {
         private int UserId = 0;
-        //private string name;
+        private string name;
         private string password;
         private string email;
         private string address;
@@ -36,7 +36,9 @@ namespace TheStore
 
         public void setName(string _name) 
         {
-            Name = _name;
+
+            name = _name;
+
         }
 
         public string getPassword()
