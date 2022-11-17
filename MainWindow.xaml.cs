@@ -30,11 +30,14 @@ namespace TheStore
 
         List<User> userList = new List<User>();
         List<Item> availableItemsList = new List<Item>();
+        List<Item> shoppingCartList = new List<Item>();
+
         
         public MainWindow()
         {
             InitializeComponent();
             readItemsFromFile();
+           
             outdoorList.ItemsSource = availableItemsList;
             outdoorList.Items.Refresh();
 
@@ -229,8 +232,12 @@ namespace TheStore
         private void outdoorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBox box = (ListBox)sender;
-            var value = (Item)box.SelectedItem;
-            MessageBox.Show(value.name);
+            Item addedItem = (Item)box.SelectedItem;
+            shoppingCartList.Add(addedItem);
+            MessageBox.Show(addedItem.name + " added to shopping cart");
+            
+
         }
+
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace TheStore
 {
@@ -53,6 +54,8 @@ namespace TheStore
             comboBoxPay.Add("Kasscard, Kreditkort");
         }
 
+        
+
         private void LogCreateButton_Click(object sender, RoutedEventArgs e)
         {
             
@@ -68,14 +71,14 @@ namespace TheStore
             this.Close();
         }
     
-        public string TextBoxInfo()
-        {                  
+        public void TextBoxInfo()
+        {
             shippingInfoList.Add(this.AdressInput);
             shippingInfoList.Add(this.PostNrInput);
             shippingInfoList.Add(this.OrtInput);
             shippingInfoList.Add(this.FakturaAdressInput);
             shippingInfoList.Add(this.TelefonNrInput);
-            return shippingInfoList.ToString();
+
         }
 
         private void OrderWinAdress_TextChanged(object sender, TextChangedEventArgs e)
