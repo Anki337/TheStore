@@ -27,23 +27,20 @@ namespace TheStore
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        List<User> userList = new List<User>();
-        List<Item> availableItemsList = new List<Item>();
-        List<Item> shoppingCartList = new List<Item>();
+        TheStoreLists list = new TheStoreLists();
 
         
+
         public MainWindow()
         {
             InitializeComponent();
             readItemsFromFile();
-           
-            outdoorList.ItemsSource = availableItemsList;
+
+            outdoorList.ItemsSource = list.getAvailableItemList();
             outdoorList.Items.Refresh();
 
             User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590); //test User
-
-            userList.Add(user); //for testing
+            list.AddToUserList(user); //for testing
             user.setLoggedIn(true); //for testing, will be set in loggin
 
             listAllItemsInMainWindowBody();
@@ -56,7 +53,7 @@ namespace TheStore
             string mail = mailBox.Text;
             string password = pwBox.Password;
 
-            foreach (User user in userList)
+            foreach (User user in list.getUserList())
             {
                 if (mail.Equals(user.getEmail()) && password.Equals(user.getPassword()))
                 {
@@ -77,7 +74,7 @@ namespace TheStore
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
 
-            CreateNewUser createNewUser = new CreateNewUser(this, userList);
+            CreateNewUser createNewUser = new CreateNewUser(this, list.getUserList());
             createNewUser.Show();
             this.Hide();
         }
@@ -85,7 +82,7 @@ namespace TheStore
 
         private void shoppingCart_Click(object sender, RoutedEventArgs e)
         {
-            OrderWindow orderWindow = new OrderWindow();
+            OrderWindow orderWindow = new OrderWindow(list);
             orderWindow.Show();
             this.Close();
 
@@ -121,7 +118,7 @@ namespace TheStore
 
                 if (item.quantity == 0) //Om saldot på item blir noll tas den bort från listan och från textfilen
                 {
-                    availableItemsList.Remove(item);
+                    list.RemoveInAvailableItemsList(item);
                     lineChanger(null, index);
                 }
             }
@@ -160,13 +157,13 @@ namespace TheStore
                 double weight = Convert.ToDouble(itemData[4]);
                 string category = itemData[5];
                 //string toyPic = itemdata[6] ej implementerat
-                availableItemsList.Add(new Item(name, description, quantity, price, weight, category));
+                list.AddToAvailableItemsList(new Item(name, description, quantity, price, weight, category));
             }
         }
 
         private void listAllItemsInMainWindowBody()
         {
-            foreach (Item item in availableItemsList)
+            foreach (Item item in list.getAvailableItemList())
             {
                 Label toyName = new Label();
                 Label saldo = new Label();
@@ -212,7 +209,7 @@ namespace TheStore
                 string email = itemData[2];
                 string address = itemData[3];
                 double phone = Convert.ToDouble(itemData[4]);
-                userList.Add(new User(name, password, email, address, phone));
+                list.AddToUserList(new User(name, password, email, address, phone));
             }
         }
 
@@ -220,12 +217,11 @@ namespace TheStore
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
             int quantityToBuy = 1;
-            editItemInFile((Item)availableItemsList[0], quantityToBuy, availableItemsList.IndexOf(availableItemsList[0]));
-            string näjm = availableItemsList[0].name;
-            
-            
-            
-            MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + ""); 
+
+            editItemInFile((Item)list.getAvailableItemList().ElementAt(0), quantityToBuy, list.getAvailableItemList().IndexOf(list.getAvailableItemList().ElementAt(0)));
+            string näjm = list.getAvailableItemList().ElementAt(0).name;
+            MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + ""); ;
+
         }
 
 
@@ -233,9 +229,14 @@ namespace TheStore
         {
             ListBox box = (ListBox)sender;
             Item addedItem = (Item)box.SelectedItem;
-            shoppingCartList.Add(addedItem);
+            list.AddToShoppingCartList(addedItem);
             MessageBox.Show(addedItem.name + " added to shopping cart");
-            
+            string cartList = "";
+            foreach(Item item in list.getShoppingCartList())
+            {
+                cartList += item.name + " ";
+            }
+            MessageBox.Show("Shoppingcart cointains: " + cartList);
 
         }
 
