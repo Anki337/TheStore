@@ -144,10 +144,15 @@
                             >Betalningsalternativ</Label>
                         </StackPanel>
                         <Grid Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="5" Margin="93,32,5,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="133*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="45*"/>
+                            </Grid.ColumnDefinitions>
                             <!--Inne i Combobox Binding skall det finnas en binding till en klass som innehåller betalnings objekt, ex Mastercard / klarna -->
-                            <ComboBox x:Name="PaymentBox" Width="100" Height="15" HorizontalAlignment="Center" VerticalAlignment="Top"
-                                      Margin="0 20 0 0" Text="" BorderBrush="#FF1B45C7" FontSize="10"
-                                      ItemsSource="{Binding ComboBoxPay, RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Mode=OneWay}">
+                            <ComboBox x:Name="PaymentBox" Width="120" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                      Margin="30,20,0,0" Text="" BorderBrush="#FF1B45C7" FontSize="10"
+                                      ItemsSource="{Binding ComboBoxPay, RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Mode=OneWay}" Grid.ColumnSpan="3">
                                 <ComboBox.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="#FFF0F0F0"/>
@@ -155,8 +160,8 @@
                                     </LinearGradientBrush>
                                 </ComboBox.Background>
                             </ComboBox>
-                            <Label FontSize="8" FontWeight="Bold" Foreground="green" HorizontalAlignment="Center"
-                                   VerticalAlignment="Top" FontStyle="Italic">Välj betalningssätt</Label>
+                            <Label FontSize="8" FontWeight="Bold" Foreground="green" HorizontalAlignment="Left"
+                                   VerticalAlignment="Top" FontStyle="Italic" Margin="51,0,0,0">Välj betalningssätt</Label>
                         </Grid>
                     </Grid>
                 </Grid>

@@ -216,16 +216,16 @@ namespace TheStore
             }
         }
 
-      
+        
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
             int quantityToBuy = 1;
             editItemInFile((Item)availableItemsList[0], quantityToBuy, availableItemsList.IndexOf(availableItemsList[0]));
             string näjm = availableItemsList[0].name;
-          
             
             
-            MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + ""); ;
+            
+            MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + ""); 
         }
 
 
