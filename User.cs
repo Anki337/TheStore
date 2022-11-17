@@ -29,15 +29,15 @@ namespace TheStore
             UserId = UserId + 1;
         }
 
-        /*public string getName()
+        public string getName()
         { 
-            return name;
+            return Name;
         }
 
         public void setName(string _name) 
         {
-            name = _name;
-        }*/
+            Name = _name;
+        }
 
         public string getPassword()
         {

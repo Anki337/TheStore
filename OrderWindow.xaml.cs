@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -51,6 +52,9 @@ namespace TheStore
             comboBoxPay.Add("Megacard, Kredit");
             comboBoxPay.Add("Blackcard, Tillgångar");
             comboBoxPay.Add("Kasscard, Kreditkort");
+            string[] shippingInfo = shippingInfoList.ToArray();
+            
+
         }
 
         private void LogCreateButton_Click(object sender, RoutedEventArgs e)
@@ -68,15 +72,36 @@ namespace TheStore
             this.Close();
         }
     
-        public string TextBoxInfo()
+        public void TextBoxInfo()
         {                  
             shippingInfoList.Add(this.AdressInput);
             shippingInfoList.Add(this.PostNrInput);
             shippingInfoList.Add(this.OrtInput);
             shippingInfoList.Add(this.FakturaAdressInput);
             shippingInfoList.Add(this.TelefonNrInput);
-            return shippingInfoList.ToString();
         }
+
+        public void WriteShippingListToFile()
+        {
+            DirectoryInfo currentdirectory = new DirectoryInfo(".");
+            string shippInfo = currentdirectory.FullName + "\\Files" + @"\ShippingInfo.txt";
+            string[] Customers = shippingInfoList.ToArray();           
+            File.WriteAllLines(shippInfo, Customers);
+            MessageBox.Show(shippInfo);
+        }
+        
+
+            
+            
+
+
+
+
+        
+
+
+
+
 
         private void OrderWinAdress_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -108,22 +133,16 @@ namespace TheStore
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
             if ((OrderWinAdress.Text == "") && (OrderWinPostNr.Text == "") && (OrderWinOrt.Text == "") && (OrderWinTele.Text == ""))
             {
-                MessageBox.Show("Skriv in i alla fält för att spara Användare!");
-                
+                MessageBox.Show("Skriv in i alla fält för att spara Användare!");                
             }
             else
             {
                 TextBoxInfo();
-                MessageBox.Show("Användare sparad!");
-                foreach (string item in shippingInfoList)
-                {
-                    Console.WriteLine(item);
-                }
-
-
+                MessageBox.Show("Användare sparad!" + " " + "med info" + " " + shippingInfoList[0] + " " + shippingInfoList[1] + " " + shippingInfoList[2] + " " + shippingInfoList[3] + " " + shippingInfoList[4] + "!");
+                WriteShippingListToFile();
             }
         }   
 
@@ -131,5 +150,6 @@ namespace TheStore
         {
 
         }
+        
     }
 }

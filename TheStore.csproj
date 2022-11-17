@@ -160,6 +160,7 @@
     <Content Include="Files\Items.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Files\ShippingInfo.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Files\Users.txt" />
