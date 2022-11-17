@@ -31,12 +31,14 @@ namespace TheStore
 
         public string getName()
         { 
-            return name;
+            return Name;
         }
 
         public void setName(string _name) 
         {
+
             name = _name;
+
         }
 
         public string getPassword()

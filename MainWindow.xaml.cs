@@ -213,13 +213,15 @@ namespace TheStore
             }
         }
 
-      
+        
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
             int quantityToBuy = 1;
+
             editItemInFile((Item)list.getAvailableItemList().ElementAt(0), quantityToBuy, list.getAvailableItemList().IndexOf(list.getAvailableItemList().ElementAt(0)));
             string näjm = list.getAvailableItemList().ElementAt(0).name;
             MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + ""); ;
+
         }
 
 
