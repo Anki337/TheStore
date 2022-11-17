@@ -88,6 +88,20 @@
                                 <Label Foreground="white" 
                                   FontWeight="Bold"
                                 >Leksak</Label>
+                                <ListBox x:Name="shoppingCartWindow" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Border CornerRadius="5" Margin="5,5,5,5" Background="LightGray">
+                                                    <Label Content="{Binding Path=name}">
+
+                                                    </Label>
+                                                </Border>
+
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </StackPanel>
                             <StackPanel x:Name="NumberOfGoods">
                                 <Label Foreground="white" 

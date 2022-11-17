@@ -17,13 +17,15 @@ using System.IO;
 
 namespace TheStore
 {
+
     /// <summary>
     /// Interaction logic for OrderWindow.xaml
     /// </summary>
     public partial class OrderWindow : Window
     {
+        TheStoreLists list = new TheStoreLists();
 
-       List<string> shippingInfoList = new List<string>();
+        List<string> shippingInfoList = new List<string>();
        ObservableCollection<string> comboBoxPay = new ObservableCollection<string>();
        
        
@@ -41,10 +43,12 @@ namespace TheStore
             }
         }
 
-        public OrderWindow()
+        public OrderWindow(TheStoreLists list)
         {
-         
+            this.list = list;
             InitializeComponent();
+            shoppingCartWindow.ItemsSource = list.getShoppingCartList();
+            shoppingCartWindow.Items.Refresh();
             comboBoxPay.Add("Klarnare, Lån");
             comboBoxPay.Add("MasterofCards, Kredit med 200% ränta");
             comboBoxPay.Add("Bankkonto, Tillgångar");
@@ -52,6 +56,7 @@ namespace TheStore
             comboBoxPay.Add("Megacard, Kredit");
             comboBoxPay.Add("Blackcard, Tillgångar");
             comboBoxPay.Add("Kasscard, Kreditkort");
+            
         }
 
         
@@ -134,5 +139,7 @@ namespace TheStore
         {
 
         }
+
+        
     }
 }
