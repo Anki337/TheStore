@@ -100,14 +100,16 @@ namespace TheStore
         public void ComboBoxInfo()
         {
             string[] comboBoxList = new string[] { "Klarnare, Lån", "MasterofCards, Kredit med 200% ränta", "Bankkonto, Tillgångar", "Visaren, Kreditkort", "Megacard, Kredit", "Blackcard, Tillgångar", "Kasscard, Kreditkort" };
-             
+            List<string> SavedPersonsBoxList = new List<string>(); 
+            var User = new User();
             foreach (string item in comboBoxList)
             {
                 ComboBoxPay.Add(item);
             }
-
-            string[] SavedPersonsBoxList = new string[] { "User, Lån", "MasterofCards, Kredit med 200% ränta", "Bankkonto, Tillgångar", "Visaren, Kreditkort", "Megacard, Kredit", "Blackcard, Tillgångar", "Kasscard, Kreditkort" };
-
+            User user = new User();
+            
+            string name = User.Name;
+            SavedPersonsBoxList.Add(name);
             foreach (string item in SavedPersonsBoxList)
             {
                 SavedPersons.Add(item);
