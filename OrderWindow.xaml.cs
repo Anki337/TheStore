@@ -28,6 +28,8 @@ namespace TheStore
         
         List<string> shippingInfoList = new List<string>();
         List<string> savedPersonList = new List<string>();
+
+        Window parent;
         
         ObservableCollection<string> comboBoxPay = new ObservableCollection<string>();
         ObservableCollection<string> savedPersons = new ObservableCollection<string>();
@@ -59,8 +61,9 @@ namespace TheStore
 
         public object name { get; private set; }
 
-        public OrderWindow(TheStoreLists list)
+        public OrderWindow(Window mainWindow, TheStoreLists list)
         {
+            parent = mainWindow;
             this.list = list;
             InitializeComponent();
             itemNameWindow.ItemsSource = list.GetShoppingCartList();
@@ -83,8 +86,7 @@ namespace TheStore
 
         private void ContinueShopping_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainwindow = new MainWindow();
-            mainwindow.Show();
+            parent.Show();
             this.Close();
         }
 
