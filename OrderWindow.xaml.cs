@@ -73,8 +73,6 @@ namespace TheStore
             
         }
 
-
-
         private void LogCreateButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -98,6 +96,7 @@ namespace TheStore
             shippingInfoList.Add(this.OrtInput);
             shippingInfoList.Add(this.FakturaAdressInput);
             shippingInfoList.Add(this.TelefonNrInput);
+
         }
 
         public void ComboBoxInfo()
@@ -111,10 +110,6 @@ namespace TheStore
             }
         }
         
-        
-        
-
-        
         public void WriteSavedNameToFile()
         { 
             
@@ -124,11 +119,6 @@ namespace TheStore
             File.WriteAllLines(fullNames, FullName);
         }
        
-
-
-
-
-
         public void WriteShippingListToFile()
         {
             DirectoryInfo currentdirectory = new DirectoryInfo(".");
@@ -138,7 +128,6 @@ namespace TheStore
             
         }
         
-
         private void OrderWinAdress_TextChanged(object sender, TextChangedEventArgs e)
         {
             AdressInput = OrderWinAdress.Text;
@@ -179,7 +168,6 @@ namespace TheStore
                 TextBoxInfo();
                 MessageBox.Show("Användare sparad!" + " " + "med info" + " " + shippingInfoList[0] + " " + shippingInfoList[1] + " " + shippingInfoList[2] + " " + shippingInfoList[3] + " " + shippingInfoList[4] + "!");
                 WriteShippingListToFile();
-                
             }
         }
 
@@ -189,7 +177,5 @@ namespace TheStore
             createNewUser.Show();
             this.Hide();
         }
-
-
     }
 }

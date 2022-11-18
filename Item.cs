@@ -9,23 +9,30 @@ namespace TheStore
 {
     public class Item
     {
-        public string name { get; set; }
-        public string description { get; set; }
-        public int quantity { get; set; }
-        public int price { get; set; }
-        public double weight { get; set; }
-        public string category { get; set; }
-        public string toyPic;
+        private string _name;
+        private string _description;
+        private int _quantity;
+        private int _price;
+        private double _weight;
+        private string _category;
+        private string _toyPic;
+        public string Name { get => _name; set => _name = value; }
+        public string Description { get => _description; set => _description = value; }
+        public int Quantity { get => _quantity; set => _quantity = value; }
+        public int Price { get => _price; set => _price = value; }
+        public double Weight { get => _weight; set => _weight = value; }
+        public string Category { get => _category; set => _category = value; }
+        public string ToyPic { get => _toyPic; set => _toyPic = value; }
 
         public Item(string name, string description, int quantity, int price, double weight, string category)
         {
-            this.name = name;
-            this.description = description;
-            this.quantity = quantity;
-            this.price = price;
-            this.weight = weight;
-            this.category = category;
-            //this.toyPic = imagePath;
+            this._name = name;
+            this._description = description;
+            this.Quantity = quantity;
+            this._price = price;
+            this._weight = weight;
+            this._category = category;
+            //this._toyPic = imagePath;
 
         }
 
@@ -53,15 +60,15 @@ namespace TheStore
 
             return quantity;
         }*/
-        public void setQuantity(int quantity)
+        /*public void setQuantity(int quantity)
         {
-            this.quantity=quantity;
+            this._quantity=quantity;
         }
         public int getPrice()
         {
 
-            return price;
-        }/*
+            return _price;
+    }
         public void setPrice(int price)
         {
             this.price = price;
@@ -86,5 +93,5 @@ namespace TheStore
             this.category = category;
         }*/
 
-    }
+}
 }

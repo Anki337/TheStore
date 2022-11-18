@@ -113,7 +113,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                             <Border CornerRadius="5" Margin="5,5,5,5" Background="LightGray">
-                                <Label Content="{Binding Path=name}">
+                                <Label Content="{Binding Path=Name}">
                                     
                                 </Label>
                             </Border>
