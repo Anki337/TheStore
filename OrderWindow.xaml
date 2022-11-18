@@ -162,6 +162,17 @@
                             <TextBox x:Name="OrderWinCompPostNr" Height="15" Width="120" Margin="63,159,4,44"></TextBox>
                             <TextBox x:Name="OrderWinCompOrt" Height="15" Width="120" Margin="63,179,4,24"></TextBox>
                             <TextBox x:Name="OrderWinCompTele" Height="15" Width="120" Margin="63,199,4,4"></TextBox>
+
+                            <ComboBox x:Name="SavedInfoComboBox" Width="100" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top"
+                                      Margin="0,0,5,0"  Text="" BorderBrush="#FF1B45C7" FontSize="10" 
+                                      ItemsSource="{Binding SavedPersons, RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Mode=OneWay}" Grid.ColumnSpan="3">
+                                <ComboBox.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFF0F0F0"/>
+                                        <GradientStop Color="#FF264BBF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ComboBox.Background>
+                            </ComboBox>
                         </Grid>
                         <!--Slut på delen för beställningsinformation-->
                         <StackPanel Margin="0 0 5 0" x:Name="PaymentOptions" Grid.Column="6" Grid.Row="0" Grid.RowSpan="5"
@@ -175,7 +186,7 @@
                                 <ColumnDefinition Width="5*"/>
                                 <ColumnDefinition Width="45*"/>
                             </Grid.ColumnDefinitions>
-                            <!--Inne i Combobox Binding skall det finnas en binding till en klass som innehåller betalnings objekt, ex Mastercard / klarna -->
+                            
                             <ComboBox x:Name="PaymentBox" Width="120" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"
                                       Margin="30,20,0,0" Text="" BorderBrush="#FF1B45C7" FontSize="10"
                                       ItemsSource="{Binding ComboBoxPay, RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Mode=OneWay}" Grid.ColumnSpan="3">
