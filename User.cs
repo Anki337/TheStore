@@ -9,121 +9,81 @@ namespace TheStore
 {
     public class User
     {
-        private int UserId = 0;
-        private string name;
-        private string password;
-        private string email;
-        private string address;
-        private double phone;
-        private bool loggedIn = false;
+        //private variables of Class User
+        private int _userId = 0;
+        private string _name;
+        private string _password;
+        private string _email;
+        private string _address;
+        private double _phone;
+        private bool _loggedIn = false;
 
-        public string Name { get; set; }
-
-        public int getUserId()
+        //(mostly)public getters and setters of Class User
+        public int UserId
         {
-            return UserId;
+            get => _userId;
+            private set => _userId += _userId; //setter is private since the ID is only supposed to be set in the constructor of the User class
+        }
+        public string Name
+        {
+            get => _name;
+            set => _name = value;
         }
 
-        public void setUserId() 
+        public string Password
         {
-            UserId = UserId + 1;
-        }
-
-        public string getName()
-        { 
-            return Name;
-        }
-
-        public void setName(string _name) 
-        {
-
-            name = _name;
-
-        }
-
-        public string getPassword()
-        {
-
-            return password;
-        }
-
-        public bool setPassword(string _password)
-        {
-            if
-                (password != null && password.Length > 6)
+            get => _password;
+            set
             {
-                password = _password;
-                return true;
-            } else
-                return false;    
-        }
-
-        public string getEmail()
-        {
-            return email;
-        }
-
-        public bool setEmail(string _email) 
-        {
-            if (_email.Contains("@"))
-            {
-                email = _email;
-                return true;
+                if (value != null && value.Length > 6)
+                {
+                    _password = value;
+                }
+                else
+                {
+                    _password = null;
+                }
             }
-            else
-                return false;
         }
 
-        public string getAddress()
+        public string Email
         {
-            return address;
-        }
+            get => _email;
+            set
+            {
+                if (value.Contains("@"))
+                {
+                    _email = value;
 
-        public void setAddress(string _address) 
+                }
+                else
+                    _email = null;
+            }
+        }
+        public string Address { get => _address; set => _address = value; }
+        public double Phone { get => _phone; set => _phone = value; }
+        public bool LoggedIn { get => _loggedIn; set => _loggedIn = value; }
+
+        public User()
         {
-            address = _address;
-        }
-        
-        public double getPhone()
-        {
-            return phone;
-        }
-
-        public void setPhone(double _phone) 
-        {
-            _phone = phone;
-        }
-
-        public bool getLoggedIn() 
-        { 
-            return loggedIn;
-        }
-
-        public void setLoggedIn(bool _loggedIn) 
-        { 
-            loggedIn = _loggedIn;
-        }
-
-        public User() 
-        { 
         }
         public User(string name, string password, string email, string address, double phone)
         {
             if (password != null && password.Length > 6)
             {
-                this.password = password;
+                this._password = password;
             }
             if (email.Contains("@"))
             {
-                this.email = email;
+                this._email = email;
             }
-                this.Name = name;
-                this.address = address;
-                this.phone = phone;
-                UserId = UserId + 1;
-                loggedIn = false;
+            this._name = name;
+            this._address = address;
+            this._phone = phone;
+            _userId = UserId;
+            _loggedIn = LoggedIn;
         }
-       
+
     }
- 
+
 }
