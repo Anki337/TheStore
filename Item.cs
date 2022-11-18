@@ -33,65 +33,6 @@ namespace TheStore
             this._weight = weight;
             this._category = category;
             //this._toyPic = imagePath;
-
         }
-
-        /*public string getName()
-        {
-
-            return Name;
-        }
-        public void setName(string name)
-        {
-            this.Name = name;
-        }
-        public string getDescription()
-        {
-
-            return description;
-        }
-        public void setDescription(string description)
-        {
-            this.description = description;
-        }
-
-        public int getQuantity()
-        {
-
-            return quantity;
-        }*/
-        /*public void setQuantity(int quantity)
-        {
-            this._quantity=quantity;
-        }
-        public int getPrice()
-        {
-
-            return _price;
     }
-        public void setPrice(int price)
-        {
-            this.price = price;
-        }
-        public double getWeight()
-        {
-
-            return weight;
-        }
-        public void setWeight(double weight)
-        {
-            this.weight = weight;
-        }
-
-        public string getCategory()
-        {
-
-            return category;
-        }
-        public void setCategory(string category)
-        {
-            this.category = category;
-        }*/
-
-}
 }

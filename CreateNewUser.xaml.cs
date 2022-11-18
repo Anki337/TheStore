@@ -33,14 +33,14 @@ namespace TheStore
             parent = mainWindow;
         }
 
-        public CreateNewUser() 
+        public CreateNewUser()
         {
             InitializeComponent();
         }
-     
+
         private void clickSubmitButton(object sender, RoutedEventArgs e)
         {
-            
+
             if (firstNameBox.Text == "" || lastNameBox.Text == "")
             {
                 returnText.Text = "Please enter your first and last name";
@@ -120,7 +120,7 @@ namespace TheStore
             this.Close();
         }
 
- 
+
 
 
         private void createName()
@@ -135,7 +135,7 @@ namespace TheStore
             string email = emailBox.Text;
             if (user.Email == email)
             {
-                user.Email = email;;
+                user.Email = email; ;
                 returnText.Text = "";
             }
         }
@@ -160,7 +160,7 @@ namespace TheStore
             returnText.Text = "";
         }
 
-        private string createUser(string _name) 
+        private string createUser(string _name)
         {
             user.LoggedIn = true;
             user.Name = _name;
@@ -174,8 +174,5 @@ namespace TheStore
             parent.Show();
             this.Close();
         }
-
-
-       
     }
 }
