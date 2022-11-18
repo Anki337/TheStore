@@ -7,31 +7,32 @@ using System.Threading.Tasks;
 
 namespace TheStore
 {
-    internal class Item
+    public class Item
     {
-        private string name;
-        private string description;
-        private int quantity;
-        private int price;
-        private double weight;
-        private string category;
+        private string _name;
+        private string _description;
+        private int _quantity;
+        private int _price;
+        private double _weight;
+        private string _category;
+        private string _toyPic;
+        public string Name { get => _name; set => _name = value; }
+        public string Description { get => _description; set => _description = value; }
+        public int Quantity { get => _quantity; set => _quantity = value; }
+        public int Price { get => _price; set => _price = value; }
+        public double Weight { get => _weight; set => _weight = value; }
+        public string Category { get => _category; set => _category = value; }
+        public string ToyPic { get => _toyPic; set => _toyPic = value; }
 
         public Item(string name, string description, int quantity, int price, double weight, string category)
         {
-            this.name = name;
-            this.description = description;
-            this.quantity = quantity;
-            this.price = price;
-            this.weight = weight;
-            this.category = category;
+            this._name = name;
+            this._description = description;
+            this.Quantity = quantity;
+            this._price = price;
+            this._weight = weight;
+            this._category = category;
+            //this._toyPic = imagePath;
         }
-
-        //Read items from file, this is a testlist
-        /*ArrayList AvailableItemsList = new ArrayList();
-        AvailableItemsListt.Add(new Item("Bobby car", "Fun car to play with", 5, 500, 7, "Big"));
-        AvailableItemsList.Add(new Item("Bouncy ball", "Small ball to bounce around", 75, 5, 0,2, "Small"));
-        AvailableItemsListt.Add(new Item("Bucket", "Great to play with sand", 27, 42, 0,7, "Outdoor"));
-        AvailableItemsList.Add(new Item("Spade", "Digging it", 38, 342, 0,3, "Outdoor"));
-        */
     }
 }

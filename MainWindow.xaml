@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-                <!--Område för header startar-->
+            <!--Område för header startar-->
             <Label VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20">
                 <StackPanel Orientation="Horizontal">
                     <AccessText>
@@ -40,9 +40,16 @@
                     <Image Source="pack://application:,,,/Images/thunder.png"></Image>
                 </StackPanel>
             </Label>
-            <Button x:Name="logCreateButton" Click="logCreateButton_Click"  Grid.Column="6" Grid.Row="0" Margin=" 1,1,1,1" VerticalAlignment="center" Height="25">
-                Log in/Create User</Button>
-            <TextBox x:Name="unBox" Grid.Column="5" Grid.Row="0" Margin="1,1,1,1" TextAlignment="Left" VerticalAlignment="Center" Height="25">
+            <Button x:Name="logButton" Click="logButton_Click"  Grid.Column="6" Grid.Row="0" Margin=" 1,1,1,1" VerticalAlignment="center" Height="25">
+                Log In
+            </Button>
+            <Button x:Name="logOutButton" Click="logOutButton_Click"  Grid.Column="6" Grid.Row="0" Margin=" 1,1,1,1" VerticalAlignment="center" Height="25" Visibility="Hidden">
+                Log Out
+            </Button>
+            <Button x:Name="createButton" Click="createButton_Click"  Grid.Column="6" Grid.Row="1" Margin=" 1,1,1,1" VerticalAlignment="center" Height="25">
+                Create User
+            </Button>
+            <TextBox x:Name="mailBox" Grid.Column="5" Grid.Row="0" Margin="1,1,1,1" TextAlignment="Left" VerticalAlignment="Center" Height="25">
                 Mäjladress
             </TextBox>
             <PasswordBox x:Name="pwBox" Grid.Column="5" Grid.Row="1" Margin="1,1,1,1" Height="25">
@@ -50,31 +57,124 @@
             <Label FontSize="15" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="0,0,5,0">Welcome</TextBlock>
-                    <TextBlock x:Name="userNameText">Max </TextBlock>
+                    <TextBlock x:Name="userNameText" Text=""></TextBlock>
                 </StackPanel>
             </Label>
-            <Label Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center">
-                <Image Height="30" Source="pack://application:,,,/Images/cart.jpg"></Image>
+
+            <Label Grid.Row="2" Grid.Column="6" HorizontalAlignment="Center">
+                <Button x:Name="shoppingCart" Click="shoppingCart_Click" BorderThickness="0">
+                    <Image Height="30" VerticalAlignment="Center" Source="pack://application:,,,/Images/cart.jpg"></Image>
+                </Button>
+
             </Label>
-            
-            
-                <!--Område för header slutar-->
+
+
+            <!--Område för header slutar-->
         </Grid>
 
         <Grid Grid.Row="1" x:Name="Body">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="64.007"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <!--Område för Body startar-->
+            <!--Stack för kategori Outdoor -->
+            <StackPanel x:Name="Outdoor" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Background="Beige" >
+                <Border x:Name="ItemList" Background="LightGray" Margin="10, 10, 10, 0" CornerRadius="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-            <Button>Body</Button>
+                        <Label Content="Antal" Grid.Column="1">
+                        </Label>
+                        <Label Content="Bild" Grid.Column="2">
+                        </Label>
+                    </Grid>
+                </Border>
+                <ListBox SelectionChanged="outdoorList_SelectionChanged"  x:Name="outdoorList" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                            <Border CornerRadius="5" Margin="5,5,5,5" Background="LightGray">
+                                <Label Content="{Binding Path=Name}">
+                                    
+                                </Label>
+                            </Border>
+                                
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+
+            <!--Stack för kategori Big -->
+            <StackPanel x:Name="Big" Grid.Column="3" Grid.Row="1" Grid.RowSpan="5" Orientation="Horizontal" Grid.ColumnSpan="2">
+                <StackPanel x:Name="BigLeksakStack">
+                    <Label Content="Leksak">
+                    </Label>
+                </StackPanel>
+                <StackPanel x:Name="BigAntalStack">
+                    <Label Content="Antal">
+                    </Label>
+                </StackPanel>
+                <StackPanel Name="BigInputStack">
+                    <Label Content="Beställ">
+                    </Label>
+                    <TextBox MaxWidth="20" Visibility="Hidden">
+
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+
+            <!--Stack för kategori Small -->
+            <StackPanel x:Name="Small" Grid.Column="5" Grid.Row="1" Grid.RowSpan="5" Orientation="Horizontal" Grid.ColumnSpan="2">
+                <StackPanel x:Name="SmallLeksakStack" >
+                    <Label Content="Leksak">
+                    </Label>
+                </StackPanel>
+                <StackPanel x:Name="SmallAntalStack">
+                    <Label Content="Antal">
+                    </Label>
+                </StackPanel>
+                <StackPanel Name="SmallInputStack">
+                    <Label Content="Beställ">
+                    </Label>
+                    <TextBox MaxWidth="20" Visibility="Hidden">
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+
+
+
+
+
             <!--Område för Body slutar-->
         </Grid>
 
-        <Grid  Grid.Row="2" x:Name="Footer"> 
+        <Grid  Grid.Row="2" x:Name="Footer">
             <!--Område för footer startar-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.ColumnSpan="2">footer</Button>
+            <Button x:Name="BuyButton" Grid.ColumnSpan="2" Click="BuyButton_Click">Buy Toy</Button>
             <!--Område för footer slutar-->
         </Grid>
     </Grid>
