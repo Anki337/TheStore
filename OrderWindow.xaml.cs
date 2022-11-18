@@ -111,8 +111,13 @@ namespace TheStore
         }
         
         public void WriteSavedNameToFile()
-        { 
-            
+        {
+            // Här istället för en hårdkodad string så skall user.Name sparas i SavedPersons ObservableCollections. 
+            string[] ComboBoxList2 = new string[] { "Klarnare, Lån", "MasterofCards, Kredit med 200% ränta", "Bankkonto, Tillgångar", "Visaren, Kreditkort", "Megacard, Kredit", "Blackcard, Tillgångar", "Kasscard, Kreditkort" };
+            foreach (string item in ComboBoxList2)
+            {
+                savedPersons.Add(item);
+            }
             DirectoryInfo directoryInfo= new DirectoryInfo(".");
             string fullNames = directoryInfo.FullName + "\\Files" + @"\SavedNames.txt";
             string[] FullName = savedPersons.ToArray();
