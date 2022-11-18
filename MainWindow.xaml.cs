@@ -82,9 +82,9 @@ namespace TheStore
 
         private void shoppingCart_Click(object sender, RoutedEventArgs e)
         {
-            OrderWindow orderWindow = new OrderWindow(list);
+            OrderWindow orderWindow = new OrderWindow(this, list);
             orderWindow.Show();
-            this.Close();
+            this.Hide();
 
         }
         private void logOutButton_Click(object sender, RoutedEventArgs e)
