@@ -22,7 +22,7 @@ namespace TheStore
             userList.Add(user);
         }
         
-        public List<User> getUserList()
+        public List<User> GetUserList()
         {
             return userList;
         }
@@ -35,7 +35,7 @@ namespace TheStore
         {
             availableItemsList.Add(item);
         }
-        public List<Item> getAvailableItemList()
+        public List<Item> GetAvailableItemList()
         {
             return availableItemsList;
         }
@@ -44,7 +44,7 @@ namespace TheStore
             item.quantity = 1;
             shoppingCartList.Add(item);
         }
-        public List<Item> getShoppingCartList()
+        public List<Item> GetShoppingCartList()
         {
             return shoppingCartList;
         }

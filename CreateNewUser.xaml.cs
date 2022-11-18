@@ -92,7 +92,7 @@ namespace TheStore
             else
             {
                 createPassword();
-                returnText.Text = createUser();
+                createUser(returnText.Text);
                 submitButton.Visibility = Visibility.Collapsed;
                 resetButton.Visibility = Visibility.Collapsed;
                 cancelButton.Visibility = Visibility.Collapsed;
@@ -126,16 +126,16 @@ namespace TheStore
         private void createName()
         {
             string name = firstNameBox.Text + " " + lastNameBox.Text;
-            user.setName(name);
+            user.Name = name;
             returnText.Text = "";
         }
 
         private void createEmail()
         {
             string email = emailBox.Text;
-            if (user.setEmail(email))
+            if (user.Email == email)
             {
-                user.setEmail(email);
+                user.Email = email;;
                 returnText.Text = "";
             }
         }
@@ -143,27 +143,27 @@ namespace TheStore
         private void createPassword()
         {
             string password = passwordBoxOne.Password;
-            user.setPassword(password);
+            user.Password = password;
         }
 
         private void createAddress()
         {
             string address = addressBox.Text;
-            user.setAddress(address);
+            user.Address = address;
             returnText.Text = "";
         }
 
         private void createPhone()
         {
             double phone = double.Parse(phoneBox.Text);
-            user.setPhone(phone);
+            user.Phone = phone;
             returnText.Text = "";
         }
 
-        private string createUser() 
+        private string createUser(string _name) 
         {
-            user.setLoggedIn(true);
-            user.setUserId();
+            user.LoggedIn = true;
+            user.Name = _name;
             userList.Add(user);
             return "Registration success";
         }

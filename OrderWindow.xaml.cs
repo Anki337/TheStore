@@ -14,7 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.IO;
 using System.Xml.Linq;
 
 namespace TheStore
@@ -28,9 +27,12 @@ namespace TheStore
         TheStoreLists list = new TheStoreLists();
         
         List<string> shippingInfoList = new List<string>();
+        List<string> savedPersonList = new List<string>();
+        
         ObservableCollection<string> comboBoxPay = new ObservableCollection<string>();
         ObservableCollection<string> savedPersons = new ObservableCollection<string>();
         
+        User user = new User("", "", "", "", 32);
         public string AdressInput { get; set; }
         public string PostNrInput { get; set; }
         public string OrtInput { get; set; }
@@ -61,13 +63,14 @@ namespace TheStore
         {
             this.list = list;
             InitializeComponent();
-            itemNameWindow.ItemsSource = list.getShoppingCartList();
+            itemNameWindow.ItemsSource = list.GetShoppingCartList();
             itemNameWindow.Items.Refresh();
-            itemQuantityWindow.ItemsSource = list.getShoppingCartList();
+            itemQuantityWindow.ItemsSource = list.GetShoppingCartList();
             itemQuantityWindow.Items.Refresh();
             ComboBoxInfo();
             string[] shippingInfo = shippingInfoList.ToArray();
             WriteSavedNameToFile();
+            
         }
 
 
@@ -100,22 +103,15 @@ namespace TheStore
         public void ComboBoxInfo()
         {
             string[] comboBoxList = new string[] { "Klarnare, Lån", "MasterofCards, Kredit med 200% ränta", "Bankkonto, Tillgångar", "Visaren, Kreditkort", "Megacard, Kredit", "Blackcard, Tillgångar", "Kasscard, Kreditkort" };
-            List<string> SavedPersonsBoxList = new List<string>(); 
-            var User = new User();
+            
+            
             foreach (string item in comboBoxList)
             {
                 ComboBoxPay.Add(item);
             }
-            User user = new User();
-            
-            string name = User.Name;
-            SavedPersonsBoxList.Add(name);
-            foreach (string item in SavedPersonsBoxList)
-            {
-                SavedPersons.Add(item);
-            }
-
         }
+        
+        
         
 
         
@@ -127,7 +123,7 @@ namespace TheStore
             string[] FullName = savedPersons.ToArray();
             File.WriteAllLines(fullNames, FullName);
         }
-
+       
 
 
 
@@ -189,7 +185,7 @@ namespace TheStore
 
         private void logCreateButton_Click(object sender, RoutedEventArgs e)
         {
-            CreateNewUser createNewUser = new CreateNewUser(this, list.getUserList());
+            CreateNewUser createNewUser = new CreateNewUser(this, list.GetUserList());
             createNewUser.Show();
             this.Hide();
         }

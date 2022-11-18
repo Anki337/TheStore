@@ -28,7 +28,7 @@ namespace TheStore
     public partial class MainWindow : Window
     {
         TheStoreLists list = new TheStoreLists();
-
+       
         
 
         public MainWindow()
@@ -36,12 +36,12 @@ namespace TheStore
             InitializeComponent();
             readItemsFromFile();
 
-            outdoorList.ItemsSource = list.getAvailableItemList();
+            outdoorList.ItemsSource = list.GetAvailableItemList();
             outdoorList.Items.Refresh();
 
             User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590); //test User
             list.AddToUserList(user); //for testing
-            user.setLoggedIn(true); //for testing, will be set in loggin
+            user.LoggedIn = true; //for testing, will be set in loggin
 
             listAllItemsInMainWindowBody();
 
@@ -53,9 +53,9 @@ namespace TheStore
             string mail = mailBox.Text;
             string password = pwBox.Password;
 
-            foreach (User user in list.getUserList())
+            foreach (User user in list.GetUserList())
             {
-                if (mail.Equals(user.getEmail()) && password.Equals(user.getPassword()))
+                if (mail.Equals(user.Email) && password.Equals(user.Password))
                 {
                     mailBox.Visibility = Visibility.Collapsed;
                     pwBox.Visibility = Visibility.Collapsed;
@@ -74,7 +74,7 @@ namespace TheStore
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
 
-            CreateNewUser createNewUser = new CreateNewUser(this, list.getUserList());
+            CreateNewUser createNewUser = new CreateNewUser(this, list.GetUserList());
             createNewUser.Show();
             this.Hide();
         }
@@ -163,7 +163,7 @@ namespace TheStore
 
         private void listAllItemsInMainWindowBody()
         {
-            foreach (Item item in list.getAvailableItemList())
+            foreach (Item item in list.GetAvailableItemList())
             {
                 Label toyName = new Label();
                 Label saldo = new Label();
@@ -218,8 +218,8 @@ namespace TheStore
         {
             int quantityToBuy = 1;
 
-            editItemInFile((Item)list.getAvailableItemList().ElementAt(0), quantityToBuy, list.getAvailableItemList().IndexOf(list.getAvailableItemList().ElementAt(0)));
-            string näjm = list.getAvailableItemList().ElementAt(0).name;
+            editItemInFile((Item)list.GetAvailableItemList().ElementAt(0), quantityToBuy, list.GetAvailableItemList().IndexOf(list.GetAvailableItemList().ElementAt(0)));
+            string näjm = list.GetAvailableItemList().ElementAt(0).name;
             MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + ""); ;
 
         }
@@ -232,7 +232,7 @@ namespace TheStore
             list.AddToShoppingCartList(addedItem);
             MessageBox.Show(addedItem.name + " added to shopping cart");
             string cartList = "";
-            foreach(Item item in list.getShoppingCartList())
+            foreach(Item item in list.GetShoppingCartList())
             {
                 cartList += item.name + " ";
             }
