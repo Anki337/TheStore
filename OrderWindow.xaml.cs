@@ -64,8 +64,6 @@ namespace TheStore
             
         }
 
-        
-
         private void LogCreateButton_Click(object sender, RoutedEventArgs e)
         {
             
@@ -89,12 +87,7 @@ namespace TheStore
             shippingInfoList.Add(this.OrtInput);
             shippingInfoList.Add(this.FakturaAdressInput);
             shippingInfoList.Add(this.TelefonNrInput);
-        {
-
-            
-
-
-
+        
 
         }
 

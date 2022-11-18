@@ -101,22 +101,22 @@ namespace TheStore
 
         private void editItemInFile(Item item, int quantityToBuy, int index) //Tar en item, hur många som ska dras bort, och vilken plats i listan/textfilen den har.
         {
-            int Currentquantity = item.quantity;
+            int Currentquantity = item.Quantity;
             if (Currentquantity >= quantityToBuy)
             {
-                item.setQuantity(Currentquantity - quantityToBuy); //Uppdaterar antalet i objektet.
+                item.Quantity=Currentquantity - quantityToBuy; //Uppdaterar antalet i objektet.
                 
-                string name = item.name;
-                string description = item.description;
-                int quantity = item.quantity;
-                int price = item.getPrice();
-                double weight = item.weight;
-                string category = item.category;
+                string name = item.Name;
+                string description = item.Description;
+                int quantity = item.Quantity;
+                int price = item.Price;
+                double weight = item.Weight;
+                string category = item.Category;
                 string itemLines = name + "," + description + "," + quantity + ","  + price + "," + weight + "," + category; //En ny string som ska ersätta raden i textfilen
 
                 lineChanger(itemLines, index); // Uppdaterar textfilen. 
 
-                if (item.quantity == 0) //Om saldot på item blir noll tas den bort från listan och från textfilen
+                if (item.Quantity == 0) //Om saldot på item blir noll tas den bort från listan och från textfilen
                 {
                     list.RemoveInAvailableItemsList(item);
                     lineChanger(null, index);
@@ -124,7 +124,7 @@ namespace TheStore
             }
             else
             {
-                MessageBox.Show("Not enough " + item.name + " in store" + Environment.NewLine + "Current balance is: " + Currentquantity);
+                MessageBox.Show("Not enough " + item.Name + " in store" + Environment.NewLine + "Current balance is: " + Currentquantity);
             }
         }
         static void lineChanger(string newText, int line_to_edit)
@@ -170,21 +170,21 @@ namespace TheStore
                 CheckBox textBox = new CheckBox();
                 textBox.MaxWidth = 15;
                 textBox.MaxHeight = 15;
-                toyName.Content = item.name;
-                saldo.Content = item.quantity;
+                toyName.Content = item.Name;
+                saldo.Content = item.Quantity;
                 /*if (item.getCategory().Equals("Outdoor"))
                 {
                     OutLeksakStack.Children.Add(toyName);
                     OutAntalStack.Children.Add(saldo);
                     OutInputStack.Children.Add(textBox);
                 }*/
-                if (item.category.Equals("Big"))
+                if (item.Category.Equals("Big"))
                 {
                     BigLeksakStack.Children.Add(toyName);
                     BigAntalStack.Children.Add(saldo);
                     BigInputStack.Children.Add(textBox);
                 }
-                if (item.category.Equals("Small"))
+                if (item.Category.Equals("Small"))
                 {
                     SmallLeksakStack.Children.Add(toyName);
                     SmallAntalStack.Children.Add(saldo);
@@ -219,7 +219,7 @@ namespace TheStore
             int quantityToBuy = 1;
 
             editItemInFile((Item)list.getAvailableItemList().ElementAt(0), quantityToBuy, list.getAvailableItemList().IndexOf(list.getAvailableItemList().ElementAt(0)));
-            string näjm = list.getAvailableItemList().ElementAt(0).name;
+            string näjm = list.getAvailableItemList().ElementAt(0).Name;
             MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + ""); ;
 
         }
@@ -230,11 +230,11 @@ namespace TheStore
             ListBox box = (ListBox)sender;
             Item addedItem = (Item)box.SelectedItem;
             list.AddToShoppingCartList(addedItem);
-            MessageBox.Show(addedItem.name + " added to shopping cart");
+            MessageBox.Show(addedItem.Name + " added to shopping cart");
             string cartList = "";
             foreach(Item item in list.getShoppingCartList())
             {
-                cartList += item.name + " ";
+                cartList += item.Name + " ";
             }
             MessageBox.Show("Shoppingcart cointains: " + cartList);
 
