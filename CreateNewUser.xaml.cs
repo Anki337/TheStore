@@ -26,11 +26,14 @@ namespace TheStore
         User user = new User();
         Window parent;
 
-        public CreateNewUser(Window mainWindow, List<User> userList)
+        public MainWindow MainWindow { get; }
+        public TheStoreLists List { get; }
+
+        public CreateNewUser(MainWindow mainWindow, TheStoreLists list)
         {
             InitializeComponent();
-            this.userList = userList;
             parent = mainWindow;
+            List = list;
         }
 
         public CreateNewUser()
@@ -115,13 +118,9 @@ namespace TheStore
 
         private void clickCancelButton(object sender, RoutedEventArgs e)
         {
-            //MainWindow mainWindow = new MainWindow();
             parent.Show();
             this.Close();
         }
-
-
-
 
         private void createName()
         {
@@ -133,13 +132,10 @@ namespace TheStore
         private void createEmail()
         {
             string email = emailBox.Text;
-            if (user.Email == email)
-            {
-                user.Email = email; ;
-                returnText.Text = "";
-            }
+            user.Email = email;
+            returnText.Text = "";
         }
-
+        
         private void createPassword()
         {
             string password = passwordBoxOne.Password;
