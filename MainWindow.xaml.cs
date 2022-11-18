@@ -74,7 +74,7 @@ namespace TheStore
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
 
-            CreateNewUser createNewUser = new CreateNewUser(this, list.GetUserList());
+            CreateNewUser createNewUser = new CreateNewUser(this, list);
             createNewUser.Show();
             this.Hide();
         }
