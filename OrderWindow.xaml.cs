@@ -178,11 +178,11 @@ namespace TheStore
             }
         }
 
-        private void logCreateButton_Click(object sender, RoutedEventArgs e)
+        /*private void logCreateButton_Click(object sender, RoutedEventArgs e) //The user needs to be loggedIn before getting to this window
         {
-            CreateNewUser createNewUser = new CreateNewUser(this, list.GetUserList());
+            //CreateNewUser createNewUser = new CreateNewUser(this, list.GetUserList());
             createNewUser.Show();
             this.Hide();
-        }
+        }*/
     }
 }
