@@ -80,7 +80,6 @@
     </Page>
     <Compile Include="Cart.cs" />
     <Compile Include="FileManager.cs" />
-    <Compile Include="FilePaths.cs" />
     <Compile Include="IParse.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="OrderWindow.xaml.cs">
