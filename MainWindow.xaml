@@ -172,9 +172,12 @@
             <!--Område för footer startar-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="BuyButton" Grid.ColumnSpan="2" Click="BuyButton_Click">Buy Toy</Button>
+            <Button x:Name="BuyButton" Grid.Column="0" Grid.ColumnSpan="1" Click="BuyButton_Click">Buy Toy</Button>
+            <Button x:Name="ReadFromFile" Grid.Column="1" Grid.ColumnSpan="1" Click="ReadFromFile_Click">Read From file</Button>
+            <Button x:Name="ReadToFile" Grid.Column="2" Grid.ColumnSpan="1" Click="ReadToFile_Click">Read To file</Button>
             <!--Område för footer slutar-->
         </Grid>
     </Grid>

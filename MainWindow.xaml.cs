@@ -28,8 +28,8 @@ namespace TheStore
     public partial class MainWindow : Window
     {
         TheStoreLists list = new TheStoreLists();
-       
-        
+        FileManager fileManager = new FileManager();
+
 
         public MainWindow()
         {
@@ -44,7 +44,6 @@ namespace TheStore
             user.LoggedIn = true; //for testing, will be set in loggin
 
             listAllItemsInMainWindowBody();
-
         }
 
         private void logButton_Click(object sender, RoutedEventArgs e)
@@ -193,26 +192,6 @@ namespace TheStore
 
             }
         }
-
-
-        private void readUsersFromFile()
-        {
-            string path = "C:\\Users\\linnea\\source\\repos\\TheStore\\Files\\Users.txt";
-            string itemPath = path + @"\Items.txt";
-            string[] readLine = File.ReadAllLines(path);
-
-            foreach (string itemLine in readLine)
-            {
-                string[] itemData = itemLine.Split(',');
-                string name = itemData[0];
-                string password = itemData[1];
-                string email = itemData[2];
-                string address = itemData[3];
-                double phone = Convert.ToDouble(itemData[4]);
-                list.AddToUserList(new User(name, password, email, address, phone));
-            }
-        }
-
         
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
@@ -242,5 +221,19 @@ namespace TheStore
 
         }
 
+
+        private void ReadFromFile_Click(object sender, RoutedEventArgs e)
+        {
+            List<Object> testlist = new List<object>();
+            IParse p = new User();
+            fileManager.readFromFile("TestFile", testlist, p);
+        }
+
+        private void ReadToFile_Click(object sender, RoutedEventArgs e)
+        {
+            List<Object> testlist = new List<object>();
+            IParse p = new User();
+            fileManager.readToFile("TestFile", testlist, p);
+        }
     }
 }

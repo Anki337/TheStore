@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace TheStore
 {
-    public class User
+    public class User : IParse
     {
         //private variables of Class User
         private int _userId = 0;
@@ -19,6 +20,19 @@ namespace TheStore
         private bool _loggedIn = false;
 
         //(mostly)public getters and setters of Class User
+
+        public Object parse(string[] words) {
+            return new User(Name=words[0], Password=words[1], 
+                            Email=words[2], Address=words[3], 
+                            Phone=Convert.ToDouble(words[4]));
+        }
+
+        public string[] toStringArray(List<object> list) {
+            string[] lines = new string[list.Count];
+            for (int i = 0; i < list.Count; i++)
+                lines[i] = Name + "," + Password + "," + Email + "," + Address + "," + Convert.ToString(Phone) + "\n";
+            return lines;
+    }
         public int UserId
         {
             get => _userId;
