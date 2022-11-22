@@ -29,7 +29,7 @@ namespace TheStore
     {
         TheStoreLists list = new TheStoreLists();
 
-
+        FileManager fileManager = new FileManager();
 
         public MainWindow()
         {
@@ -44,7 +44,6 @@ namespace TheStore
             user.LoggedIn = true; //for testing, will be set in loggin
 
             listAllItemsInMainWindowBody();
-
         }
 
         private void logButton_Click(object sender, RoutedEventArgs e)
@@ -189,7 +188,8 @@ namespace TheStore
                 }
             }
         }
-        public void addContentToStackPanelByCategory(string listType, Item item)
+
+      public void addContentToStackPanelByCategory(string listType, Item item)
         {
             ListBoxItem listBoxItem = new ListBoxItem();
             StackPanel stack = new StackPanel();
@@ -280,5 +280,19 @@ namespace TheStore
         }
 
 
+
+        private void ReadFromFile_Click(object sender, RoutedEventArgs e)
+        {
+            List<Object> testlist = new List<object>();
+            IParse p = new User();
+            fileManager.readFromFile("TestFile", testlist, p);
+        }
+
+        private void ReadToFile_Click(object sender, RoutedEventArgs e)
+        {
+            List<Object> testlist = new List<object>();
+            IParse p = new User();
+            fileManager.readToFile("TestFile", testlist, p);
+        }
     }
 }
