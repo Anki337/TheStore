@@ -14,14 +14,14 @@ namespace TheStore
         List<Item> shoppingCartList = new List<Item>();
         public TheStoreLists()
         {
-         
+
         }
 
-       public void  AddToUserList(User user)
+        public void AddToUserList(User user)
         {
             userList.Add(user);
         }
-        
+
         public List<User> GetUserList()
         {
             return userList;

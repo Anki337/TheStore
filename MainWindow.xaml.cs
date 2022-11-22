@@ -28,7 +28,7 @@ namespace TheStore
     public partial class MainWindow : Window
     {
         TheStoreLists list = new TheStoreLists();
-       
+        
         
 
         public MainWindow()
