@@ -21,10 +21,9 @@ namespace TheStore
         //string itemPath = currentdirectory.FullName + "\\Files" + @"\Items.txt";
 
         TheStoreLists list = new TheStoreLists();
-        MessageBox messagebox;
         private string getPathAddress(string fileName)
         {
-            if (fileName == "User")
+            if (fileName == "Users")
             {
                 return UserPath;
             }
@@ -40,31 +39,37 @@ namespace TheStore
                 return null;
             }
         }
-        public void readFromFile(string fileName, List<Object> listName, IParse p)
+        public void readFromFile<T>(string fileName, List<T> listName) where T : IParse<T>, new()
         {
-            //string path = getPathAddress(fileName);
-            string path = TestFilePath;
+            string path = getPathAddress(fileName);
+            //string path = TestFilePath;
+            T thing = new T();
             try
             {
                 string[] lines = File.ReadAllLines(path);
                 foreach (string line in lines)
                     
-                    listName.Add(p.parse(line.Split(',')));  
+                    listName.Add(thing.parse(line.Split(',')));  
                     
             }
             catch (Exception e) { 
                 MessageBox.Show(e.Message);
             }
-            foreach (User user in listName)
-                Console.WriteLine(user);
+            foreach (T t in listName)
+                Console.WriteLine(t);
         }
 
-        internal void readToFile(string fileName, List<Object> listName, IParse p)
+        internal void writeToFile<T>(string fileName, List<T> listName)
         {
-            //string path = getPathAddress(fileName);
-            string path = TestFilePath;
-            File.WriteAllLines(path, p.toStringArray(listName));
-           
+            string path = getPathAddress(fileName);
+            
+            //string path = TestFilePath;
+            string line = "";
+      
+            foreach(T thing in listName)
+                line += thing.ToString();
+               
+            File.WriteAllText(path, line);
         }
 
         private void editItemInFile(Item item, int quantityToBuy, int index) //Tar en item, hur många som ska dras bort, och vilken plats i listan/textfilen den har.
