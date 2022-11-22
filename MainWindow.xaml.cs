@@ -283,16 +283,12 @@ namespace TheStore
 
         private void ReadFromFile_Click(object sender, RoutedEventArgs e)
         {
-            List<Object> testlist = new List<object>();
-            IParse p = new User();
-            fileManager.readFromFile("TestFile", testlist, p);
+            fileManager.readFromFile("Users", list.GetUserList());
         }
 
-        private void ReadToFile_Click(object sender, RoutedEventArgs e)
+        private void WriteToFile_Click(object sender, RoutedEventArgs e)
         {
-            List<Object> testlist = new List<object>();
-            IParse p = new User();
-            fileManager.readToFile("TestFile", testlist, p);
+            fileManager.writeToFile("Users", list.GetUserList());
         }
     }
 }

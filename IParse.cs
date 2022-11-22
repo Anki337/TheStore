@@ -4,10 +4,8 @@ using System.Windows.Documents;
 
 namespace TheStore
 {
-    internal interface IParse
+    internal interface IParse<T>
     {
-        Object parse(string[] words);
-
-        string[] toStringArray(List<Object> list);
+        T parse(string[] words);
     }
 }
