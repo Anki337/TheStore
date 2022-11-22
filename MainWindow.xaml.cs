@@ -28,8 +28,8 @@ namespace TheStore
     public partial class MainWindow : Window
     {
         TheStoreLists list = new TheStoreLists();
-       
-        
+
+
 
         public MainWindow()
         {
@@ -104,15 +104,15 @@ namespace TheStore
             int Currentquantity = item.Quantity;
             if (Currentquantity >= quantityToBuy)
             {
-                item.Quantity=Currentquantity - quantityToBuy; //Uppdaterar antalet i objektet.
-                
+                item.Quantity = Currentquantity - quantityToBuy; //Uppdaterar antalet i objektet.
+
                 string name = item.Name;
                 string description = item.Description;
                 int quantity = item.Quantity;
                 int price = item.Price;
                 double weight = item.Weight;
                 string category = item.Category;
-                string itemLines = name + "," + description + "," + quantity + ","  + price + "," + weight + "," + category; //En ny string som ska ersätta raden i textfilen
+                string itemLines = name + "," + description + "," + quantity + "," + price + "," + weight + "," + category; //En ny string som ska ersätta raden i textfilen
 
                 lineChanger(itemLines, index); // Uppdaterar textfilen. 
 
@@ -167,31 +167,68 @@ namespace TheStore
             {
                 Label toyName = new Label();
                 Label saldo = new Label();
-                CheckBox textBox = new CheckBox();
-                textBox.MaxWidth = 15;
-                textBox.MaxHeight = 15;
+                CheckBox checkbox = new CheckBox();
+                checkbox.MaxWidth = 15;
+                checkbox.MaxHeight = 15;
                 toyName.Content = item.Name;
+
+                toyName.Style = (Style)Resources["ItemLabel"];
                 saldo.Content = item.Quantity;
                 /*if (item.getCategory().Equals("Outdoor"))
                 {
-                    OutLeksakStack.Children.Add(toyName);
-                    OutAntalStack.Children.Add(saldo);
-                    OutInputStack.Children.Add(textBox);
+                    addContentToStackPanelByCategory("outdoor", item);
                 }*/
                 if (item.Category.Equals("Big"))
                 {
-                    BigLeksakStack.Children.Add(toyName);
-                    BigAntalStack.Children.Add(saldo);
-                    BigInputStack.Children.Add(textBox);
+                    addContentToStackPanelByCategory("big", item);
                 }
                 if (item.Category.Equals("Small"))
                 {
-                    SmallLeksakStack.Children.Add(toyName);
-                    SmallAntalStack.Children.Add(saldo);
-                    SmallInputStack.Children.Add(textBox);
+                    addContentToStackPanelByCategory("small", item);
+                   
                 }
-
             }
+        }
+        public void addContentToStackPanelByCategory(string listType, Item item)
+        {
+            ListBoxItem listBoxItem = new ListBoxItem();
+            StackPanel stack = new StackPanel();
+            TextBlock textBlock = new TextBlock();
+            Button button = new Button();
+            System.Windows.Controls.Image image = new System.Windows.Controls.Image()
+            {
+                Name = "pic",
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/thunder.png")),
+                Stretch = Stretch.Uniform
+            };
+            image.Height = 30;
+            image.Width = 30;
+
+            textBlock.Text = item.Name;
+            textBlock.ToolTip = item.Description;
+            textBlock.Style = (Style)Resources["itemName"];
+
+            button.Style = (Style)Resources["itemButton"];
+
+            stack.Orientation = Orientation.Horizontal;
+            stack.Children.Add(textBlock);
+            stack.Children.Add(image);
+            stack.Children.Add(button);
+
+            listBoxItem.Content = stack;
+            if (listType.Equals("small"))
+            {
+                smallList.Items.Add(listBoxItem);
+            }
+            if (listType.Equals("big"))
+            {
+                bigList.Items.Add(listBoxItem);
+            }
+            /*if (listType.Equals("outdoor"))
+            {
+                outdoorList.Items.Add(listBoxItem);
+            }*/
+
         }
 
 
@@ -213,7 +250,7 @@ namespace TheStore
             }
         }
 
-        
+
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
             int quantityToBuy = 1;
@@ -234,13 +271,14 @@ namespace TheStore
             list.AddToShoppingCartList(addedItem);
             MessageBox.Show(addedItem.Name + " added to shopping cart");
             string cartList = "";
-            foreach(Item item in list.GetShoppingCartList())
+            foreach (Item item in list.GetShoppingCartList())
             {
                 cartList += item.Name + " ";
             }
             MessageBox.Show("Shoppingcart cointains: " + cartList);
 
         }
+
 
     }
 }
