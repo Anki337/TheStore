@@ -31,6 +31,7 @@ namespace TheStore
 
         FileManager fileManager = new FileManager();
 
+
         public MainWindow()
         {
             InitializeComponent();

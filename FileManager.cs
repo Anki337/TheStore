@@ -12,7 +12,13 @@ namespace TheStore
 {
     internal class FileManager
     {
- 
+        static DirectoryInfo currentdirectory = new DirectoryInfo(".");
+
+        static readonly string UserPath = currentdirectory.FullName + "\\Files" + @"\Users.txt";
+        static readonly string ShippingInfoPath = currentdirectory.FullName + "\\Files" + @"\ShippingInfo.txt";
+        static readonly string TestFilePath = currentdirectory.FullName + "\\Files" + @"\TestFile.txt";
+        static readonly string ItemsPath = currentdirectory.FullName + "\\Files" + @"\Items.txt";
+
         TheStoreLists list = new TheStoreLists();
         private string getPathAddress(string fileName)
         {
