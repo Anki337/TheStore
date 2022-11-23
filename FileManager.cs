@@ -17,7 +17,6 @@ namespace TheStore
         static readonly string UserPath = currentdirectory.FullName + "\\Files" + @"\Users.txt";
         static readonly string ShippingInfoPath = currentdirectory.FullName + "\\Files" + @"\ShippingInfo.txt";
         static readonly string TestFilePath = currentdirectory.FullName + "\\Files" + @"\TestFile.txt";
-
         static readonly string ItemsPath = currentdirectory.FullName + "\\Files" + @"\Items.txt";
 
         TheStoreLists list = new TheStoreLists();
@@ -35,14 +34,18 @@ namespace TheStore
             {
                 return ShippingInfoPath;
             }
-            else {
+            else if (fileName == "TestFile")
+            {
+                return TestFilePath;
+            }
+            else
+            {
                 return null;
             }
         }
         public void readFromFile<T>(string fileName, List<T> listName) where T : IParse<T>, new()
         {
             string path = getPathAddress(fileName);
-            //string path = TestFilePath;
             T thing = new T();
             try
             {
@@ -62,8 +65,6 @@ namespace TheStore
         internal void writeToFile<T>(string fileName, List<T> listName)
         {
             string path = getPathAddress(fileName);
-            
-            //string path = TestFilePath;
             string line = "";
       
             foreach(T thing in listName)
