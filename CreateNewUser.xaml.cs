@@ -22,7 +22,7 @@ namespace TheStore
     /// </summary>
     public partial class CreateNewUser : Window
     {
-        public List<User> userList;
+        public List<User> userList = new List<User>();
         User user = new User();
         Window parent;
 
@@ -33,7 +33,8 @@ namespace TheStore
         {
             InitializeComponent();
             parent = mainWindow;
-            List = list;
+            this.List = list;
+            
         }
 
         public CreateNewUser()
@@ -89,13 +90,13 @@ namespace TheStore
             }
             else if (passwordBoxOne.Password.Length < 6)
             {
-                returnText.Text = "The password must be at least 6 caracters long";
+                returnText.Text = "The password must be at least 6 characters long";
                 return;
             }
             else
             {
                 createPassword();
-                createUser(returnText.Text);
+                AddUserToList();
                 submitButton.Visibility = Visibility.Collapsed;
                 resetButton.Visibility = Visibility.Collapsed;
                 cancelButton.Visibility = Visibility.Collapsed;
@@ -156,11 +157,10 @@ namespace TheStore
             returnText.Text = "";
         }
 
-        private string createUser(string _name)
+        private string AddUserToList()
         {
             user.LoggedIn = true;
-            user.Name = _name;
-            userList.Add(user);
+            List.AddToUserList(user);
             return "Registration success";
         }
 
