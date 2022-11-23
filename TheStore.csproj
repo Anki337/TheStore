@@ -79,6 +79,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="Cart.cs" />
+    <Compile Include="FileManager.cs" />
+    <Compile Include="IParse.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="OrderWindow.xaml.cs">
       <DependentUpon>OrderWindow.xaml</DependentUpon>
@@ -162,6 +164,7 @@
     <Content Include="Files\Items.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Files\TestFile.txt" />
     <Resource Include="Files\ShippingInfo.txt" />
   </ItemGroup>
   <ItemGroup>

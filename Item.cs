@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,6 +35,21 @@ namespace TheStore
             this._weight = weight;
             this._category = category;
             //this._toyPic = imagePath;
+        }
+
+        public Object parse(string[] words)
+        {
+            return new Item(Name = words[0], 
+                            Description = words[1],
+                            Quantity = Convert.ToInt32(words[2]), 
+                            Price = Convert.ToInt32(words[3]),
+                            Weight = Convert.ToInt32(words[4]), 
+                            Category = words[5]);
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }
