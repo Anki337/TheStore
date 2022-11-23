@@ -19,18 +19,6 @@ namespace TheStore
         private double _phone;
         private bool _loggedIn = false;
 
-        
-
-         public User parse(string[] words) {
-            return new User(name:words[0], password:words[1], 
-                            email:words[2], address:words[3], 
-                            phone:Convert.ToDouble(words[4]));
-        }
-
-        public override string ToString() {
-            string line = Name + "," + Password + "," + Email + "," + Address + "," + Convert.ToString(Phone) + "\n";
-            return line;
-    }
         //(mostly)public getters and setters of Class User  
         public int UserId
         {
@@ -95,6 +83,18 @@ namespace TheStore
             this._phone = phone;
             _userId = UserId;
             _loggedIn = LoggedIn;
+        }
+        public User parse(string[] words)
+        {
+            return new User(name: words[0], password: words[1],
+                            email: words[2], address: words[3],
+                            phone: Convert.ToDouble(words[4]));
+        }
+
+        public override string ToString()
+        {
+            string line = Name + "," + Password + "," + Email + "," + Address + "," + Convert.ToString(Phone) + "\n";
+            return line;
         }
 
     }

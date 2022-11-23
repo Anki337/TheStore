@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace TheStore
 {
-    public class Item
+    public class Item : IParse<Item>
     {
         private string _name;
         private string _description;
@@ -37,19 +37,19 @@ namespace TheStore
             //this._toyPic = imagePath;
         }
 
-        public Object parse(string[] words)
+        public Item parse(string[] words)
         {
-            return new Item(Name = words[0], 
-                            Description = words[1],
-                            Quantity = Convert.ToInt32(words[2]), 
-                            Price = Convert.ToInt32(words[3]),
-                            Weight = Convert.ToInt32(words[4]), 
-                            Category = words[5]);
+            return new Item(name:words[0], 
+                            description:words[1],
+                            quantity:Convert.ToInt32(words[2]), 
+                            price:Convert.ToInt32(words[3]),
+                            weight:Convert.ToInt32(words[4]), 
+                            category:words[5]);
         }
-
         public override string ToString()
         {
-            return base.ToString();
+            string line = Name + "," + Description + "," + Convert.ToInt32(Quantity) + "," + Convert.ToInt32(Price) + "," + Convert.ToInt32(Weight) + "," + Category"\n";
+            return line;
         }
     }
 }
