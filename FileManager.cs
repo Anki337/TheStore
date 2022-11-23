@@ -12,13 +12,13 @@ namespace TheStore
 {
     internal class FileManager
     {
-        static readonly string UserPath = "C:\\Users\\linnea\\Source\\Repos\\TheStore\\Files\\Users.txt";
-        static readonly string ItemsPath = "C:\\Users\\linnea\\Source\\Repos\\TheStore\\Files\\Items.txt";
-        static readonly string ShippingInfoPath = "C:\\Users\\linnea\\Source\\Repos\\TheStore\\Files\\ShippingInfo.txt";
-        static readonly string TestFilePath = "C:\\Users\\linnea\\Source\\Repos\\TheStore\\Files\\TestFile.txt";
+        static DirectoryInfo currentdirectory = new DirectoryInfo(".");
 
-        //DirectoryInfo currentdirectory = new DirectoryInfo(".");
-        //string itemPath = currentdirectory.FullName + "\\Files" + @"\Items.txt";
+        static readonly string UserPath = currentdirectory.FullName + "\\Files" + @"\Users.txt";
+        static readonly string ShippingInfoPath = currentdirectory.FullName + "\\Files" + @"\ShippingInfo.txt";
+        static readonly string TestFilePath = currentdirectory.FullName + "\\Files" + @"\TestFile.txt";
+
+        static readonly string ItemsPath = currentdirectory.FullName + "\\Files" + @"\Items.txt";
 
         TheStoreLists list = new TheStoreLists();
         private string getPathAddress(string fileName)
