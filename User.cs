@@ -30,7 +30,6 @@ namespace TheStore
             get => _name;
             set => _name = value;
         }
-
         public string Password
         {
             get => _password;
@@ -93,7 +92,7 @@ namespace TheStore
 
         public override string ToString()
         {
-            string line = Name + "," + Password + "," + Email + "," + Address + "," + Convert.ToString(Phone) + "\n";
+            string line = Name + "," + Password + "," + Email + "," + Address + "," + Convert.ToString(Phone) + "\r\n";
             return line;
         }
 

@@ -28,18 +28,19 @@ namespace TheStore
     public partial class MainWindow : Window
     {
         TheStoreLists list = new TheStoreLists();
-
         FileManager fileManager = new FileManager();
-
 
         public MainWindow()
         {
             InitializeComponent();
-            readItemsFromFile();
+            fileManager.readFromFile("Items", list.GetAvailableItemList());
+            //readItemsFromFile(); Redundant because of new implementation of read to file
 
             outdoorList.ItemsSource = list.GetAvailableItemList();
             outdoorList.Items.Refresh();
 
+
+            fileManager.readFromFile("Users", list.GetUserList());
             User user = new User("Max", "bananer", "max@max.com", "Stan", 0735040590); //test User
             list.AddToUserList(user); //for testing
             user.LoggedIn = true; //for testing, will be set in loggin
@@ -69,7 +70,6 @@ namespace TheStore
                     logOutButton.Visibility = Visibility.Visible;
                 }
             }
-
         }
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
@@ -137,7 +137,7 @@ namespace TheStore
             File.WriteAllLines(itemPath, trimmed); //Skriver en ny textfil med arrayen vi skapade två rader upp.
         }
 
-        private void readItemsFromFile() //Läser in alla items från textfilen
+        /*private void readItemsFromFile() //Redundant because of new implementation of read to file
         {
             DirectoryInfo currentdirectory = new DirectoryInfo(".");
             string itemPath = currentdirectory.FullName + "\\Files" + @"\Items.txt";
@@ -160,6 +160,7 @@ namespace TheStore
                 list.AddToAvailableItemsList(new Item(name, description, quantity, price, weight, category));
             }
         }
+        */
 
         private void listAllItemsInMainWindowBody()
         {
@@ -229,41 +230,16 @@ namespace TheStore
             {
                 outdoorList.Items.Add(listBoxItem);
             }*/
-
         }
-
-
-        private void readUsersFromFile()
-        {
-            string path = "C:\\Users\\linnea\\source\\repos\\TheStore\\Files\\Users.txt";
-            string itemPath = path + @"\Items.txt";
-            string[] readLine = File.ReadAllLines(path);
-
-            foreach (string itemLine in readLine)
-            {
-                string[] itemData = itemLine.Split(',');
-                string name = itemData[0];
-                string password = itemData[1];
-                string email = itemData[2];
-                string address = itemData[3];
-                double phone = Convert.ToDouble(itemData[4]);
-                list.AddToUserList(new User(name, password, email, address, phone));
-            }
-        }
-
-
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
             int quantityToBuy = 1;
 
-
             editItemInFile((Item)list.GetAvailableItemList().ElementAt(0), quantityToBuy, list.GetAvailableItemList().IndexOf(list.GetAvailableItemList().ElementAt(0)));
             string näjm = list.GetAvailableItemList().ElementAt(0).Name;
 
-            MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + ""); ;
-
+            MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + "");
         }
-
 
         private void outdoorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -277,16 +253,14 @@ namespace TheStore
                 cartList += item.Name + " ";
             }
             MessageBox.Show("Shoppingcart cointains: " + cartList);
-
         }
 
-
-
+        //these are testbuttons to call the read/write-function from MainWindow (footer)
+        //FEEL FREE to use these testbuttons for other implementation testing!
         private void ReadFromFile_Click(object sender, RoutedEventArgs e)
         {
             fileManager.readFromFile("Users", list.GetUserList());
         }
-
         private void WriteToFile_Click(object sender, RoutedEventArgs e)
         {
             fileManager.writeToFile("Users", list.GetUserList());
