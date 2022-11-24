@@ -10,50 +10,23 @@ using System.Windows.Shapes;
 
 namespace TheStore
 {
+    /// <summary>
+    /// Filereader/-writer for classes implementing IParse
+    /// </summary>
     internal class FileManager
     {
         static DirectoryInfo currentdirectory = new DirectoryInfo(".");
-
-        static readonly string UserPath = currentdirectory.FullName + "\\Files" + @"\Users.txt";
-        static readonly string ShippingInfoPath = currentdirectory.FullName + "\\Files" + @"\ShippingInfo.txt";
-        static readonly string TestFilePath = currentdirectory.FullName + "\\Files" + @"\TestFile.txt";
-        static readonly string ItemsPath = currentdirectory.FullName + "\\Files" + @"\Items.txt";
-
         TheStoreLists list = new TheStoreLists();
-        private string getPathAddress(string fileName)
+        public void readFromFile<T>(string fileName, List<T> listName) where T : IParse<T>, new() //Reads a file fileName.txt and creates a list listName<Item> or listName<User>
         {
-            if (fileName == "Users")
-            {
-                return UserPath;
-            }
-            else if (fileName == "Items")
-            {
-                return ItemsPath;
-            }
-            else if (fileName == "ShippingInfo")
-            {
-                return ShippingInfoPath;
-            }
-            else if (fileName == "TestFile")
-            {
-                return TestFilePath;
-            }
-            else
-            {
-                return null;
-            }
-        }
-        public void readFromFile<T>(string fileName, List<T> listName) where T : IParse<T>, new()
-        {
-            string path = getPathAddress(fileName);
+            string path = currentdirectory.FullName + "\\Files" + @"\" + fileName + ".txt";
             T thing = new T();
             try
             {
                 string[] lines = File.ReadAllLines(path);
                 foreach (string line in lines)
                     
-                    listName.Add(thing.parse(line.Split(',')));  
-                    
+                    listName.Add(thing.parse(line.Split(',')));   
             }
             catch (Exception e) { 
                 MessageBox.Show(e.Message);
@@ -61,10 +34,9 @@ namespace TheStore
             foreach (T t in listName)
                 Console.WriteLine(t);
         }
-
-        internal void writeToFile<T>(string fileName, List<T> listName)
+        internal void writeToFile<T>(string fileName, List<T> listName) //Writes a list listName<Item> or listName<User> to file fileName.txt
         {
-            string path = getPathAddress(fileName);
+            string path = currentdirectory.FullName + "\\Files\\" + fileName + ".txt";
             string line = "";
       
             foreach(T thing in listName)
@@ -72,6 +44,7 @@ namespace TheStore
                
             File.WriteAllText(path, line);
         }
+
 
         private void editItemInFile(Item item, int quantityToBuy, int index) //Tar en item, hur många som ska dras bort, och vilken plats i listan/textfilen den har.
         {

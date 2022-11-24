@@ -6,6 +6,7 @@ using System.Net;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace TheStore
 {
@@ -37,6 +38,10 @@ namespace TheStore
             //this._toyPic = imagePath;
         }
 
+        public Item() 
+        { 
+        }
+
         public Item parse(string[] words)
         {
             return new Item(name:words[0], 
@@ -48,7 +53,7 @@ namespace TheStore
         }
         public override string ToString()
         {
-            string line = Name + "," + Description + "," + Convert.ToInt32(Quantity) + "," + Convert.ToInt32(Price) + "," + Convert.ToInt32(Weight) + "," + Category"\n";
+            string line = Name + "," + Description + "," + Convert.ToInt32(Quantity) + "," + Convert.ToInt32(Price) + "," + Convert.ToInt32(Weight) + "," + Category + "\r\n";
             return line;
         }
     }
