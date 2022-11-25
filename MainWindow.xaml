@@ -16,6 +16,7 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="FontWeight" Value="Bold"/>
                     <Setter Property="ToolTip"/>
+                    <!--ToolTip verkar inte funka, saknar value\LD-->
                 </Trigger>
             </Style.Triggers>
         </Style>
