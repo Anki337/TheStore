@@ -251,8 +251,8 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="BuyButton" Grid.Column="0" Grid.ColumnSpan="1" Click="BuyButton_Click">Buy Toy</Button>
-            <Button x:Name="ReadFromFile" Grid.Column="1" Grid.ColumnSpan="1" Click="ReadFromFile_Click">Read From file</Button>
-            <Button x:Name="WriteToFile" Grid.Column="2" Grid.ColumnSpan="1" Click="WriteToFile_Click">Write To file</Button>
+            <Button x:Name="Test1" Grid.Column="1" Grid.ColumnSpan="1" Click="Test1_Click">Test1</Button>
+            <Button x:Name="Test2" Grid.Column="2" Grid.ColumnSpan="1" Click="Test2_Click">Test2</Button>
             <!--Område för footer slutar-->
         </Grid>
     </Grid>
