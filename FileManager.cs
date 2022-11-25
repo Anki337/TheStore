@@ -37,7 +37,7 @@ namespace TheStore
         internal void writeToFile<T>(string fileName, List<T> listName) //Writes a list listName<Item> or listName<User> to file fileName.txt
         {
             string path = currentdirectory.FullName + "\\Files\\" + fileName + ".txt";
-            string line = "";
+            string line = null;
       
             foreach(T thing in listName)
                 line += thing.ToString();
