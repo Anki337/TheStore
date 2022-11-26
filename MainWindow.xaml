@@ -19,7 +19,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Style TargetType="Button" x:Key="itemButton">
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="itemButton">
             <Setter Property="FontFamily" Value="Times"/>
             <Setter Property="Content" Value="Add to Cart"/>
             <Setter Property="Padding" Value="5"/>
@@ -98,7 +98,7 @@
             </Label>
 
             <Label Grid.Row="2" Grid.Column="6" HorizontalAlignment="Center">
-                <Button x:Name="shoppingCart" Click="shoppingCart_Click" BorderThickness="0">
+                <Button x:Name="shoppingCart"  Click="shoppingCart_Click" >
                     <Image Height="30" VerticalAlignment="Center" Source="pack://application:,,,/Images/cart.jpg"></Image>
                 </Button>
 

@@ -211,6 +211,7 @@ namespace TheStore
             textBlock.Style = (Style)Resources["itemName"];
 
             button.Style = (Style)Resources["itemButton"];
+           
 
             stack.Orientation = Orientation.Horizontal;
             stack.Children.Add(textBlock);
