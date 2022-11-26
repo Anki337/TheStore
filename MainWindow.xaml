@@ -15,7 +15,7 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="FontWeight" Value="Bold"/>
-                    <Setter Property="ToolTip"/>
+                    <Setter Property="ToolTip" Value=""/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -50,6 +50,7 @@
             <RowDefinition MinHeight="300"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
+            <!--Område för header startar-->
 
         <Grid Grid.Row="0" x:Name="Header" Margin="1,1,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
@@ -67,7 +68,6 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!--Område för header startar-->
             <Label VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20">
                 <StackPanel Orientation="Horizontal">
                     <AccessText>
@@ -105,8 +105,8 @@
             </Label>
 
 
-            <!--Område för header slutar-->
         </Grid>
+        <!--Område för header slutar-->
 
         <Grid Grid.Row="1" x:Name="Body">
             <Grid.RowDefinitions>
