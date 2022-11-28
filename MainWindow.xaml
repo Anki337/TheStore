@@ -15,8 +15,9 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="FontWeight" Value="Bold"/>
-                    <Setter Property="ToolTip"/>
+                    <Setter Property="ToolTip" Value="null"/>
                     <!--ToolTip verkar inte funka, saknar value\LD-->
+                    <!--Satte Value="Null" så man kan se designen och arbeta på annat.\DA-->
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -36,7 +37,7 @@
                 <Trigger Property="IsMouseOver" Value="True">
 
                 </Trigger>
-                
+
 
             </Style.Triggers>
 
@@ -98,9 +99,9 @@
                 </StackPanel>
             </Label>
 
-            <Label Grid.Row="2" Grid.Column="6" HorizontalAlignment="Center">
-                <Button x:Name="shoppingCart" Click="shoppingCart_Click" BorderThickness="0">
-                    <Image Height="30" VerticalAlignment="Center" Source="pack://application:,,,/Images/cart.jpg"></Image>
+            <Label Grid.Row="1" Grid.Column="6" HorizontalAlignment="Left" Margin="42,30,0,0" Grid.RowSpan="2" Width="65">
+                <Button x:Name="shoppingCart" Click="shoppingCart_Click" BorderThickness="0" Height="25" Width="51" Visibility="Hidden">
+                    <Image Height="45" VerticalAlignment="Center" Source="pack://application:,,,/Images/cart.jpg" Width="51"></Image>
                 </Button>
 
             </Label>
@@ -119,14 +120,14 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="125"/>
             </Grid.ColumnDefinitions>
             <!--Område för Body startar-->
             <!--Stack för kategori Outdoor -->

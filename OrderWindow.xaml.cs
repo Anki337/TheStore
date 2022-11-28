@@ -68,7 +68,7 @@ namespace TheStore
 
         public OrderWindow(Window mainWindow, TheStoreLists list)
         {
-            user.LoggedIn= true;
+            user.LoggedIn = true;
             parent = mainWindow;
             this.list = list;
             InitializeComponent();
