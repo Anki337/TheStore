@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheStore"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="MainWindow" Height="600" Width="1000" >
     <Window.Resources>
         <!--I Windows resources kan jag bygga templates som gäller för hela sidan.-->
         <Style TargetType="TextBlock" x:Key="itemName">
@@ -15,13 +15,11 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="FontWeight" Value="Bold"/>
-                    <Setter Property="ToolTip" Value="null"/>
-                    <!--ToolTip verkar inte funka, saknar value\LD-->
-                    <!--Satte Value="Null" så man kan se designen och arbeta på annat.\DA-->
+                    <Setter Property="ToolTip" Value=""/>
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Style TargetType="Button" x:Key="itemButton">
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="itemButton">
             <Setter Property="FontFamily" Value="Times"/>
             <Setter Property="Content" Value="Add to Cart"/>
             <Setter Property="Padding" Value="5"/>
@@ -52,6 +50,7 @@
             <RowDefinition MinHeight="300"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
+            <!--Område för header startar-->
 
         <Grid Grid.Row="0" x:Name="Header" Margin="1,1,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
@@ -69,7 +68,6 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!--Område för header startar-->
             <Label VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20">
                 <StackPanel Orientation="Horizontal">
                     <AccessText>
@@ -98,17 +96,13 @@
                     <TextBlock x:Name="userNameText" Text=""></TextBlock>
                 </StackPanel>
             </Label>
-
             <Label Grid.Row="1" Grid.Column="6" HorizontalAlignment="Left" Margin="42,30,0,0" Grid.RowSpan="2" Width="65">
                 <Button x:Name="shoppingCart" Click="shoppingCart_Click" BorderThickness="0" Height="25" Width="51" Visibility="Hidden">
                     <Image Height="45" VerticalAlignment="Center" Source="pack://application:,,,/Images/cart.jpg" Width="51"></Image>
                 </Button>
-
             </Label>
-
-
-            <!--Område för header slutar-->
         </Grid>
+        <!--Område för header slutar-->
 
         <Grid Grid.Row="1" x:Name="Body">
             <Grid.RowDefinitions>

@@ -58,11 +58,11 @@ namespace TheStore
             listAllItemsInMainWindowBody();
             
         }
-       
         private void logButton_Click(object sender, RoutedEventArgs e)
         {
 
             string mail = mailBox.Text;
+
             string password = pwBox.Password;
 
             foreach (User user in list.GetUserList())
@@ -82,6 +82,8 @@ namespace TheStore
                 }
             }
         }
+
+
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -99,7 +101,7 @@ namespace TheStore
             this.Hide();
 
         }
-        private void logOutButton_Click(object sender, RoutedEventArgs e)
+        private  void logOutButton_Click(object sender, RoutedEventArgs e)
         {
             mailBox.Visibility = Visibility.Visible;
             pwBox.Visibility = Visibility.Visible;
@@ -161,6 +163,7 @@ namespace TheStore
             textBlock.Style = (Style)Resources["itemName"];
 
             button.Style = (Style)Resources["itemButton"];
+           
 
             stack.Orientation = Orientation.Horizontal;
             stack.Children.Add(textBlock);
