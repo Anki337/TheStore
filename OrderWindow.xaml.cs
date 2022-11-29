@@ -35,7 +35,7 @@ namespace TheStore
         ObservableCollection<string> comboBoxPay = new ObservableCollection<string>();
         
         
-        User user = new User("aaa", "bbb", "ccc", "ddd", 32);
+        
         public string AdressInput { get; set; }
         public string PostNrInput { get; set; }
         public string OrtInput { get; set; }
@@ -68,7 +68,7 @@ namespace TheStore
 
         public OrderWindow(Window mainWindow, TheStoreLists list)
         {
-            user.LoggedIn = true;
+            
             parent = mainWindow;
             this.list = list;
             InitializeComponent();

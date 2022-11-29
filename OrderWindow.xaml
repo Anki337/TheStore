@@ -59,7 +59,7 @@
                     <ImageBrush ImageSource="pack://application:,,,/Images/Checkout.png" Stretch="UniformToFill"/>
                 </Grid.Background>
                 <Button Height="20" Width="100" Content="Spara Information" x:Name="SaveButton" Click="SaveButton_Click"
-                 VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="480,0,0,30"></Button>
+                 VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="480,0,0,30" Background="Wheat"></Button>
                 <Grid x:Name="PurchasedItems" HorizontalAlignment="Center"
                       VerticalAlignment="Center" Height="300" Width="750">
                     <Grid VerticalAlignment="Center">
