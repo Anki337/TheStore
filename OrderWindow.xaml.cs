@@ -28,6 +28,8 @@ namespace TheStore
         
         List<string> shippingInfoList = new List<string>();
         List<string> cardInfoList = new List<string>();
+        List<Item> myCart;
+        User[] loggedInUser;
         
 
         Window parent;
@@ -83,7 +85,14 @@ namespace TheStore
             //WriteSavedNameToFile();
             
         }
-
+        //Constructor that uses array LoggedInUser and myCartList referensed(sent) from Main Window
+        public OrderWindow(MainWindow mainWindow, List<Item> myCart, User[] loggedInUser)
+        {
+            InitializeComponent();
+            parent = mainWindow;
+            this.myCart = myCart;
+            this.loggedInUser = loggedInUser;
+        }
         private void LogCreateButton_Click(object sender, RoutedEventArgs e)
         {
 

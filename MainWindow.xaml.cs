@@ -31,13 +31,14 @@ namespace TheStore
         FileManager fileManager = new FileManager();
         private List<User> userList = new List<User>();
         private List<Item> availableItemList = new List<Item>();
+        private List<Item> myCart = new List<Item>();
+        private User[] loggedInUser; //= new User[1];
 
         public MainWindow()
         {
             InitializeComponent();
             LoadData();
             ShowData();
-
         }
         private void LoadData()
         {
@@ -60,34 +61,29 @@ namespace TheStore
         }
         private void logButton_Click(object sender, RoutedEventArgs e)
         {
-
             string mail = mailBox.Text;
-
             string password = pwBox.Password;
 
-            foreach (User user in list.GetUserList())
+            foreach (User user in userList)
             {
                 if (mail.Equals(user.Email) && password.Equals(user.Password))
                 {
+                    User[] loggedInUser = {user};
+                    userList.Remove(user);
                     mailBox.Visibility = Visibility.Collapsed;
                     pwBox.Visibility = Visibility.Collapsed;
-
                     userNameText.Text = " back " + user.Name;
-
                     shoppingCart.Visibility = Visibility.Visible;
-
                     logButton.Visibility = Visibility.Collapsed;
                     createButton.Visibility = Visibility.Collapsed;
                     logOutButton.Visibility = Visibility.Visible;
                 }
             }
         }
-
-
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
 
-            CreateNewUser createNewUser = new CreateNewUser(this, userList);
+            CreateNewUser createNewUser = new CreateNewUser(this, userList, loggedInUser);
             createNewUser.Show();
             this.Hide();
         }
@@ -95,8 +91,7 @@ namespace TheStore
 
         private void shoppingCart_Click(object sender, RoutedEventArgs e)
         {
-            OrderWindow orderWindow = new OrderWindow(this, list);
-           
+            OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser);
             orderWindow.Show();
             this.Hide();
 
@@ -105,7 +100,7 @@ namespace TheStore
         {
             mailBox.Visibility = Visibility.Visible;
             pwBox.Visibility = Visibility.Visible;
-            //user.setLoggedIn(false);
+            User[] loggedInUser = { null };
             userNameText.Text = "";
             logButton.Visibility = Visibility.Visible;
             createButton.Visibility = Visibility.Visible;
@@ -116,7 +111,7 @@ namespace TheStore
 
         private void listAllItemsInMainWindowBody()
         {
-            foreach (Item item in list.GetAvailableItemList())
+            foreach (Item item in availableItemList)
             {
                 Label toyName = new Label();
                 Label saldo = new Label();
@@ -188,9 +183,9 @@ namespace TheStore
         {
             int quantityToBuy = 1;
             string näjm = availableItemList[0].Name;
-            //OrderWindow orderwindow = new OrderWindow(Window this, User loggedInUser, shoppingCartList); //This constructor does not exist in OrderWindow-class
-            //orderwindow.Show();
-            //This.Hide();
+            //OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser);
+            //orderWindow.Show();
+            //this.Hide();
             MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + "");
         }
 

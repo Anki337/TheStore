@@ -23,6 +23,7 @@ namespace TheStore
     public partial class CreateNewUser : Window
     {
         private List<User> list;
+        private User[] loggedInUser;
         User user = new User();
         Window parent;
 
@@ -36,11 +37,12 @@ namespace TheStore
             this.List = list;
             
         }*/
-        public CreateNewUser(MainWindow mainWindow, List<User> list)
+        public CreateNewUser(MainWindow mainWindow, List<User> list, User[] loggedInUser)
         {
             InitializeComponent();
             parent = mainWindow;
             this.list = list;
+            this.loggedInUser = loggedInUser;
         }
 
         public CreateNewUser()
@@ -102,7 +104,8 @@ namespace TheStore
             else
             {
                 createPassword();
-                AddUserToList();
+                addUserToUserList();
+                setLoggedInUser();
                 returnText.Text = "Registration success";
                 submitButton.Visibility = Visibility.Collapsed;
                 //resetButton.Visibility = Visibility.Collapsed;
@@ -124,12 +127,6 @@ namespace TheStore
             user.Email = email;
             returnText.Text = "";
         }
-        
-        private void createPassword()
-        {
-            string password = passwordBoxOne.Password;
-            user.Password = password;
-        }
 
         private void createAddress()
         {
@@ -144,11 +141,20 @@ namespace TheStore
             user.Phone = phone;
             returnText.Text = "";
         }
-
-        private void AddUserToList()
+        private void createPassword()
         {
-            user.LoggedIn = true;
+            string password = passwordBoxOne.Password;
+            user.Password = password;
+        }
+
+        private void addUserToUserList() 
+        {
             list.Add(user);
+        }
+
+        private void setLoggedInUser()
+        {
+            User[] loggedInUser = { user };
         }
 
         private void clickResetButton(object sender, RoutedEventArgs e)
@@ -173,6 +179,7 @@ namespace TheStore
         private void ClickGoBackButton(object sender, RoutedEventArgs e)
         {
             returnText.Text = "Go Back";
+            //list.RemoveAt(list.Count - 1);
             parent.Show();
             this.Close();
         }
