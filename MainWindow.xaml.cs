@@ -37,6 +37,7 @@ namespace TheStore
             InitializeComponent();
             LoadData();
             ShowData();
+
         }
         private void LoadData()
         {
@@ -44,9 +45,10 @@ namespace TheStore
             fileManager.readFromFile("Items", availableItemList);
             fileManager.readFromFile("Users", list.GetUserList());
             fileManager.readFromFile("Users", userList);
+            
             //User user1 = new User("Max", "bananer", "max@max.com", "Stan", 0735040590); //test User
-            //list.AddToUserList(user); //for testing
-            //user.LoggedIn = true; //for testing, will be set in loggin
+            //list.AddToUserList(user1); //for testing
+            //user1.LoggedIn = true; //for testing, will be set in loggin
         }
 
         private void ShowData()
@@ -54,6 +56,7 @@ namespace TheStore
             outdoorList.ItemsSource = list.GetAvailableItemList();
             outdoorList.Items.Refresh();
             listAllItemsInMainWindowBody();
+            
         }
         private void logButton_Click(object sender, RoutedEventArgs e)
         {
@@ -71,7 +74,7 @@ namespace TheStore
 
                     userNameText.Text = " back " + user.Name;
 
-                    //user.setLoggedIn(true);
+                    shoppingCart.Visibility = Visibility.Visible;
 
                     logButton.Visibility = Visibility.Collapsed;
                     createButton.Visibility = Visibility.Collapsed;
@@ -93,6 +96,7 @@ namespace TheStore
         private void shoppingCart_Click(object sender, RoutedEventArgs e)
         {
             OrderWindow orderWindow = new OrderWindow(this, list);
+           
             orderWindow.Show();
             this.Hide();
 
@@ -106,6 +110,7 @@ namespace TheStore
             logButton.Visibility = Visibility.Visible;
             createButton.Visibility = Visibility.Visible;
             logOutButton.Visibility = Visibility.Collapsed;
+            shoppingCart.Visibility = Visibility.Hidden;
 
         }
 
