@@ -170,17 +170,17 @@
     <Content Include="Files\Items.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Files\TestFile.txt">
+    <Content Include="Files\TestFile.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Files\ShippingInfo.txt">
+    </Content>
+    <Content Include="Files\ShippingInfo.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Files\Users.txt">
+    <Content Include="Files\Users.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\logo_thestore.png" />
