@@ -22,15 +22,25 @@ namespace TheStore
     /// </summary>
     public partial class CreateNewUser : Window
     {
-        public List<User> userList;
+        private List<User> list;
         User user = new User();
         Window parent;
 
-        public CreateNewUser(Window mainWindow, List<User> userList)
+        public MainWindow MainWindow { get; }
+        //public TheStoreLists List { get; }
+
+        /*public CreateNewUser(MainWindow mainWindow, TheStoreLists list)
         {
             InitializeComponent();
-            this.userList = userList;
             parent = mainWindow;
+            this.List = list;
+            
+        }*/
+        public CreateNewUser(MainWindow mainWindow, List<User> list)
+        {
+            InitializeComponent();
+            parent = mainWindow;
+            this.list = list;
         }
 
         public CreateNewUser()
@@ -86,42 +96,20 @@ namespace TheStore
             }
             else if (passwordBoxOne.Password.Length < 6)
             {
-                returnText.Text = "The password must be at least 6 caracters long";
+                returnText.Text = "The password must be at least 6 characters long";
                 return;
             }
             else
             {
                 createPassword();
-                createUser(returnText.Text);
+                AddUserToList();
+                returnText.Text = "Registration success";
                 submitButton.Visibility = Visibility.Collapsed;
-                resetButton.Visibility = Visibility.Collapsed;
+                //resetButton.Visibility = Visibility.Collapsed;
                 cancelButton.Visibility = Visibility.Collapsed;
                 goBackButton.Visibility = Visibility.Visible;
             }
         }
-
-        private void clickResetButton(object sender, RoutedEventArgs e)
-        {
-            foreach (TextBox box in boxes.Children)
-            {
-                box.Clear();
-            }
-
-            foreach (PasswordBox pBox in boxes.Children)
-            {
-                pBox.Clear();
-            }
-        }
-
-        private void clickCancelButton(object sender, RoutedEventArgs e)
-        {
-            //MainWindow mainWindow = new MainWindow();
-            parent.Show();
-            this.Close();
-        }
-
-
-
 
         private void createName()
         {
@@ -133,13 +121,10 @@ namespace TheStore
         private void createEmail()
         {
             string email = emailBox.Text;
-            if (user.Email == email)
-            {
-                user.Email = email; ;
-                returnText.Text = "";
-            }
+            user.Email = email;
+            returnText.Text = "";
         }
-
+        
         private void createPassword()
         {
             string password = passwordBoxOne.Password;
@@ -160,14 +145,31 @@ namespace TheStore
             returnText.Text = "";
         }
 
-        private string createUser(string _name)
+        private void AddUserToList()
         {
             user.LoggedIn = true;
-            user.Name = _name;
-            userList.Add(user);
-            return "Registration success";
+            list.Add(user);
         }
 
+        private void clickResetButton(object sender, RoutedEventArgs e)
+        {
+            foreach (TextBox box in boxes.Children)
+            {
+                if (box != null)
+                    box.Clear();
+            }
+            foreach (PasswordBox pBox in boxes.Children)
+            {
+                if (pBox != null)
+                    pBox.Clear();
+            }
+        }
+
+        private void clickCancelButton(object sender, RoutedEventArgs e)
+        {
+            parent.Show();
+            this.Close();
+        }
         private void ClickGoBackButton(object sender, RoutedEventArgs e)
         {
             returnText.Text = "Go Back";

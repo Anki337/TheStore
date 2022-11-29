@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheStore"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="MainWindow" Height="600" Width="1000" >
     <Window.Resources>
+        <!--I Windows resources kan jag bygga templates som gäller för hela sidan.-->
+        <Style TargetType="TextBlock" x:Key="itemName">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="ToolTip" Value=""/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="itemButton">
+            <Setter Property="FontFamily" Value="Times"/>
+            <Setter Property="Content" Value="Add to Cart"/>
+            <Setter Property="Padding" Value="5"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="Beige"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+
+                </Trigger>
+
+
+            </Style.Triggers>
+
+        </Style>
+        <Style TargetType="StackPanel" >
+
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -14,6 +50,7 @@
             <RowDefinition MinHeight="300"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
+            <!--Område för header startar-->
 
         <Grid Grid.Row="0" x:Name="Header" Margin="1,1,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
@@ -31,7 +68,6 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!--Område för header startar-->
             <Label VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20">
                 <StackPanel Orientation="Horizontal">
                     <AccessText>
@@ -60,17 +96,13 @@
                     <TextBlock x:Name="userNameText" Text=""></TextBlock>
                 </StackPanel>
             </Label>
-
-            <Label Grid.Row="2" Grid.Column="6" HorizontalAlignment="Center">
-                <Button x:Name="shoppingCart" Click="shoppingCart_Click" BorderThickness="0">
-                    <Image Height="30" VerticalAlignment="Center" Source="pack://application:,,,/Images/cart.jpg"></Image>
+            <Label Grid.Row="1" Grid.Column="6" HorizontalAlignment="Left" Margin="42,30,0,0" Grid.RowSpan="2" Width="65">
+                <Button x:Name="shoppingCart" Click="shoppingCart_Click" BorderThickness="0" Height="25" Width="51" Visibility="Hidden">
+                    <Image Height="45" VerticalAlignment="Center" Source="pack://application:,,,/Images/cart.jpg" Width="51"></Image>
                 </Button>
-
             </Label>
-
-
-            <!--Område för header slutar-->
         </Grid>
+        <!--Område för header slutar-->
 
         <Grid Grid.Row="1" x:Name="Body">
             <Grid.RowDefinitions>
@@ -82,19 +114,19 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="125"/>
             </Grid.ColumnDefinitions>
             <!--Område för Body startar-->
             <!--Stack för kategori Outdoor -->
-            <StackPanel x:Name="Outdoor" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Background="Beige" >
-                <Border x:Name="ItemList" Background="LightGray" Margin="10, 10, 10, 0" CornerRadius="5">
+            <StackPanel x:Name="Outdoor" Orientation="Vertical" Grid.Column="0" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Background="Beige">
+                <Border x:Name="ItemList"  Margin="10, 10, 10, 0" CornerRadius="5">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -108,16 +140,20 @@
                         </Label>
                     </Grid>
                 </Border>
-                <ListBox SelectionChanged="outdoorList_SelectionChanged"  x:Name="outdoorList" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
+                <ListBox SelectionChanged="outdoorList_SelectionChanged"  x:Name="outdoorList" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                    <ListBox.Effect>
+                        <DropShadowEffect/>
+                    </ListBox.Effect>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                            <Border CornerRadius="5" Margin="5,5,5,5" Background="LightGray">
-                                <Label Content="{Binding Path=Name}">
-                                    
-                                </Label>
-                            </Border>
-                                
+                                <Border CornerRadius="5" Margin="5,5,5,5">
+                                    <Label Content="{Binding Path=Name}">
+
+                                    </Label>
+
+                                </Border>
+
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -125,40 +161,75 @@
             </StackPanel>
 
             <!--Stack för kategori Big -->
-            <StackPanel x:Name="Big" Grid.Column="3" Grid.Row="1" Grid.RowSpan="5" Orientation="Horizontal" Grid.ColumnSpan="2">
-                <StackPanel x:Name="BigLeksakStack">
-                    <Label Content="Leksak">
-                    </Label>
-                </StackPanel>
-                <StackPanel x:Name="BigAntalStack">
-                    <Label Content="Antal">
-                    </Label>
-                </StackPanel>
-                <StackPanel Name="BigInputStack">
-                    <Label Content="Beställ">
-                    </Label>
-                    <TextBox MaxWidth="20" Visibility="Hidden">
+            <StackPanel x:Name="Big" Orientation="Vertical" Grid.Column="3" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Background="Beige">
+                <Border  Margin="10, 10, 10, 0" CornerRadius="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-                    </TextBox>
-                </StackPanel>
+                        <Label Content="Antal" Grid.Column="1">
+                        </Label>
+                        <Label Content="Bild" Grid.Column="2">
+                        </Label>
+                    </Grid>
+                </Border>
+                <ListBox SelectionChanged="outdoorList_SelectionChanged"  x:Name="bigList">
+                    <ListBox.Effect>
+                        <DropShadowEffect/>
+                    </ListBox.Effect>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border CornerRadius="5" Margin="5,5,5,5">
+
+
+
+
+                                </Border>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
 
             <!--Stack för kategori Small -->
-            <StackPanel x:Name="Small" Grid.Column="5" Grid.Row="1" Grid.RowSpan="5" Orientation="Horizontal" Grid.ColumnSpan="2">
-                <StackPanel x:Name="SmallLeksakStack" >
-                    <Label Content="Leksak">
-                    </Label>
-                </StackPanel>
-                <StackPanel x:Name="SmallAntalStack">
-                    <Label Content="Antal">
-                    </Label>
-                </StackPanel>
-                <StackPanel Name="SmallInputStack">
-                    <Label Content="Beställ">
-                    </Label>
-                    <TextBox MaxWidth="20" Visibility="Hidden">
-                    </TextBox>
-                </StackPanel>
+            <StackPanel x:Name="Small" Orientation="Vertical" Grid.Column="6" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Background="Beige">
+                <Border  Margin="10, 10, 10, 0" CornerRadius="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Antal" Grid.Column="1">
+                        </Label>
+                        <Label Content="Bild" Grid.Column="2">
+                        </Label>
+                    </Grid>
+                </Border>
+                <ListBox SelectionChanged="outdoorList_SelectionChanged"  x:Name="smallList">
+                    <ListBox.Effect>
+                        <DropShadowEffect/>
+                    </ListBox.Effect>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border CornerRadius="5" Margin="5,5,5,5">
+
+
+
+
+                                </Border>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
 
 
@@ -172,9 +243,12 @@
             <!--Område för footer startar-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="BuyButton" Grid.ColumnSpan="2" Click="BuyButton_Click">Buy Toy</Button>
+            <Button x:Name="BuyButton" Grid.Column="0" Grid.ColumnSpan="1" Click="BuyButton_Click">Buy Toy</Button>
+            <Button x:Name="Test1" Grid.Column="1" Grid.ColumnSpan="1" Click="Test1_Click">Test1</Button>
+            <Button x:Name="Test2" Grid.Column="2" Grid.ColumnSpan="1" Click="Test2_Click">Test2</Button>
             <!--Område för footer slutar-->
         </Grid>
     </Grid>

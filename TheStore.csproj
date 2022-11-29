@@ -79,9 +79,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="Cart.cs" />
+    <Compile Include="FileManager.cs" />
+    <Compile Include="IParse.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="OrderWindow.xaml.cs">
       <DependentUpon>OrderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styles.xaml.cs">
+      <DependentUpon>Styles.xaml</DependentUpon>
     </Compile>
     <Compile Include="TheStoreLists.cs" />
     <Compile Include="User.cs" />
@@ -101,6 +106,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="OrderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,10 +170,17 @@
     <Content Include="Files\Items.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Files\ShippingInfo.txt" />
+    <Resource Include="Files\TestFile.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Files\ShippingInfo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Files\Users.txt" />
+    <Resource Include="Files\Users.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\logo_thestore.png" />

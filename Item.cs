@@ -2,12 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace TheStore
 {
-    public class Item
+    public class Item : IParse<Item>
     {
         private string _name;
         private string _description;
@@ -33,6 +36,25 @@ namespace TheStore
             this._weight = weight;
             this._category = category;
             //this._toyPic = imagePath;
+        }
+
+        public Item() 
+        { 
+        }
+
+        public Item parse(string[] words)
+        {
+            return new Item(name:words[0], 
+                            description:words[1],
+                            quantity:Convert.ToInt32(words[2]), 
+                            price:Convert.ToInt32(words[3]),
+                            weight:Convert.ToInt32(words[4]), 
+                            category:words[5]);
+        }
+        public override string ToString()
+        {
+            string line = Name + "," + Description + "," + Convert.ToInt32(Quantity) + "," + Convert.ToInt32(Price) + "," + Convert.ToInt32(Weight) + "," + Category + "\r\n";
+            return line;
         }
     }
 }
