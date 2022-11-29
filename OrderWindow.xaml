@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:TheStore"
         mc:Ignorable="d"
         Title="OrderWindow" Height="600" Width="1000">
+    <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource OrderWindowTextBox}">
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -149,15 +153,15 @@
                                        FontSize="8">Ort:</TextBlock>
                             <TextBlock Margin="5 200 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
                                        FontSize="8">Telefon Nr:</TextBlock>
-                            <TextBox x:Name="OrderWinAdress" Height="15" Width="120" Margin="48,22,-11,178" TextChanged="OrderWinAdress_TextChanged"></TextBox>
-                            <TextBox x:Name="OrderWinPostNr" Height="15" Width="120" Margin="63,40,4,160" TextChanged="OrderWinPostNr_TextChanged"></TextBox>
-                            <TextBox x:Name="OrderWinOrt" Height="15" Width="120" Margin="63,60,4,143" TextChanged="OrderWinOrt_TextChanged"></TextBox>
-                            <TextBox x:Name="OrderWinTele" Height="15" Width="120" Margin="63,77,4,123" TextChanged="OrderWinTele_TextChanged"></TextBox>
-                            <TextBox x:Name="OrderWinCompFaktAdress" Height="15" Width="120" Margin="63,120,4,83" TextChanged="OrderWinCompFaktAdress_TextChanged"></TextBox>
-                            <TextBox x:Name="OrderWinCompAdress" Height="15" Width="120" Margin="63,139,4,64"></TextBox>
-                            <TextBox x:Name="OrderWinCompPostNr" Height="15" Width="120" Margin="63,159,4,44"></TextBox>
-                            <TextBox x:Name="OrderWinCompOrt" Height="15" Width="120" Margin="63,179,4,24"></TextBox>
-                            <TextBox x:Name="OrderWinCompTele" Height="15" Width="120" Margin="63,199,4,4"></TextBox>
+                            <TextBox x:Name="OrderWinAdress"  Margin="48,22,-11,178" TextChanged="OrderWinAdress_TextChanged"></TextBox>
+                            <TextBox x:Name="OrderWinPostNr"  Margin="63,40,4,160" TextChanged="OrderWinPostNr_TextChanged"></TextBox>
+                            <TextBox x:Name="OrderWinOrt"  Margin="63,60,4,143" TextChanged="OrderWinOrt_TextChanged"></TextBox>
+                            <TextBox x:Name="OrderWinTele"  Margin="63,77,4,123" TextChanged="OrderWinTele_TextChanged"></TextBox>
+                            <TextBox x:Name="OrderWinCompFaktAdress"  Margin="63,120,4,83" TextChanged="OrderWinCompFaktAdress_TextChanged"></TextBox>
+                            <TextBox x:Name="OrderWinCompAdress"  Margin="63,139,4,64"></TextBox>
+                            <TextBox x:Name="OrderWinCompPostNr"  Margin="63,159,4,44"></TextBox>
+                            <TextBox x:Name="OrderWinCompOrt"  Margin="63,179,4,24"></TextBox>
+                            <TextBox x:Name="OrderWinCompTele"  Margin="63,199,4,4"></TextBox>
 
                             <ComboBox x:Name="SavedInfoComboBox" Width="100" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top"
                                       Margin="0,0,5,0" BorderBrush="#FF1B45C7" FontSize="10" 
@@ -182,10 +186,10 @@
                                 <ColumnDefinition Width="5*"/>
                                 <ColumnDefinition Width="45*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox x:Name="CardName" Height="15" Width="120" Margin="32,50,31,153" Grid.ColumnSpan="3" TextChanged="CardName_TextChanged" ></TextBox>
-                            <TextBox x:Name="CardNum" Height="15" Width="120" Margin="32,80,31,123" Grid.ColumnSpan="3" TextChanged="CardNum_TextChanged" ></TextBox>
-                            <TextBox x:Name="CardDate" Height="15" Width="120" Margin="32,109,31,94" Grid.ColumnSpan="3" TextChanged="CardDate_TextChanged" ></TextBox>
-                            <TextBox x:Name="CardCvv" Height="15" Margin="32,140,31,63" Grid.ColumnSpan="3" TextChanged="CardCvv_TextChanged" />
+                            <TextBox x:Name="CardName"  Margin="32,50,31,153" Grid.ColumnSpan="3" TextChanged="CardName_TextChanged" ></TextBox>
+                            <TextBox x:Name="CardNum"  Margin="32,80,31,123" Grid.ColumnSpan="3" TextChanged="CardNum_TextChanged" ></TextBox>
+                            <TextBox x:Name="CardDate"  Margin="32,109,31,94" Grid.ColumnSpan="3" TextChanged="CardDate_TextChanged" ></TextBox>
+                            <TextBox x:Name="CardCvv"  Margin="32,140,31,63" Grid.ColumnSpan="3" TextChanged="CardCvv_TextChanged" />
                             <TextBlock Margin="53,37,2,161" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
                                        FontSize="8" Height="20">Name of Cardholder:</TextBlock>
                             <TextBlock Margin="67,67,38,131" Foreground="White" FontWeight="Bold" TextDecorations="Underline"

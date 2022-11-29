@@ -7,7 +7,7 @@
 
 
 
-    <!--Style för (nästan)alla knappar i hela programmet-->
+    <!--Style för alla knappar i hela programmet-->
     <Style TargetType="Button">
         <Setter Property="BorderBrush">
             <Setter.Value>
@@ -41,7 +41,12 @@
         </Setter>
     </Style>
 
-
+<!--Styles för alla textBox i order window-->
+    <Style TargetType="TextBox" x:Key="OrderWindowTextBox">
+        <Setter Property="Height" Value="15"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+    </Style>
 
 
 </ResourceDictionary>
