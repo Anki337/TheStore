@@ -22,19 +22,25 @@ namespace TheStore
     /// </summary>
     public partial class CreateNewUser : Window
     {
-        public List<User> userList = new List<User>();
+        private List<User> list;
         User user = new User();
         Window parent;
 
         public MainWindow MainWindow { get; }
-        public TheStoreLists List { get; }
+        //public TheStoreLists List { get; }
 
-        public CreateNewUser(MainWindow mainWindow, TheStoreLists list)
+        /*public CreateNewUser(MainWindow mainWindow, TheStoreLists list)
         {
             InitializeComponent();
             parent = mainWindow;
             this.List = list;
             
+        }*/
+        public CreateNewUser(MainWindow mainWindow, List<User> list)
+        {
+            InitializeComponent();
+            parent = mainWindow;
+            this.list = list;
         }
 
         public CreateNewUser()
@@ -97,30 +103,12 @@ namespace TheStore
             {
                 createPassword();
                 AddUserToList();
+                returnText.Text = "Registration success";
                 submitButton.Visibility = Visibility.Collapsed;
-                resetButton.Visibility = Visibility.Collapsed;
+                //resetButton.Visibility = Visibility.Collapsed;
                 cancelButton.Visibility = Visibility.Collapsed;
                 goBackButton.Visibility = Visibility.Visible;
             }
-        }
-
-        private void clickResetButton(object sender, RoutedEventArgs e)
-        {
-            foreach (TextBox box in boxes.Children)
-            {
-                box.Clear();
-            }
-
-            foreach (PasswordBox pBox in boxes.Children)
-            {
-                pBox.Clear();
-            }
-        }
-
-        private void clickCancelButton(object sender, RoutedEventArgs e)
-        {
-            parent.Show();
-            this.Close();
         }
 
         private void createName()
@@ -157,13 +145,31 @@ namespace TheStore
             returnText.Text = "";
         }
 
-        private string AddUserToList()
+        private void AddUserToList()
         {
             user.LoggedIn = true;
-            List.AddToUserList(user);
-            return "Registration success";
+            list.Add(user);
         }
 
+        private void clickResetButton(object sender, RoutedEventArgs e)
+        {
+            foreach (TextBox box in boxes.Children)
+            {
+                if (box != null)
+                    box.Clear();
+            }
+            foreach (PasswordBox pBox in boxes.Children)
+            {
+                if (pBox != null)
+                    pBox.Clear();
+            }
+        }
+
+        private void clickCancelButton(object sender, RoutedEventArgs e)
+        {
+            parent.Show();
+            this.Close();
+        }
         private void ClickGoBackButton(object sender, RoutedEventArgs e)
         {
             returnText.Text = "Go Back";
