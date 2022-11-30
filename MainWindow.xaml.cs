@@ -37,7 +37,7 @@ namespace TheStore
             InitializeComponent();
             LoadData();
             ShowData();
-
+            
         }
         private void LoadData()
         {

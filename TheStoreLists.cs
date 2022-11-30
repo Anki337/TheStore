@@ -12,6 +12,8 @@ namespace TheStore
         List<User> userList = new List<User>();
         List<Item> availableItemsList = new List<Item>();
         List<Item> shoppingCartList = new List<Item>();
+        List<string> shippingInfoList = new List<string>();
+        List<string> cardInfoList = new List<string>();
         public TheStoreLists()
         {
 
@@ -48,6 +50,13 @@ namespace TheStore
         {
             return shoppingCartList;
         }
-
+        public List<String> GetShippingInfoList()
+        {
+            return shippingInfoList;
+        }
+        public List<String> GetCardInfoList()
+        {
+            return cardInfoList;
+        }
     }
 }
