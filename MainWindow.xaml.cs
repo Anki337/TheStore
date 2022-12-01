@@ -17,8 +17,7 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
-
-
+using System.Security;
 
 namespace TheStore
 {
@@ -27,10 +26,10 @@ namespace TheStore
     /// </summary>
     public partial class MainWindow : Window
     {
-        TheStoreLists list = new TheStoreLists();
+        //TheStoreLists list = new TheStoreLists();
         FileManager fileManager = new FileManager();
         private List<User> userList = new List<User>();
-        private List<Item> availableItemList = new List<Item>();
+        private List<Item> allItems = new List<Item>();
         private List<Item> myCart = new List<Item>();
         private User[] loggedInUser; //= new User[1];
 
@@ -42,9 +41,7 @@ namespace TheStore
         }
         private void LoadData()
         {
-            fileManager.readFromFile("Items", list.GetAvailableItemList());
-            fileManager.readFromFile("Items", availableItemList);
-            fileManager.readFromFile("Users", list.GetUserList());
+            fileManager.readFromFile("Items", allItems);
             fileManager.readFromFile("Users", userList);
             
             //User user1 = new User("Max", "bananer", "max@max.com", "Stan", 0735040590); //test User
@@ -54,8 +51,6 @@ namespace TheStore
 
         private void ShowData()
         {
-            outdoorList.ItemsSource = list.GetAvailableItemList();
-            outdoorList.Items.Refresh();
             listAllItemsInMainWindowBody();
             
         }
@@ -111,7 +106,7 @@ namespace TheStore
 
         private void listAllItemsInMainWindowBody()
         {
-            foreach (Item item in availableItemList)
+            foreach (Item item in allItems)
             {
                 Label toyName = new Label();
                 Label saldo = new Label();
@@ -122,10 +117,10 @@ namespace TheStore
 
                 toyName.Style = (Style)Resources["ItemLabel"];
                 saldo.Content = item.Quantity;
-                /*if (item.getCategory().Equals("Outdoor"))
+                if (item.Category.Equals("Outdoor"))
                 {
-                    addContentToStackPanelByCategory("outdoor", item);
-                }*/
+                    addContentToStackPanelByCategory(outdoorList, item);
+                }
                 if (item.Category.Equals("Big"))
                 {
                     addContentToStackPanelByCategory(bigList, item);
@@ -189,7 +184,7 @@ namespace TheStore
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
             int quantityToBuy = 1;
-            string näjm = availableItemList[0].Name;
+            string näjm = allItems[0].Name;
             //OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser);
             //orderWindow.Show();
             //this.Hide();
@@ -197,7 +192,7 @@ namespace TheStore
         }
 
 
-        private void outdoorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /*private void outdoorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBox box = (ListBox)sender;
             Item addedItem = (Item)box.SelectedItem;
@@ -209,7 +204,7 @@ namespace TheStore
                 cartList += item.Name + " ";
             }
             MessageBox.Show("Shoppingcart cointains: " + cartList);
-        }
+        }*/
 
         //these are testbuttons that are called from MainWindow (footer)
         //FEEL FREE to use these testbuttons for implementation testing!
@@ -222,7 +217,7 @@ namespace TheStore
         }
         private void Test2_Click(object sender, RoutedEventArgs e)
         {
-            fileManager.writeToFile("Users", list.GetUserList());
+            fileManager.writeToFile("Users", userList);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -231,14 +226,14 @@ namespace TheStore
             DockPanel dock = (DockPanel)butt.Parent;
             TextBlock itenName = (TextBlock)dock.Children[0];
             string name = itenName.Text;
-            foreach(Item item in list.GetAvailableItemList())
+            foreach(Item item in allItems)
             {
                 if (item.Name.Equals(name))
                 {
                     Item clonedItem = item.clone();
                     clonedItem.Quantity = 1;
-                    list.AddToShoppingCartList(clonedItem);
-                    list.EditQuantityInItem(name);
+                    myCart.Add(clonedItem);
+                    item.Quantity--;
                     MessageBox.Show(item.Name + " added to shopping cart" + "current quantity is: " + item.Quantity);
                 }
             }

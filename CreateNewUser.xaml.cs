@@ -22,7 +22,7 @@ namespace TheStore
     /// </summary>
     public partial class CreateNewUser : Window
     {
-        private List<User> list;
+        private List<User> userList;
         private User[] loggedInUser;
         User user = new User();
         Window parent;
@@ -37,11 +37,11 @@ namespace TheStore
             this.List = list;
             
         }*/
-        public CreateNewUser(MainWindow mainWindow, List<User> list, User[] loggedInUser)
+        public CreateNewUser(MainWindow mainWindow, List<User> userList, User[] loggedInUser)
         {
             InitializeComponent();
             parent = mainWindow;
-            this.list = list;
+            this.userList = userList;
             this.loggedInUser = loggedInUser;
         }
 
@@ -149,7 +149,7 @@ namespace TheStore
 
         private void addUserToUserList() 
         {
-            list.Add(user);
+            userList.Add(user);
         }
 
         private void setLoggedInUser()

@@ -16,7 +16,6 @@ namespace TheStore
     internal class FileManager
     {
         static DirectoryInfo currentdirectory = new DirectoryInfo(".");
-        TheStoreLists list = new TheStoreLists();
         public void readFromFile<T>(string fileName, List<T> listName) where T : IParse<T>, new() //Reads a file fileName.txt and creates a list listName<Item> or listName<User>
         {
             string path = currentdirectory.FullName + "\\Files" + @"\" + fileName + ".txt";
