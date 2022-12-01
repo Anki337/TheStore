@@ -49,7 +49,7 @@ namespace TheStore
             //returnText.Text = "Please enter a phonenumber";
             //returnText.Text = "Please enter the same password twice";
             //returnText.Text = "The password must be at least 6 characters long";
-            
+
             user = new User(name, password, email, address, phone);
             userList.Add(user);
             User[] loggedInUser = { user };
@@ -86,5 +86,5 @@ namespace TheStore
             this.Close();
         }
         //private void ClickCheckOutButton()  {}
-
+    }
 }

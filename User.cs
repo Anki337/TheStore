@@ -71,6 +71,10 @@ namespace TheStore
                             Email: words[2], Address: words[3],
                             Phone: Convert.ToDouble(words[4]));
         }
+        public User()
+        {
+
+        }
 
         public override string ToString()
         {
