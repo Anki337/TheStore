@@ -49,19 +49,23 @@
                         <TextBlock x:Name="userNameText">Max</TextBlock>
                     </StackPanel>
                 </Label>
-                <Button x:Name="ContinueShopping" Content="Purchase more!" Grid.Row="2" Grid.Column="6" Width="100" Height="20" Click="ContinueShopping_Click" />
+                <Button x:Name="ContinueShopping" Content="Continue Shopping!" Grid.Row="2" Grid.Column="6" Width="120" Height="20" Click="ContinueShopping_Click" />
                 <!--Område för header slutar-->
             </Grid>
 
             <Grid Grid.Row="1" x:Name="Body">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="91*"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
                 <!--Område för Body startar-->
                 <Grid.Background>
                     <ImageBrush ImageSource="pack://application:,,,/Images/Checkout.png" Stretch="UniformToFill"/>
                 </Grid.Background>
                 <Button Height="20" Width="100" Content="Spara Information" x:Name="SaveButton" Click="SaveButton_Click"
-                 VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="480,0,0,30" Background="Wheat"></Button>
-                <Grid x:Name="PurchasedItems" HorizontalAlignment="Center"
-                      VerticalAlignment="Center" Height="300" Width="750">
+                 VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="475,0,0,155" Background="Wheat"></Button>
+                <Grid x:Name="PurchasedItems" HorizontalAlignment="Left"
+                      VerticalAlignment="Center" Height="300" Width="750" Margin="125,0,0,0">
                     <Grid VerticalAlignment="Center">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -131,43 +135,26 @@
                             >Försändelse information</Label>
                         </StackPanel>
                         <Grid Grid.Column="2" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="94,32,94,0">
-                            <TextBlock Margin="5 0 0 0" Foreground="Wheat" FontWeight="Bold" TextDecorations="Underline" 
-                                       FontStyle="Italic" FontSize="11" FontFamily="Comic Sans MS">Privatperson</TextBlock>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="79*"/>
+                                <ColumnDefinition Width="109*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Margin="5,0,0,0" Foreground="Wheat" FontWeight="Bold" TextDecorations="Underline" 
+                                       FontStyle="Italic" FontSize="11" FontFamily="Comic Sans MS" Grid.ColumnSpan="2">Privatperson</TextBlock>
                             <TextBlock Margin="5 20 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8">Adress:</TextBlock>
+                                       FontSize="8" Grid.ColumnSpan="2">Adress:</TextBlock>
                             <TextBlock Margin="5 40 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8">Post nr:</TextBlock>
+                                       FontSize="8" Grid.ColumnSpan="2">Post nr:</TextBlock>
                             <TextBlock Margin="5 60 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8">Ort:</TextBlock>
-                            <TextBlock Margin="5 80 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8">Telefon Nr:</TextBlock>
-                            <TextBlock Margin="5 100 0 0" Foreground="wheat" FontWeight="Bold" TextDecorations="Underline"
-                                       FontStyle="Italic" FontSize="11" FontFamily="Comic Sans MS" >Företagskund</TextBlock>
-                            <TextBlock Margin="5 120 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8">Faktura Adress:</TextBlock>
-                            <TextBlock Margin="5 140 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8">Adress:</TextBlock>
-                            <TextBlock Margin="5 160 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8">Post nr:</TextBlock>
-                            <TextBlock Margin="5 180 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8">Ort:</TextBlock>
-                            <TextBlock Margin="5 200 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8">Telefon Nr:</TextBlock>
-                            <TextBox x:Name="OrderWinAdress"  Margin="48,22,-11,178" TextChanged="OrderWinAdress_TextChanged"></TextBox>
-                            <TextBox x:Name="OrderWinPostNr"  Margin="63,40,4,160" TextChanged="OrderWinPostNr_TextChanged"></TextBox>
-                            <TextBox x:Name="OrderWinOrt"  Margin="63,60,4,143" TextChanged="OrderWinOrt_TextChanged"></TextBox>
-                            <TextBox x:Name="OrderWinTele"  Margin="63,77,4,123" TextChanged="OrderWinTele_TextChanged"></TextBox>
-                            <TextBox x:Name="OrderWinCompFaktAdress"  Margin="63,120,4,83" TextChanged="OrderWinCompFaktAdress_TextChanged"></TextBox>
-                            <TextBox x:Name="OrderWinCompAdress"  Margin="63,139,4,64"></TextBox>
-                            <TextBox x:Name="OrderWinCompPostNr"  Margin="63,159,4,44"></TextBox>
-                            <TextBox x:Name="OrderWinCompOrt"  Margin="63,179,4,24"></TextBox>
-                            <TextBox x:Name="OrderWinCompTele"  Margin="63,199,4,4"></TextBox>
-
-                            <ComboBox x:Name="SavedInfoComboBox" Width="100" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top"
-                                      Margin="0,0,5,0" BorderBrush="#FF1B45C7" FontSize="10" 
-                                       Grid.ColumnSpan="3">
+                                       FontSize="8" Grid.ColumnSpan="2">Ort:</TextBlock>
+                            <TextBlock Margin="5,80,0,0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="8" Grid.ColumnSpan="2">Telefon Nr:</TextBlock>
+                            <TextBox x:Name="OrderWinAdress"  Margin="63,24,4,180" TextChanged="OrderWinAdress_TextChanged" Grid.ColumnSpan="2"></TextBox>
+                            <TextBox x:Name="OrderWinPostNr"  Margin="63,42,4,162" TextChanged="OrderWinPostNr_TextChanged" Grid.ColumnSpan="2"></TextBox>
+                            <TextBox x:Name="OrderWinOrt"  Margin="63,60,4,143" TextChanged="OrderWinOrt_TextChanged" Grid.ColumnSpan="2"></TextBox>
+                            <TextBox x:Name="OrderWinTele"  Margin="63,78,4,124" TextChanged="OrderWinTele_TextChanged" Grid.ColumnSpan="2"></TextBox>
+                            <ComboBox x:Name="SavedInfoComboBox" Width="100" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="#FF1B45C7" FontSize="10" Grid.Column="1">
                                 <ComboBoxItem x:Name="item1"></ComboBoxItem>
-
                                 <ComboBox.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="#FFF0F0F0"/>
@@ -187,15 +174,16 @@
                                 <ColumnDefinition Width="45*"/>
                             </Grid.ColumnDefinitions>
                             <TextBox x:Name="CardName"  Margin="32,50,31,153" Grid.ColumnSpan="3" TextChanged="CardName_TextChanged" ></TextBox>
-                            <TextBox x:Name="CardNum"  Margin="32,80,31,123" Grid.ColumnSpan="3" TextChanged="CardNum_TextChanged" ></TextBox>
-                            <TextBox x:Name="CardDate"  Margin="32,109,31,94" Grid.ColumnSpan="3" TextChanged="CardDate_TextChanged" ></TextBox>
-                            <TextBox x:Name="CardCvv"  Margin="32,140,31,63" Grid.ColumnSpan="3" TextChanged="CardCvv_TextChanged" />
+                            <TextBox x:Name="CardNum" Margin="32,80,31,123" Grid.ColumnSpan="3" TextChanged="CardNum_TextChanged" ></TextBox>
+                            <TextBox x:Name="CardDate1" Width="50" TextChanged="CardDate1_TextChanged" Margin="32,112,51,91" />
+                            <TextBox x:Name="CardDate2" Width="50" TextChanged="CardDate2_TextChanged" Margin="102,112,31,91" Grid.ColumnSpan="3" />
+                            <TextBox x:Name="CardCvv" Width="50" Margin="32,140,31,63" Grid.ColumnSpan="3" TextChanged="CardCvv_TextChanged" />
                             <TextBlock Margin="53,37,2,161" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
                                        FontSize="8" Height="20">Name of Cardholder:</TextBlock>
                             <TextBlock Margin="67,67,38,131" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
                                        FontSize="8" Height="20" Grid.ColumnSpan="3">Card Number</TextBlock>
                             <TextBlock Margin="67,95,38,103" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8"  Height="20" Grid.ColumnSpan="3">Expiration date:</TextBlock>
+                                       FontSize="8"  Height="20" Grid.ColumnSpan="3">Expiration date(Y/M)</TextBlock>
                             <TextBlock Margin="74,127,31,71" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
                                        FontSize="8"  Height="20" Grid.ColumnSpan="3">Card Cvv:</TextBlock>
                             <ComboBox x:Name="PaymentBox" Width="120" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"

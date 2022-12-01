@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace TheStore
 {
@@ -26,21 +27,13 @@ namespace TheStore
     {
         TheStoreLists list;
 
-        List<string> shippingInfoList = new List<string>();
-        List<string> cardInfoList = new List<string>();
+        List<string> shippingInfoList; 
+        List<string> cardInfoList = new List<string>(); // 
         List<Item> myCart;
         User[] loggedInUser;
-
-        
-        
-
-        User user = new User();
-
-        Window parent;
-        
-        ObservableCollection<string> comboBoxPay = new ObservableCollection<string>();
-        
-        
+        User user;
+        Window parent;     
+        ObservableCollection<string> comboBoxPay = new ObservableCollection<string>();      
         
         public string AdressInput { get; set; }
         public string PostNrInput { get; set; }
@@ -60,41 +53,7 @@ namespace TheStore
                 comboBoxPay = value;
             }
         }
-
-        
-
-        /*public ObservableCollection<string> SavedPersons
-{
-get { return savedPersons; }
-set
-{
-savedPersons = value;
-}                        
-}*/
-
-
-
-
-        public OrderWindow(Window mainWindow, TheStoreLists list)
-        {
-            
-            parent = mainWindow;
-            this.list = list;
-            InitializeComponent();
-
-            itemNameWindow.ItemsSource = list.GetShoppingCartList();
-            itemNameWindow.Items.Refresh();
-            itemQuantityWindow.ItemsSource = list.GetShoppingCartList();
-            itemQuantityWindow.Items.Refresh();           
-            item1.Content = getNameOfLoggedInUser();
-            SavedInfoComboBox.Items.Refresh();
-            ComboBoxInfo();
-
-            PopulateTextBoxes();
-            
-            //WriteSavedNameToFile();
-            
-        }
+     
         //Constructor that uses array LoggedInUser and myCartList referensed(sent) from Main Window
         public OrderWindow(MainWindow mainWindow, List<Item> myCart, User[] loggedInUser)
         {
@@ -102,6 +61,14 @@ savedPersons = value;
             parent = mainWindow;
             this.myCart = myCart;
             this.loggedInUser = loggedInUser;
+            itemNameWindow.ItemsSource = list.GetShoppingCartList();
+            itemNameWindow.Items.Refresh();
+            itemQuantityWindow.ItemsSource = list.GetShoppingCartList();
+            itemQuantityWindow.Items.Refresh();
+            item1.Content = getNameOfLoggedInUser();
+            SavedInfoComboBox.Items.Refresh();
+            ComboBoxInfo();
+            PopulateTextBoxes();
         }
         private void LogCreateButton_Click(object sender, RoutedEventArgs e)
         {
@@ -132,7 +99,8 @@ savedPersons = value;
 
         public void PopulateTextBoxes()
         {
-            if (user.LoggedIn == false)
+            
+            if (loggedInUser != null) 
             {
                 string[] item = list.GetShippingInfoList().ToArray();
 
@@ -196,12 +164,6 @@ savedPersons = value;
             TelefonNrInput = OrderWinTele.Text;
         }
 
-        private void OrderWinCompFaktAdress_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            FakturaAdressInput = OrderWinCompFaktAdress.Text;
-        }
-
-
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -230,11 +192,14 @@ savedPersons = value;
             CardNumInput = CardNum.Text;
         }
 
-        private void CardDate_TextChanged(object sender, TextChangedEventArgs e)
+        private void CardDate1_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CardDateInput = CardDate.Text;
+            CardDateInput = CardDate1.Text;
         }
-
+        private void CardDate2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CardDateInput = CardDate2.Text;
+        }
         private void CardCvv_TextChanged(object sender, TextChangedEventArgs e)
         {
             CardCvvInput = CardCvv.Text;
@@ -246,11 +211,7 @@ savedPersons = value;
             OrderWinPostNr.Clear();
             OrderWinOrt.Clear();
             OrderWinTele.Clear();
-            OrderWinCompAdress.Clear();
-            OrderWinCompPostNr.Clear();
-            OrderWinCompOrt.Clear();
-            OrderWinCompTele.Clear();
-            OrderWinCompFaktAdress.Clear();
+
         }
     }
 }
