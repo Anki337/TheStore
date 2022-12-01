@@ -26,12 +26,11 @@ namespace TheStore
     /// </summary>
     public partial class MainWindow : Window
     {
-        //TheStoreLists list = new TheStoreLists();
         FileManager fileManager = new FileManager();
         private List<User> userList = new List<User>();
         private List<Item> allItems = new List<Item>();
         private List<Item> myCart = new List<Item>();
-        private User[] loggedInUser; //= new User[1];
+        private User[] loggedInUser = new User[1];
 
         public MainWindow()
         {
@@ -43,16 +42,11 @@ namespace TheStore
         {
             fileManager.readFromFile("Items", allItems);
             fileManager.readFromFile("Users", userList);
-            
-            //User user1 = new User("Max", "bananer", "max@max.com", "Stan", 0735040590); //test User
-            //list.AddToUserList(user1); //for testing
-            //user1.LoggedIn = true; //for testing, will be set in loggin
         }
 
         private void ShowData()
         {
             listAllItemsInMainWindowBody();
-            
         }
         private void logButton_Click(object sender, RoutedEventArgs e)
         {
@@ -63,10 +57,11 @@ namespace TheStore
             {
                 if (mail.Equals(user.Email) && password.Equals(user.Password))
                 {
-                    User[] loggedInUser = {user};
+                    loggedInUser[0] = user;
+
                     mailBox.Visibility = Visibility.Collapsed;
                     pwBox.Visibility = Visibility.Collapsed;
-                    userNameText.Text = " back " + user.Name;
+                    userNameText.Text = " back " + loggedInUser[0].Name;
                     shoppingCart.Visibility = Visibility.Visible;
                     logButton.Visibility = Visibility.Collapsed;
                     createButton.Visibility = Visibility.Collapsed;
@@ -76,31 +71,27 @@ namespace TheStore
         }
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
-
             CreateNewUser createNewUser = new CreateNewUser(this, userList, loggedInUser);
             createNewUser.Show();
             this.Hide();
         }
-
 
         private void shoppingCart_Click(object sender, RoutedEventArgs e)
         {
             OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser);
             orderWindow.Show();
             this.Hide();
-
         }
         private  void logOutButton_Click(object sender, RoutedEventArgs e)
         {
             mailBox.Visibility = Visibility.Visible;
             pwBox.Visibility = Visibility.Visible;
-            User[] loggedInUser = { null };
+            loggedInUser = null;
             userNameText.Text = "";
             logButton.Visibility = Visibility.Visible;
             createButton.Visibility = Visibility.Visible;
             logOutButton.Visibility = Visibility.Collapsed;
             shoppingCart.Visibility = Visibility.Hidden;
-
         }
 
         private void listAllItemsInMainWindowBody()
@@ -127,7 +118,6 @@ namespace TheStore
                 if (item.Category.Equals("Small"))
                 {
                     addContentToStackPanelByCategory(smallList, item);
-                   
                 }
             }
         }
@@ -152,8 +142,6 @@ namespace TheStore
             textBlock.Style = (Style)Resources["itemName"];
 
             button.Style = (Style)Resources["itemButton"];
-            
-            
 
             dock.Children.Add(textBlock);
             dock.Children.Add(image);
@@ -178,9 +166,7 @@ namespace TheStore
             }*/
         }
 
-        
-
-        private void BuyButton_Click(object sender, RoutedEventArgs e)
+        public void BuyButton_Click(object sender, RoutedEventArgs e)
         {
             int quantityToBuy = 1;
             string näjm = allItems[0].Name;
@@ -219,7 +205,7 @@ namespace TheStore
             fileManager.writeToFile("Users", userList);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ItemButton_Click(object sender, RoutedEventArgs e)
         {
             Button butt = (Button)sender;
             DockPanel dock = (DockPanel)butt.Parent;
@@ -236,7 +222,6 @@ namespace TheStore
                     MessageBox.Show(item.Name + " added to shopping cart" + "current quantity is: " + item.Quantity);
                 }
             }
-            
         }
     }
 }

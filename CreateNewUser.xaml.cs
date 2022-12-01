@@ -42,7 +42,6 @@ namespace TheStore
             double phone = double.Parse(phoneBox.Text);
             string password = passwordBoxOne.Password;
 
-
             //returnText.Text = "Please enter your first and last name";
             //returnText.Text = "Please enter a correct email address";
             //returnText.Text = "Please enter an address";
@@ -52,7 +51,7 @@ namespace TheStore
 
             user = new User(name, password, email, address, phone);
             userList.Add(user);
-            User[] loggedInUser = { user };
+            loggedInUser[0] = user;
             returnText.Text = "Registration success";
             submitButton.Visibility = Visibility.Collapsed;
             //resetButton.Visibility = Visibility.Collapsed;
@@ -62,15 +61,13 @@ namespace TheStore
 
         private void clickResetButton(object sender, RoutedEventArgs e)
         {
-            foreach (TextBox box in boxes.Children)
+            foreach (TextBox box in boxes.Children.OfType<TextBox>())
             {
-                if (box != null)
-                    box.Clear();
+                box.Clear();
             }
-            foreach (PasswordBox pBox in boxes.Children)
+            foreach (PasswordBox pBox in boxes.Children.OfType<PasswordBox>())
             {
-                if (pBox != null)
-                    pBox.Clear();
+                pBox.Clear();
             }
         }
         private void clickCancelButton(object sender, RoutedEventArgs e)
@@ -81,7 +78,6 @@ namespace TheStore
         private void ClickContinueShoppingButton(object sender, RoutedEventArgs e)
         {
             returnText.Text = "Continue shopping";
-            //list.RemoveAt(list.Count - 1);
             parent.Show();
             this.Close();
         }
