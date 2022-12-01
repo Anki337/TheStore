@@ -64,7 +64,6 @@ namespace TheStore
                 if (mail.Equals(user.Email) && password.Equals(user.Password))
                 {
                     User[] loggedInUser = {user};
-                    userList.Remove(user);
                     mailBox.Visibility = Visibility.Collapsed;
                     pwBox.Visibility = Visibility.Collapsed;
                     userNameText.Text = " back " + user.Name;
