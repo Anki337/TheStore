@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -25,19 +25,23 @@ namespace TheStore
     public partial class OrderWindow : Window
     {
         TheStoreLists list;
-        
+
         List<string> shippingInfoList = new List<string>();
         List<string> cardInfoList = new List<string>();
         List<Item> myCart;
         User[] loggedInUser;
+
         
+        
+
+        User user = new User();
 
         Window parent;
         
         ObservableCollection<string> comboBoxPay = new ObservableCollection<string>();
         
         
-        User user = new User("aaa", "bbb", "ccc", "ddd", 32);
+        
         public string AdressInput { get; set; }
         public string PostNrInput { get; set; }
         public string OrtInput { get; set; }
@@ -56,24 +60,28 @@ namespace TheStore
                 comboBoxPay = value;
             }
         }
-        /*public ObservableCollection<string> SavedPersons
-        {
-            get { return savedPersons; }
-            set
-            {
-                savedPersons = value;
-            }                        
-        }*/
 
-       
         
+
+        /*public ObservableCollection<string> SavedPersons
+{
+get { return savedPersons; }
+set
+{
+savedPersons = value;
+}                        
+}*/
+
+
+
 
         public OrderWindow(Window mainWindow, TheStoreLists list)
         {
-            user.LoggedIn = true;
+            
             parent = mainWindow;
             this.list = list;
             InitializeComponent();
+
             itemNameWindow.ItemsSource = list.GetShoppingCartList();
             itemNameWindow.Items.Refresh();
             itemQuantityWindow.ItemsSource = list.GetShoppingCartList();
@@ -81,6 +89,8 @@ namespace TheStore
             item1.Content = getNameOfLoggedInUser();
             SavedInfoComboBox.Items.Refresh();
             ComboBoxInfo();
+
+            PopulateTextBoxes();
             
             //WriteSavedNameToFile();
             
@@ -109,17 +119,31 @@ namespace TheStore
 
         public void TextBoxInfo()
         {
-            cardInfoList.Add(this.CardNameInput);
-            cardInfoList.Add(this.CardNumInput);
-            cardInfoList.Add(this.CardDateInput);
-            cardInfoList.Add(this.CardCvvInput);
-            shippingInfoList.Add(this.AdressInput);
-            shippingInfoList.Add(this.PostNrInput);
-            shippingInfoList.Add(this.OrtInput);
-            shippingInfoList.Add(this.FakturaAdressInput);
-            shippingInfoList.Add(this.TelefonNrInput);
-
+            list.GetCardInfoList().Add(this.CardNameInput);
+            list.GetCardInfoList().Add(this.CardNumInput);
+            list.GetCardInfoList().Add(this.CardDateInput);
+            list.GetCardInfoList().Add(this.CardCvvInput);
+            list.GetShippingInfoList().Add(this.AdressInput);
+            list.GetShippingInfoList().Add(this.PostNrInput);
+            list.GetShippingInfoList().Add(this.OrtInput);
+            list.GetShippingInfoList().Add(this.FakturaAdressInput);
+            list.GetShippingInfoList().Add(this.TelefonNrInput);
         }
+
+        public void PopulateTextBoxes()
+        {
+            if (user.LoggedIn == false)
+            {
+                string[] item = list.GetShippingInfoList().ToArray();
+
+                //OrderWinAdress.SelectedText += item[0];
+                //OrderWinPostNr.SelectedText += item[1];
+                //OrderWinOrt.SelectedText += item[2];
+                //OrderWinTele.SelectedText += item[3];
+                //OrderWinAdress.AppendText(item[0]);
+            }                   
+        }
+     
 
         public void ComboBoxInfo()
         {
@@ -136,7 +160,7 @@ namespace TheStore
             string name = "No logged in user";
             foreach (User user in list.GetUserList())
             {
-                if (user.LoggedIn == true)
+                if (user.LoggedIn == false) 
                 {
                     name = user.Name.ToString();
                     break;
@@ -148,7 +172,7 @@ namespace TheStore
         {
             DirectoryInfo currentdirectory = new DirectoryInfo(".");
             string shippInfo = currentdirectory.FullName + "\\Files" + @"\ShippingInfo.txt";
-            string[] Customers = shippingInfoList.ToArray();
+            string[] Customers = list.GetShippingInfoList().ToArray();
             File.WriteAllLines(shippInfo, Customers);
         }
         
@@ -189,9 +213,11 @@ namespace TheStore
             {
 
                 TextBoxInfo();
-                MessageBox.Show("Användare sparad!" + " " + "med info" + " " + shippingInfoList[0] + " " + shippingInfoList[1] + " " + shippingInfoList[2] + " " + shippingInfoList[3] + " " + shippingInfoList[4] + "!");
+                MessageBox.Show("Användare sparad!" + " " + "med info" + " " + list.GetShippingInfoList()[0] + " " + list.GetShippingInfoList()[1] + " " + list.GetShippingInfoList()[2] + " " + list.GetShippingInfoList()[3] + " " + list.GetShippingInfoList()[4] + "!");
                 WriteShippingListToFile();
             }
+            ClearAllFields();
+            
         }
 
         private void CardName_TextChanged(object sender, TextChangedEventArgs e)
@@ -214,11 +240,17 @@ namespace TheStore
             CardCvvInput = CardCvv.Text;
         }
 
-        /*private void logCreateButton_Click(object sender, RoutedEventArgs e) //The user needs to be loggedIn before getting to this window
-         {
-             //CreateNewUser createNewUser = new CreateNewUser(this, list.GetUserList());
-             createNewUser.Show();
-             this.Hide();
-         }*/
+        public void ClearAllFields()
+        {
+            OrderWinAdress.Clear();
+            OrderWinPostNr.Clear();
+            OrderWinOrt.Clear();
+            OrderWinTele.Clear();
+            OrderWinCompAdress.Clear();
+            OrderWinCompPostNr.Clear();
+            OrderWinCompOrt.Clear();
+            OrderWinCompTele.Clear();
+            OrderWinCompFaktAdress.Clear();
+        }
     }
 }
