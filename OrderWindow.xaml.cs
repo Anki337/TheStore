@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -25,7 +25,12 @@ namespace TheStore
     public partial class OrderWindow : Window
     {
         TheStoreLists list;
-        
+
+        List<string> shippingInfoList = new List<string>();
+        List<string> cardInfoList = new List<string>();
+        List<Item> myCart;
+        User[] loggedInUser;
+
         
         
 
@@ -76,8 +81,7 @@ savedPersons = value;
             parent = mainWindow;
             this.list = list;
             InitializeComponent();
-            FileManager fileManager = new FileManager();
-            fileManager.readFromFile("ShippingInfo", ); // behöver läsa ifrån fil till en lista som PopulateTextBoxes() Kan använda sig av.
+
             itemNameWindow.ItemsSource = list.GetShoppingCartList();
             itemNameWindow.Items.Refresh();
             itemQuantityWindow.ItemsSource = list.GetShoppingCartList();
@@ -91,7 +95,14 @@ savedPersons = value;
             //WriteSavedNameToFile();
             
         }
-
+        //Constructor that uses array LoggedInUser and myCartList referensed(sent) from Main Window
+        public OrderWindow(MainWindow mainWindow, List<Item> myCart, User[] loggedInUser)
+        {
+            InitializeComponent();
+            parent = mainWindow;
+            this.myCart = myCart;
+            this.loggedInUser = loggedInUser;
+        }
         private void LogCreateButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -121,7 +132,7 @@ savedPersons = value;
 
         public void PopulateTextBoxes()
         {
-            if (user.LoggedIn == false)// False här skall vara true egentligen, Satte fale i test syfte
+            if (user.LoggedIn == false)
             {
                 string[] item = list.GetShippingInfoList().ToArray();
 
@@ -129,7 +140,7 @@ savedPersons = value;
                 //OrderWinPostNr.SelectedText += item[1];
                 //OrderWinOrt.SelectedText += item[2];
                 //OrderWinTele.SelectedText += item[3];
-                OrderWinAdress.AppendText(item[0]);
+                //OrderWinAdress.AppendText(item[0]);
             }                   
         }
      
@@ -149,7 +160,7 @@ savedPersons = value;
             string name = "No logged in user";
             foreach (User user in list.GetUserList())
             {
-                if (user.LoggedIn == false) // False här skall vara true egentligen, Satte fale i test syfte
+                if (user.LoggedIn == false) 
                 {
                     name = user.Name.ToString();
                     break;

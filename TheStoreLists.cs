@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,6 +50,7 @@ namespace TheStore
         {
             return shoppingCartList;
         }
+
         public List<String> GetShippingInfoList()
         {
             return shippingInfoList;
@@ -57,6 +58,17 @@ namespace TheStore
         public List<String> GetCardInfoList()
         {
             return cardInfoList;
+
+        public void EditQuantityInItem(string name)
+        {
+            foreach(Item item in availableItemsList)
+            {
+                if(item.Name.Equals(name))
+                {
+                    item.Quantity--;
+                }
+            }
+
         }
     }
 }
