@@ -90,19 +90,19 @@ namespace TheStore
 
         public void PopulateTextBoxes()
         {
-            
-            if (loggedInUser != null) 
-            {
-                string[] item = shippingInfoList.ToArray();
 
-                //OrderWinAdress.SelectedText += item[0];
-                //OrderWinPostNr.SelectedText += item[1];
-                //OrderWinOrt.SelectedText += item[2];
-                //OrderWinTele.SelectedText += item[3];
-                //OrderWinAdress.AppendText(item[0]);
-            }                   
+            /* if (myCart.Count > 0) 
+             {
+                 string[] item = shippingInfoList.ToArray();
+
+                 //OrderWinAdress.SelectedText += item[0];
+                 //OrderWinPostNr.SelectedText += item[1];
+                 //OrderWinOrt.SelectedText += item[2];
+                 //OrderWinTele.SelectedText += item[3];
+                 //OrderWinAdress.AppendText(item[0]);
+             }    */
         }
-     
+
 
         public void ComboBoxInfo()
         {

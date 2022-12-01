@@ -87,20 +87,29 @@ namespace TheStore
 
         private void shoppingCart_Click(object sender, RoutedEventArgs e)
         {
-            OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser);
-            orderWindow.Show();
-            this.Hide();
+
+            if (loggedInUser[0] == null)
+            {
+                CreateNewUser createNewUser = new CreateNewUser(this, myCart);
+                this.Hide();
+                createNewUser.Show();
+            }
+            if (loggedInUser[0] != null)
+            {
+                OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser);
+                orderWindow.Show();
+                this.Hide();
+            }
         }
         private  void logOutButton_Click(object sender, RoutedEventArgs e)
         {
             mailBox.Visibility = Visibility.Visible;
             pwBox.Visibility = Visibility.Visible;
-            loggedInUser = null;
+            loggedInUser[0] = null;
             userNameText.Text = "";
             logButton.Visibility = Visibility.Visible;
             createButton.Visibility = Visibility.Visible;
             logOutButton.Visibility = Visibility.Collapsed;
-            shoppingCart.Visibility = Visibility.Hidden;
         }
 
         private void listAllItemsInMainWindowBody()
@@ -177,28 +186,23 @@ namespace TheStore
 
         public void BuyButton_Click(object sender, RoutedEventArgs e)
         {
-            int quantityToBuy = 1;
-            string näjm = allItems[0].Name;
+            if (loggedInUser[0] == null)
+            {
+                CreateNewUser createNewUser = new CreateNewUser(this, myCart);
+                this.Hide();
+                createNewUser.Show();
+            }
+            if(loggedInUser[0] != null)
+            {
+                OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser);
+                orderWindow.Show();
+                this.Hide();
+            }
             //OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser);
             //orderWindow.Show();
             //this.Hide();
-            MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + "");
         }
 
-
-        /*private void outdoorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ListBox box = (ListBox)sender;
-            Item addedItem = (Item)box.SelectedItem;
-            list.AddToShoppingCartList(addedItem);
-            MessageBox.Show(addedItem.Name + " added to shopping cart");
-            string cartList = "";
-            foreach (Item item in list.GetShoppingCartList())
-            {
-                cartList += item.Name + " ";
-            }
-            MessageBox.Show("Shoppingcart cointains: " + cartList);
-        }*/
 
         //these are testbuttons that are called from MainWindow (footer)
         //FEEL FREE to use these testbuttons for implementation testing!
