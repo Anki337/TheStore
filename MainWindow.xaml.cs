@@ -19,6 +19,7 @@ using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using System.Security;
 using System.Diagnostics.Eventing.Reader;
+using System.Threading;
 
 namespace TheStore
 {
@@ -27,11 +28,11 @@ namespace TheStore
     /// </summary>
     public partial class MainWindow : Window
     {
-        FileManager fileManager = new FileManager();
         private List<User> userList = new List<User>();
         private List<Item> allItems = new List<Item>();
         private List<Item> myCart = new List<Item>();
         private User[] loggedInUser = new User[1];
+
 
         public MainWindow()
         {
@@ -41,8 +42,16 @@ namespace TheStore
         }
         private void LoadData()
         {
-            fileManager.readFromFile("Items", allItems);
-            fileManager.readFromFile("Users", userList);
+            FileManager fileManager = new FileManager();
+            Thread mainThread = Thread.CurrentThread;
+            Thread thread1 = new Thread(() => fileManager.readFromFile("Items", allItems));
+            Thread thread2 = new Thread(() => fileManager.readFromFile("Users", userList));
+            thread1.IsBackground = true;
+            thread2.IsBackground = true;
+            thread1.Start();
+            thread2.Start();
+            thread1.Join();
+            thread2.Join();
         }
 
         private void ShowData()
@@ -203,7 +212,7 @@ namespace TheStore
         }
         private void Test2_Click(object sender, RoutedEventArgs e)
         {
-            fileManager.writeToFile("Users", userList);
+            //fileManager.writeToFile("Users", userList);
         }
 
         private void ItemButton_Click(object sender, RoutedEventArgs e)
