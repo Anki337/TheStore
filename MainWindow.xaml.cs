@@ -72,7 +72,6 @@ namespace TheStore
                     mailBox.Visibility = Visibility.Collapsed;
                     pwBox.Visibility = Visibility.Collapsed;
                     userNameText.Text = " back " + loggedInUser[0].Name;
-                    shoppingCart.Visibility = Visibility.Visible;
                     logButton.Visibility = Visibility.Collapsed;
                     createButton.Visibility = Visibility.Collapsed;
                     logOutButton.Visibility = Visibility.Visible;
@@ -241,6 +240,20 @@ namespace TheStore
                 logButton_Click(this, e);
             }
 
+        }
+
+        private void shoppingCart_MouseEnter(object sender, MouseEventArgs e)
+        {
+            string tooltip = "Shoppingcart i empty. Click on a toy to add it to your cart!";
+            if (myCart.Count > 0)
+            {
+                tooltip = "Toys in shoppingcart: \n";
+                foreach (Item item in myCart)
+                {
+                    tooltip += item.Name.ToString() + "\n";
+                }
+            }
+            shoppingCart.ToolTip = tooltip;
         }
     }
 }
