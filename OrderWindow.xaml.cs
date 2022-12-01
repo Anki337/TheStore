@@ -70,13 +70,6 @@ namespace TheStore
             ComboBoxInfo();
             PopulateTextBoxes();
         }
-        private void LogCreateButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            CreateNewUser createNewUser = new CreateNewUser();
-            createNewUser.Show();
-            this.Close();
-        }
 
         private void ContinueShopping_Click(object sender, RoutedEventArgs e)
         {
