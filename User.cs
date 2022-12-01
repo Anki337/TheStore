@@ -59,12 +59,15 @@ namespace TheStore
 
         public User(string Name, string Password, string Email, string Address, double Phone)
         {
-            this.Name = Name;    
+            this.Name = Name;
             this.Password = Password;
             this.Email = Email;
             this.Address = Address;
             this.Phone = Phone;
         }
+
+        public User() {
+        } 
         public User parse(string[] words)
         {
             return new User(Name: words[0], Password: words[1],
