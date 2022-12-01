@@ -22,10 +22,12 @@ namespace TheStore
     /// </summary>
     public partial class CreateNewUser : Window
     {
+        private bool wantsToCheckOut;
         private List<User> userList;
         private User[] loggedInUser;
+        List<Item> myCart;
         User user;
-        Window parent;
+        MainWindow parent;
 
         public CreateNewUser(MainWindow mainWindow, List<User> userList, User[] loggedInUser)
         {
@@ -33,6 +35,15 @@ namespace TheStore
             parent = mainWindow;
             this.userList = userList;
             this.loggedInUser = loggedInUser;
+            wantsToCheckOut = false;
+        }
+        public CreateNewUser(MainWindow mainWindow, List<Item> myCart )
+        {
+            InitializeComponent();
+            parent = mainWindow;
+            wantsToCheckOut=true;
+            this.myCart = myCart;
+
         }
         private void clickSubmitButton(object sender, RoutedEventArgs e)
         {
@@ -57,6 +68,17 @@ namespace TheStore
             //resetButton.Visibility = Visibility.Collapsed;
             cancelButton.Visibility = Visibility.Collapsed;
             goBackButton.Visibility = Visibility.Visible;
+            if (wantsToCheckOut == true)
+            {
+                OrderWindow orderWindow = new OrderWindow(parent, myCart, loggedInUser);
+                orderWindow.Show();
+                this.Close();
+            }
+            if(wantsToCheckOut == false)
+            {
+                parent.Show();
+                this.Close();
+            }
         }
 
         private void clickResetButton(object sender, RoutedEventArgs e)
