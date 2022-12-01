@@ -62,15 +62,15 @@ namespace TheStore
 
         private void clickResetButton(object sender, RoutedEventArgs e)
         {
-            foreach (TextBox box in boxes.Children)
+
+            foreach (TextBox box in boxes.Children.OfType<TextBox>())
             {
-                if (box != null)
-                    box.Clear();
+                box.Clear();
+
             }
-            foreach (PasswordBox pBox in boxes.Children)
+            foreach (PasswordBox pBox in boxes.Children.OfType<PasswordBox>())
             {
-                if (pBox != null)
-                    pBox.Clear();
+                pBox.Clear();
             }
         }
         private void clickCancelButton(object sender, RoutedEventArgs e)
