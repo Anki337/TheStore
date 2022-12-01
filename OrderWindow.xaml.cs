@@ -25,8 +25,6 @@ namespace TheStore
     /// </summary>
     public partial class OrderWindow : Window
     {
-        TheStoreLists list;
-
         List<string> shippingInfoList; 
         List<string> cardInfoList = new List<string>(); // 
         List<Item> myCart;
