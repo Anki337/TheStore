@@ -9,7 +9,7 @@ using System.Windows.Shapes;
 
 namespace TheStore
 {
-    public class User : IParse<User>
+    public class User : IParsing<User>
     {
         //private variables of Class User
         private string _name;
@@ -17,7 +17,6 @@ namespace TheStore
         private string _email;
         private string _address;
         private double _phone;
-        private bool _loggedIn = false;
 
         //public getters and setters of Class User  
         public string Name
@@ -57,32 +56,20 @@ namespace TheStore
         }
         public string Address { get => _address; set => _address = value; }
         public double Phone { get => _phone; set => _phone = value; }
-        public bool LoggedIn { get => _loggedIn; set => _loggedIn = value; }
 
-        public User()
+        public User(string Name, string Password, string Email, string Address, double Phone)
         {
-
-        }
-        public User(string name, string password, string email, string address, double phone)
-        {
-            if (password != null && password.Length >= 6)
-            {
-                this._password = password;
-            }
-            if (email.Contains("@"))
-            {
-                this._email = email;
-            }
-            this._name = name;
-            this._address = address;
-            this._phone = phone;
-            _loggedIn = LoggedIn;
+            this.Name = Name;    
+            this.Password = Password;
+            this.Email = Email;
+            this.Address = Address;
+            this.Phone = Phone;
         }
         public User parse(string[] words)
         {
-            return new User(name: words[0], password: words[1],
-                            email: words[2], address: words[3],
-                            phone: Convert.ToDouble(words[4]));
+            return new User(Name: words[0], Password: words[1],
+                            Email: words[2], Address: words[3],
+                            Phone: Convert.ToDouble(words[4]));
         }
 
         public override string ToString()

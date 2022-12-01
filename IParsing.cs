@@ -4,7 +4,7 @@ using System.Windows.Documents;
 
 namespace TheStore
 {
-    internal interface IParse<T>
+    internal interface IParsing<T>
     {
         T parse(string[] words);
     }

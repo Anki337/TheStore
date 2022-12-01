@@ -78,9 +78,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Cart.cs" />
     <Compile Include="FileManager.cs" />
-    <Compile Include="IParse.cs" />
+    <Compile Include="IParsing.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="OrderWindow.xaml.cs">
       <DependentUpon>OrderWindow.xaml</DependentUpon>

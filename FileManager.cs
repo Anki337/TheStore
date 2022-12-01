@@ -11,11 +11,12 @@ using System.Windows.Shapes;
 namespace TheStore
 {
     /// <summary>
-    /// Filereader/-writer for classes implementing IParse
+    /// Filereader/-writer for classes implementing IParsing
     /// </summary>
     internal class FileManager
     {
         static DirectoryInfo currentdirectory = new DirectoryInfo(".");
+
         public void readFromFile<T>(string fileName, List<T> listName) where T : IParse<T>, new() //Reads a file fileName.txt and creates a list listName<Item> or listName<User>
         {
             string path = currentdirectory.FullName + "\\Files" + @"\" + fileName + ".txt";
