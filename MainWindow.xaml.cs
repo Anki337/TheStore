@@ -37,12 +37,6 @@ namespace TheStore
             InitializeComponent();
             LoadData();
             ShowData();
-            foreach (Item item in list.GetAvailableItemList())
-            {
-                MessageBox.Show(item.Quantity.ToString());
-            }
-            
-
         }
         private void LoadData()
         {
