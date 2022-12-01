@@ -66,8 +66,7 @@ namespace TheStore
             this.Phone = Phone;
         }
 
-        public User() {
-        } 
+ 
         public User parse(string[] words)
         {
             return new User(Name: words[0], Password: words[1],
