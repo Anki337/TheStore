@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Shapes;
 
 namespace TheStore
@@ -55,6 +56,7 @@ namespace TheStore
         }
         public string Address { get => _address; set => _address = value; }
         public double Phone { get => _phone; set => _phone = value; }
+
         public User(string Name, string Password, string Email, string Address, double Phone)
         {
             this.Name = Name;    
