@@ -10,7 +10,7 @@ using System.Windows.Shapes;
 
 namespace TheStore
 {
-    public class Item : IParse<Item>
+    public class Item : IParsing<Item>
     {
         private string _name;
         private string _description;
@@ -53,7 +53,7 @@ namespace TheStore
         }
         public override string ToString()
         {
-            string line = Name + "," + Description + "," + Convert.ToInt32(Quantity) + "," + Convert.ToInt32(Price) + "," + Convert.ToInt32(Weight) + "," + Category + "\r\n";
+            string line = Name + "," + Description + "," + Convert.ToString(Quantity) + "," + Convert.ToString(Price) + "," + Convert.ToString(Weight) + "," + Category + "\r\n";
             return line;
         }
 
