@@ -48,6 +48,15 @@ namespace TheStore
         {
             return shoppingCartList;
         }
-
+        public void EditQuantityInItem(string name)
+        {
+            foreach(Item item in availableItemsList)
+            {
+                if(item.Name.Equals(name))
+                {
+                    item.Quantity--;
+                }
+            }
+        }
     }
 }

@@ -128,20 +128,20 @@ namespace TheStore
                 }*/
                 if (item.Category.Equals("Big"))
                 {
-                    addContentToStackPanelByCategory("big", item);
+                    addContentToStackPanelByCategory(bigList, item);
                 }
                 if (item.Category.Equals("Small"))
                 {
-                    addContentToStackPanelByCategory("small", item);
+                    addContentToStackPanelByCategory(smallList, item);
                    
                 }
             }
         }
 
-      public void addContentToStackPanelByCategory(string listType, Item item)
+      public void addContentToStackPanelByCategory(ListBox listType, Item item)
         {
             ListBoxItem listBoxItem = new ListBoxItem();
-            StackPanel stack = new StackPanel();
+            DockPanel dock = new DockPanel();
             TextBlock textBlock = new TextBlock();
             Button button = new Button();
             System.Windows.Controls.Image image = new System.Windows.Controls.Image()
@@ -158,15 +158,19 @@ namespace TheStore
             textBlock.Style = (Style)Resources["itemName"];
 
             button.Style = (Style)Resources["itemButton"];
-           
+            
+            
 
-            stack.Orientation = Orientation.Horizontal;
-            stack.Children.Add(textBlock);
-            stack.Children.Add(image);
-            stack.Children.Add(button);
+            dock.Children.Add(textBlock);
+            dock.Children.Add(image);
+            dock.Children.Add(button);
+            DockPanel.SetDock(textBlock,Dock.Left);
+            //DockPanel.SetDock(image,Dock.Top);
+            DockPanel.SetDock(button,Dock.Right);
 
-            listBoxItem.Content = stack;
-            if (listType.Equals("small"))
+            listBoxItem.Content = dock;
+            listType.Items.Add(listBoxItem);
+            /*if (listType.Equals("small"))
             {
                 smallList.Items.Add(listBoxItem);
             }
@@ -174,11 +178,14 @@ namespace TheStore
             {
                 bigList.Items.Add(listBoxItem);
             }
-            /*if (listType.Equals("outdoor"))
+            if (listType.Equals("outdoor"))
             {
                 outdoorList.Items.Add(listBoxItem);
             }*/
         }
+
+        
+
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
             int quantityToBuy = 1;
@@ -188,6 +195,7 @@ namespace TheStore
             //this.Hide();
             MessageBox.Show("You just bought " + quantityToBuy + " of the first listed toy which was the " + näjm + Environment.NewLine + "");
         }
+
 
         private void outdoorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -215,6 +223,26 @@ namespace TheStore
         private void Test2_Click(object sender, RoutedEventArgs e)
         {
             fileManager.writeToFile("Users", list.GetUserList());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button butt = (Button)sender;
+            DockPanel dock = (DockPanel)butt.Parent;
+            TextBlock itenName = (TextBlock)dock.Children[0];
+            string name = itenName.Text;
+            foreach(Item item in list.GetAvailableItemList())
+            {
+                if (item.Name.Equals(name))
+                {
+                    Item clonedItem = item.clone();
+                    clonedItem.Quantity = 1;
+                    list.AddToShoppingCartList(clonedItem);
+                    list.EditQuantityInItem(name);
+                    MessageBox.Show(item.Name + " added to shopping cart" + "current quantity is: " + item.Quantity);
+                }
+            }
+            
         }
     }
 }
