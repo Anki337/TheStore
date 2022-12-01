@@ -25,7 +25,6 @@ namespace TheStore
     /// </summary>
     public partial class OrderWindow : Window
     {
-        TheStoreLists list;
 
         List<string> shippingInfoList; 
         List<string> cardInfoList = new List<string>(); // 
@@ -61,16 +60,16 @@ namespace TheStore
             parent = mainWindow;
             this.myCart = myCart;
             this.loggedInUser = loggedInUser;
-            itemNameWindow.ItemsSource = list.GetShoppingCartList();
+            itemNameWindow.ItemsSource = myCart;
             itemNameWindow.Items.Refresh();
-            itemQuantityWindow.ItemsSource = list.GetShoppingCartList();
+            itemQuantityWindow.ItemsSource = myCart;
             itemQuantityWindow.Items.Refresh();
-            item1.Content = getNameOfLoggedInUser();
+            item1.Content = loggedInUser[0].Name;
             SavedInfoComboBox.Items.Refresh();
             ComboBoxInfo();
             PopulateTextBoxes();
         }
-
+        
         private void ContinueShopping_Click(object sender, RoutedEventArgs e)
         {
             parent.Show();
@@ -79,15 +78,15 @@ namespace TheStore
 
         public void TextBoxInfo()
         {
-            list.GetCardInfoList().Add(this.CardNameInput);
-            list.GetCardInfoList().Add(this.CardNumInput);
-            list.GetCardInfoList().Add(this.CardDateInput);
-            list.GetCardInfoList().Add(this.CardCvvInput);
-            list.GetShippingInfoList().Add(this.AdressInput);
-            list.GetShippingInfoList().Add(this.PostNrInput);
-            list.GetShippingInfoList().Add(this.OrtInput);
-            list.GetShippingInfoList().Add(this.FakturaAdressInput);
-            list.GetShippingInfoList().Add(this.TelefonNrInput);
+            cardInfoList.Add(CardNameInput);
+            cardInfoList.Add(CardNumInput);
+            cardInfoList.Add(CardDateInput);
+            cardInfoList.Add(CardCvvInput);
+            shippingInfoList.Add(AdressInput);
+            shippingInfoList.Add(PostNrInput);
+            shippingInfoList.Add(OrtInput);
+            shippingInfoList.Add(FakturaAdressInput);
+            shippingInfoList.Add(TelefonNrInput);
         }
 
         public void PopulateTextBoxes()
@@ -95,7 +94,7 @@ namespace TheStore
             
             if (loggedInUser != null) 
             {
-                string[] item = list.GetShippingInfoList().ToArray();
+                string[] item = shippingInfoList.ToArray();
 
                 //OrderWinAdress.SelectedText += item[0];
                 //OrderWinPostNr.SelectedText += item[1];
@@ -116,24 +115,12 @@ namespace TheStore
                 ComboBoxPay.Add(item);
             }
         }
-        public string getNameOfLoggedInUser()
-        {
-            string name = "No logged in user";
-            foreach (User user in list.GetUserList())
-            {
-                if (user.LoggedIn == false) 
-                {
-                    name = user.Name.ToString();
-                    break;
-                }
-            }
-            return name;
-        }
+
         public void WriteShippingListToFile()
         {
             DirectoryInfo currentdirectory = new DirectoryInfo(".");
             string shippInfo = currentdirectory.FullName + "\\Files" + @"\ShippingInfo.txt";
-            string[] Customers = list.GetShippingInfoList().ToArray();
+            string[] Customers = shippingInfoList.ToArray();
             File.WriteAllLines(shippInfo, Customers);
         }
         
@@ -168,7 +155,7 @@ namespace TheStore
             {
 
                 TextBoxInfo();
-                MessageBox.Show("Användare sparad!" + " " + "med info" + " " + list.GetShippingInfoList()[0] + " " + list.GetShippingInfoList()[1] + " " + list.GetShippingInfoList()[2] + " " + list.GetShippingInfoList()[3] + " " + list.GetShippingInfoList()[4] + "!");
+                MessageBox.Show("Användare sparad!" + " " + "med info" + " " + shippingInfoList[0] + " " + shippingInfoList[1] + " " + shippingInfoList[2] + " " + shippingInfoList[3] + " " + shippingInfoList[4] + "!");
                 WriteShippingListToFile();
             }
             ClearAllFields();
