@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheStore"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000" >
+        Title="MainWindow" Height="600" Width="1000">
     <Window.Resources>
         <!--I Windows resources kan jag bygga templates som gäller för hela sidan.-->
         <Style TargetType="TextBlock" x:Key="itemName">
@@ -33,11 +33,11 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Cursor" Value="Hand"/>
                 </Trigger>
-                
+
             </Style.Triggers>
 
         </Style>
-        
+
         <Style TargetType="ListBox">
             <Setter Property="Background" Value="Beige"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
@@ -47,12 +47,12 @@
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                 
+
                 </Trigger>
             </Style.Triggers>
-            
+
         </Style>
-        
+
         <Style TargetType="StackPanel">
             <Setter Property="Margin" Value="10,0,10,10"/>
         </Style>
@@ -63,7 +63,7 @@
             <RowDefinition MinHeight="300"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-            <!--Område för header startar-->
+        <!--Område för header startar-->
 
         <Grid Grid.Row="0" x:Name="Header" Margin="1,1,1,1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
@@ -132,7 +132,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-                
+
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <!--Område för Body startar-->
@@ -142,11 +142,11 @@
                 <Border x:Name="ItemList"  Margin="10, 10, 10, 0" CornerRadius="5">
 
                     <Label Content="Outdorr toys" Style="{StaticResource CategoryLabel}">
-                        </Label>
-                  
+                    </Label>
+
                 </Border>
-                <ListBox SelectionChanged="outdoorList_SelectionChanged"  x:Name="outdoorList" ScrollViewer.HorizontalScrollBarVisibility="Visible">
-                    
+                <ListBox x:Name="outdoorList" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -168,11 +168,11 @@
 
 
                     <Label Content="Big toys" Style="{StaticResource CategoryLabel}">
-                        </Label>
-                        
-                   
+                    </Label>
+
+
                 </Border>
-                <ListBox SelectionChanged="outdoorList_SelectionChanged"  x:Name="bigList">
+                <ListBox x:Name="bigList">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -194,11 +194,11 @@
                 <Border  Margin="10, 10, 10, 0" CornerRadius="5">
 
                     <Label Content="Small toys" Style="{StaticResource CategoryLabel}">
-                        </Label>
-                    
+                    </Label>
+
                 </Border>
-                <ListBox SelectionChanged="outdoorList_SelectionChanged"  x:Name="smallList">
-                   
+                <ListBox x:Name="smallList">
+
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

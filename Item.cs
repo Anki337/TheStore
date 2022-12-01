@@ -53,7 +53,7 @@ namespace TheStore
         }
         public override string ToString()
         {
-            string line = Name + "," + Description + "," + Convert.ToInt32(Quantity) + "," + Convert.ToInt32(Price) + "," + Convert.ToInt32(Weight) + "," + Category + "\r\n";
+            string line = Name + "," + Description + "," + Quantity + "," + Price + "," + Weight + "," + Category + "\r\n";
             return line;
         }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Shapes;
 
 namespace TheStore
@@ -60,6 +61,7 @@ namespace TheStore
 
         public User()
         {
+
         }
         public User(string name, string password, string email, string address, double phone)
         {
