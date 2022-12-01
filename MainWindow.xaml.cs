@@ -18,6 +18,7 @@ using System.IO;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using System.Security;
+using System.Diagnostics.Eventing.Reader;
 
 namespace TheStore
 {
@@ -222,6 +223,15 @@ namespace TheStore
                     MessageBox.Show(item.Name + " added to shopping cart" + "current quantity is: " + item.Quantity);
                 }
             }
+        }
+
+        private void mailBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                logButton_Click(this, e);
+            }
+
         }
     }
 }
