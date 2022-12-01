@@ -37,6 +37,11 @@ namespace TheStore
             InitializeComponent();
             LoadData();
             ShowData();
+            foreach (Item item in list.GetAvailableItemList())
+            {
+                MessageBox.Show(item.Quantity.ToString());
+            }
+            
 
         }
         private void LoadData()
@@ -233,11 +238,21 @@ namespace TheStore
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button butt = (Button)sender;
-            StackPanel stack = (StackPanel)butt.Parent;
-            ListBoxItem box = (ListBoxItem)stack.Parent;
-            //Item addedItem = box.SelectedItem as Item;
-            //list.AddToShoppingCartList(addedItem);
-           // MessageBox.Show(addedItem.Name + " added to shopping cart");
+            DockPanel dock = (DockPanel)butt.Parent;
+            TextBlock itenName = (TextBlock)dock.Children[0];
+            string name = itenName.Text;
+            foreach(Item item in list.GetAvailableItemList())
+            {
+                if (item.Name.Equals(name))
+                {
+                    Item clonedItem = item.clone();
+                    clonedItem.Quantity = 1;
+                    list.AddToShoppingCartList(clonedItem);
+                    list.EditQuantityInItem(name);
+                    MessageBox.Show(item.Name + " added to shopping cart" + "current quantity is: " + item.Quantity);
+                }
+            }
+            
         }
     }
 }

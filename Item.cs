@@ -56,5 +56,11 @@ namespace TheStore
             string line = Name + "," + Description + "," + Convert.ToInt32(Quantity) + "," + Convert.ToInt32(Price) + "," + Convert.ToInt32(Weight) + "," + Category + "\r\n";
             return line;
         }
+
+        public Item clone()
+        { 
+            Item item = new Item(Name, Description, Quantity, Price, Weight, Category);
+            return item;
+        }
     }
 }
