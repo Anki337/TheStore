@@ -26,7 +26,7 @@ namespace TheStore
     public partial class OrderWindow : Window
     {
 
-        List<string> shippingInfoList; 
+        List<string> shippingInfoList;
         List<string> cardInfoList = new List<string>(); // 
         List<Item> myCart;
         User[] loggedInUser;
@@ -67,7 +67,7 @@ namespace TheStore
             item1.Content = loggedInUser[0].Name;
             SavedInfoComboBox.Items.Refresh();
             ComboBoxInfo();
-            PopulateTextBoxes();
+            
         }
         
         private void ContinueShopping_Click(object sender, RoutedEventArgs e)
@@ -84,8 +84,7 @@ namespace TheStore
             cardInfoList.Add(CardCvvInput);
             shippingInfoList.Add(AdressInput);
             shippingInfoList.Add(PostNrInput);
-            shippingInfoList.Add(OrtInput);
-            shippingInfoList.Add(FakturaAdressInput);
+            shippingInfoList.Add(OrtInput);          
             shippingInfoList.Add(TelefonNrInput);
         }
 
@@ -95,13 +94,13 @@ namespace TheStore
             if (loggedInUser != null) 
             {
                 string[] item = shippingInfoList.ToArray();
+                
 
-                //OrderWinAdress.SelectedText += item[0];
-                //OrderWinPostNr.SelectedText += item[1];
-                //OrderWinOrt.SelectedText += item[2];
-                //OrderWinTele.SelectedText += item[3];
-                //OrderWinAdress.AppendText(item[0]);
-            }                   
+                OrderWinAdress.AppendText(item[0]);
+                OrderWinPostNr.AppendText(item[1]);
+                OrderWinOrt.AppendText(item[2]);
+                OrderWinTele.AppendText(item[3]);
+            }   
         }
      
 
@@ -155,11 +154,12 @@ namespace TheStore
             {
 
                 TextBoxInfo();
-                MessageBox.Show("Användare sparad!" + " " + "med info" + " " + shippingInfoList[0] + " " + shippingInfoList[1] + " " + shippingInfoList[2] + " " + shippingInfoList[3] + " " + shippingInfoList[4] + "!");
+                MessageBox.Show("Användare sparad!" + " " + "med info" + " " + shippingInfoList[0] + " " + shippingInfoList[1] + " " + shippingInfoList[2] + " " + shippingInfoList[3] + " !");
                 WriteShippingListToFile();
+                
             }
             ClearAllFields();
-            
+
         }
 
         private void CardName_TextChanged(object sender, TextChangedEventArgs e)
@@ -191,7 +191,11 @@ namespace TheStore
             OrderWinPostNr.Clear();
             OrderWinOrt.Clear();
             OrderWinTele.Clear();
+        }
 
+        private void SavedInfoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PopulateTextBoxes();
         }
     }
 }

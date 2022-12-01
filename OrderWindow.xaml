@@ -62,8 +62,6 @@
                 <Grid.Background>
                     <ImageBrush ImageSource="pack://application:,,,/Images/Checkout.png" Stretch="UniformToFill"/>
                 </Grid.Background>
-                <Button Height="20" Width="100" Content="Spara Information" x:Name="SaveButton" Click="SaveButton_Click"
-                 VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="475,0,0,155" Background="Wheat"></Button>
                 <Grid x:Name="PurchasedItems" HorizontalAlignment="Left"
                       VerticalAlignment="Center" Height="300" Width="750" Margin="125,0,0,0">
                     <Grid VerticalAlignment="Center">
@@ -136,24 +134,34 @@
                         </StackPanel>
                         <Grid Grid.Column="2" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="94,32,94,0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="79*"/>
-                                <ColumnDefinition Width="109*"/>
+                                <ColumnDefinition Width="59*"/>
+                                <ColumnDefinition Width="128*"/>
+                                <ColumnDefinition Width="0*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Margin="5,0,0,0" Foreground="Wheat" FontWeight="Bold" TextDecorations="Underline" 
                                        FontStyle="Italic" FontSize="11" FontFamily="Comic Sans MS" Grid.ColumnSpan="2">Privatperson</TextBlock>
-                            <TextBlock Margin="5 20 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                            <TextBlock Margin="5 25 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
                                        FontSize="8" Grid.ColumnSpan="2">Adress:</TextBlock>
-                            <TextBlock Margin="5 40 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                            <TextBlock Margin="5 45 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
                                        FontSize="8" Grid.ColumnSpan="2">Post nr:</TextBlock>
-                            <TextBlock Margin="5 60 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                            <TextBlock Margin="5 65 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
                                        FontSize="8" Grid.ColumnSpan="2">Ort:</TextBlock>
-                            <TextBlock Margin="5,80,0,0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                            <TextBlock Margin="5,87,0,0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
                                        FontSize="8" Grid.ColumnSpan="2">Telefon Nr:</TextBlock>
-                            <TextBox x:Name="OrderWinAdress"  Margin="63,24,4,180" TextChanged="OrderWinAdress_TextChanged" Grid.ColumnSpan="2"></TextBox>
-                            <TextBox x:Name="OrderWinPostNr"  Margin="63,42,4,162" TextChanged="OrderWinPostNr_TextChanged" Grid.ColumnSpan="2"></TextBox>
-                            <TextBox x:Name="OrderWinOrt"  Margin="63,60,4,143" TextChanged="OrderWinOrt_TextChanged" Grid.ColumnSpan="2"></TextBox>
-                            <TextBox x:Name="OrderWinTele"  Margin="63,78,4,124" TextChanged="OrderWinTele_TextChanged" Grid.ColumnSpan="2"></TextBox>
-                            <ComboBox x:Name="SavedInfoComboBox" Width="100" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="#FF1B45C7" FontSize="10" Grid.Column="1">
+                            <TextBox x:Name="OrderWinAdress"  Margin="8,25,0,178" TextChanged="OrderWinAdress_TextChanged" 
+                                     Grid.Column="1"/>
+                            <TextBox x:Name="OrderWinPostNr"  Margin="8,45,0,158" TextChanged="OrderWinPostNr_TextChanged" 
+                                     Grid.Column="1"/>
+                            <TextBox x:Name="OrderWinOrt"  Margin="8,65,0,138" TextChanged="OrderWinOrt_TextChanged"
+                                     Grid.Column="1"/>
+                            <TextBox x:Name="OrderWinTele"  Margin="8,85,0,118" TextChanged="OrderWinTele_TextChanged"
+                                     Grid.Column="1"/>
+                            <Button Height="20" Width="100" Content="Save" x:Name="SaveButton" Click="SaveButton_Click"                             
+                             Background="Wheat" Grid.Column="1" Margin="14,107,14,91"></Button>
+                            <ComboBox x:Name="SavedInfoComboBox" Width="100" Height="20"
+                                      HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                      BorderBrush="#FF1B45C7" FontSize="10" Grid.Column="1" 
+                                      SelectionChanged="SavedInfoComboBox_SelectionChanged" Margin="24,0,0,0">
                                 <ComboBoxItem x:Name="item1"></ComboBoxItem>
                                 <ComboBox.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
