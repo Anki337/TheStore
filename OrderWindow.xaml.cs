@@ -108,9 +108,6 @@ namespace TheStore
                    throw;
                 }
                 MessageBox.Show("Du har inte fyllt i några fält att spara!");
-
-
-
             }
             
         }
