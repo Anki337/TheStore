@@ -22,10 +22,12 @@ namespace TheStore
     /// </summary>
     public partial class CreateNewUser : Window
     {
+        private bool wantsToCheckOut;
         private List<User> userList;
         private User[] loggedInUser;
+        List<Item> myCart;
         User user;
-        Window parent;
+        MainWindow parent;
 
         public CreateNewUser(MainWindow mainWindow, List<User> userList, User[] loggedInUser)
         {
@@ -33,6 +35,15 @@ namespace TheStore
             parent = mainWindow;
             this.userList = userList;
             this.loggedInUser = loggedInUser;
+            wantsToCheckOut = false;
+        }
+        public CreateNewUser(MainWindow mainWindow, List<Item> myCart )
+        {
+            InitializeComponent();
+            parent = mainWindow;
+            wantsToCheckOut=true;
+            this.myCart = myCart;
+
         }
         private void clickSubmitButton(object sender, RoutedEventArgs e)
         {
@@ -41,7 +52,6 @@ namespace TheStore
             string address = addressBox.Text;
             double phone = double.Parse(phoneBox.Text);
             string password = passwordBoxOne.Password;
-
 
             //returnText.Text = "Please enter your first and last name";
             //returnText.Text = "Please enter a correct email address";
@@ -52,25 +62,34 @@ namespace TheStore
 
             user = new User(name, password, email, address, phone);
             userList.Add(user);
-            User[] loggedInUser = { user };
+            loggedInUser[0] = user;
             returnText.Text = "Registration success";
             submitButton.Visibility = Visibility.Collapsed;
             //resetButton.Visibility = Visibility.Collapsed;
             cancelButton.Visibility = Visibility.Collapsed;
             goBackButton.Visibility = Visibility.Visible;
+            if (wantsToCheckOut == true)
+            {
+                OrderWindow orderWindow = new OrderWindow(parent, myCart, loggedInUser);
+                orderWindow.Show();
+                this.Close();
+            }
+            if(wantsToCheckOut == false)
+            {
+                parent.Show();
+                this.Close();
+            }
         }
 
         private void clickResetButton(object sender, RoutedEventArgs e)
         {
-            foreach (TextBox box in boxes.Children)
+            foreach (TextBox box in boxes.Children.OfType<TextBox>())
             {
-                if (box != null)
-                    box.Clear();
+                box.Clear();
             }
-            foreach (PasswordBox pBox in boxes.Children)
+            foreach (PasswordBox pBox in boxes.Children.OfType<PasswordBox>())
             {
-                if (pBox != null)
-                    pBox.Clear();
+                pBox.Clear();
             }
         }
         private void clickCancelButton(object sender, RoutedEventArgs e)
@@ -81,7 +100,6 @@ namespace TheStore
         private void ClickContinueShoppingButton(object sender, RoutedEventArgs e)
         {
             returnText.Text = "Continue shopping";
-            //list.RemoveAt(list.Count - 1);
             parent.Show();
             this.Close();
         }

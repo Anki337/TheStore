@@ -102,7 +102,7 @@ namespace TheStore
                 OrderWinTele.AppendText(item[3]);
             }   
         }
-     
+
 
         public void ComboBoxInfo()
         {
