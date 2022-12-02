@@ -1,8 +1,12 @@
-using TheStore;
+using System.Diagnostics.Tracing;
+using System.Net;
+using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 
-namespace TheStoreTests
+namespace TheStore.UnitTests
 {
-    public class TheStoreTests
+    public class UserClassTests
     {
         [Fact]
         public void UserToStringTest()
@@ -11,10 +15,10 @@ namespace TheStoreTests
             User user = new User("David", "password", "Email@Email", "Adress", 0721882669);
             string expected = "David" + "," + "password" + "," + "Email@Email" + "," + "Adress" + "," + "721882669" + "\r\n";
             //Act - Kör funktionen vi vill testa
-            string actual = user.ToString();
+            string actual =  user.ToString();
             //Assert - Där vi anger vad vi vill ska komma ut ur testet.
             Assert.Equal(expected, actual, ignoreCase: true);
-
+           
             // vad jag skall testa för funktion:
             // public override string ToString()
             // {
@@ -38,7 +42,7 @@ namespace TheStoreTests
             var actual = "David" + "password" + "Email@Email" + "Adress" + 0721882669;
 
             //Assert - Där vi anger vad vi vill ska komma ut ur testet.
-            Assert.Equal(expected, actual, ignoreCase: true);
+            Assert.Equal(expected, actual, ignoreCase:true);
 
             // vad jag skall testa för funktion:
             // public User parse(string[] words)
@@ -48,5 +52,11 @@ namespace TheStoreTests
             //                     phone: Convert.ToDouble(words[4]));
             // }
         }
+
+
+
+
+
+
     }
 }
