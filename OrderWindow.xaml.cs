@@ -26,7 +26,7 @@ namespace TheStore
     public partial class OrderWindow : Window
     {
 
-        List<string> shippingInfoList;
+        List<string> shippingInfoList = new List<string>();
         List<string> cardInfoList = new List<string>(); // 
         List<Item> myCart;
         User[] loggedInUser;
