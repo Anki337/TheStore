@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\David\\source\\repos\\Testtest\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj": {}
+    "C:\\Users\\David\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\David\\source\\repos\\Testtest\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj": {
+    "C:\\Users\\David\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\David\\source\\repos\\Testtest\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\David\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
         "projectName": "TheStore.UnitTests",
-        "projectPath": "C:\\Users\\David\\source\\repos\\Testtest\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
+        "projectPath": "C:\\Users\\David\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
         "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\David\\source\\repos\\Testtest\\TheStore\\TheStoreTests\\obj\\",
+        "outputPath": "C:\\Users\\David\\source\\repos\\TheStore\\TheStoreTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\David\\source\\repos\\Testtest\\TheStore\\TheStore\\TheStore.csproj": {
-                "projectPath": "C:\\Users\\David\\source\\repos\\Testtest\\TheStore\\TheStore\\TheStore.csproj"
+              "C:\\Users\\David\\source\\repos\\TheStore\\TheStore\\TheStore.csproj": {
+                "projectPath": "C:\\Users\\David\\source\\repos\\TheStore\\TheStore\\TheStore.csproj"
               }
             }
           }
@@ -90,11 +90,11 @@
         }
       }
     },
-    "C:\\Users\\David\\source\\repos\\Testtest\\TheStore\\TheStore\\TheStore.csproj": {
+    "C:\\Users\\David\\source\\repos\\TheStore\\TheStore\\TheStore.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\David\\source\\repos\\Testtest\\TheStore\\TheStore\\TheStore.csproj",
+        "projectUniqueName": "C:\\Users\\David\\source\\repos\\TheStore\\TheStore\\TheStore.csproj",
         "projectName": "TheStore",
-        "projectPath": "C:\\Users\\David\\source\\repos\\Testtest\\TheStore\\TheStore\\TheStore.csproj",
+        "projectPath": "C:\\Users\\David\\source\\repos\\TheStore\\TheStore\\TheStore.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}
