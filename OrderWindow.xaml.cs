@@ -90,17 +90,29 @@ namespace TheStore
 
         public void PopulateTextBoxes()
         {
-            
-            if (loggedInUser != null) 
+            try
             {
-                string[] item = shippingInfoList.ToArray();
-                
+                if (loggedInUser != null)
+                {
+                    string[] item = shippingInfoList.ToArray();
+                    OrderWinAdress.AppendText(item[0]);
+                    OrderWinPostNr.AppendText(item[1]);
+                    OrderWinOrt.AppendText(item[2]);
+                    OrderWinTele.AppendText(item[3]);
+                }
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                if (e == null) 
+                {
+                   throw;
+                }
+                MessageBox.Show("Du har inte fyllt i några fält att spara!");
 
-                OrderWinAdress.AppendText(item[0]);
-                OrderWinPostNr.AppendText(item[1]);
-                OrderWinOrt.AppendText(item[2]);
-                OrderWinTele.AppendText(item[3]);
-            }   
+
+
+            }
+            
         }
 
 
