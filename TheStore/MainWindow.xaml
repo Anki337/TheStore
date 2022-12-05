@@ -137,68 +137,49 @@
             </Grid.ColumnDefinitions>
             <!--Område för Body startar-->
             <!--Stack för kategori Outdoor -->
-            <StackPanel x:Name="Outdoor" Orientation="Vertical" Grid.Column="0" Grid.Row="0
-                        " Grid.RowSpan="6" Grid.ColumnSpan="2" Background="Beige">
-                <Border x:Name="ItemList"  Margin="10, 10, 10, 0" CornerRadius="5">
-
-                    <Label Content="Outdorr toys" Style="{StaticResource CategoryLabel}">
+            <StackPanel x:Name="Outdoor" Orientation="Vertical" Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" Grid.ColumnSpan="2" Background="Beige">
+                <Border Margin="10, 10, 10, 0" CornerRadius="5">
+                    <Label Content="Outdoor Toys" Style="{StaticResource CategoryLabel}">
                     </Label>
-
                 </Border>
-                <ListBox x:Name="outdoorList" ScrollViewer.HorizontalScrollBarVisibility="Visible">
-
+                <ListBox x:Name="outdoorList">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Border CornerRadius="5" Margin="5,5,5,5">
                                     <Label Content="{Binding Path=Name}">
-
                                     </Label>
-
                                 </Border>
-
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
+                    <Separator/>
                 </ListBox>
             </StackPanel>
             <!--Stack för kategori Big -->
             <StackPanel x:Name="Big" Orientation="Vertical" Grid.Column="2" Grid.Row="0" Grid.RowSpan="6" Grid.ColumnSpan="2" Background="Beige">
                 <Border  Margin="10, 10, 10, 0" CornerRadius="5">
-
-
                     <Label Content="Big toys" Style="{StaticResource CategoryLabel}">
                     </Label>
-
-
                 </Border>
                 <ListBox x:Name="bigList">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Border CornerRadius="5" Margin="5,5,5,5">
-
-
-
-
                                 </Border>
-
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </StackPanel>
-
             <!--Stack för kategori Small -->
             <StackPanel x:Name="Small" Orientation="Vertical" Grid.Column="4" Grid.Row="0" Grid.RowSpan="6" Grid.ColumnSpan="2" Background="Beige">
                 <Border  Margin="10, 10, 10, 0" CornerRadius="5">
-
                     <Label Content="Small toys" Style="{StaticResource CategoryLabel}">
                     </Label>
-
                 </Border>
                 <ListBox x:Name="smallList">
-
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -208,24 +189,14 @@
                                         <Image></Image>
                                         <Button></Button>
                                     </StackPanel>
-
-
-
                                 </Border>
-
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </StackPanel>
-
-
-
-
-
             <!--Område för Body slutar-->
         </Grid>
-
         <Grid  Grid.Row="2" x:Name="Footer">
             <!--Område för footer startar-->
             <Grid.ColumnDefinitions>

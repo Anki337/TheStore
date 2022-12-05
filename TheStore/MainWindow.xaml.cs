@@ -101,7 +101,7 @@ namespace TheStore
                 this.Hide();
             }
         }
-        private  void logOutButton_Click(object sender, RoutedEventArgs e)
+        private void logOutButton_Click(object sender, RoutedEventArgs e)
         {
             mailBox.Visibility = Visibility.Visible;
             pwBox.Visibility = Visibility.Visible;
@@ -140,48 +140,38 @@ namespace TheStore
             }
         }
 
-      public void addContentToStackPanelByCategory(ListBox listType, Item item)
+        public void addContentToStackPanelByCategory(ListBox listType, Item item)
         {
             ListBoxItem listBoxItem = new ListBoxItem();
-            DockPanel dock = new DockPanel();
+
+            Grid itemgrid = new Grid();
+            itemgrid.Width = 250;
+
             TextBlock textBlock = new TextBlock();
+            textBlock.HorizontalAlignment = HorizontalAlignment.Left;
             Button button = new Button();
+            button.HorizontalAlignment = HorizontalAlignment.Right;
             System.Windows.Controls.Image image = new System.Windows.Controls.Image()
             {
                 Name = "pic",
-                Source = new BitmapImage(new Uri("pack://application:,,,/Images/thunder.png")),
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Toys/" + item.Name + ".png")),
                 Stretch = Stretch.Uniform
             };
             image.Height = 30;
             image.Width = 30;
+            image.HorizontalAlignment = HorizontalAlignment.Center;
 
             textBlock.Text = item.Name;
             textBlock.ToolTip = item.Description;
             textBlock.Style = (Style)Resources["itemName"];
-
             button.Style = (Style)Resources["itemButton"];
-
-            dock.Children.Add(textBlock);
-            dock.Children.Add(image);
-            dock.Children.Add(button);
-            DockPanel.SetDock(textBlock,Dock.Left);
-            //DockPanel.SetDock(image,Dock.Top);
-            DockPanel.SetDock(button,Dock.Right);
-
-            listBoxItem.Content = dock;
+            
+            itemgrid.Children.Add(textBlock);
+            itemgrid.Children.Add(image);
+            itemgrid.Children.Add(button);
+            listBoxItem.Content = itemgrid;
             listType.Items.Add(listBoxItem);
-            /*if (listType.Equals("small"))
-            {
-                smallList.Items.Add(listBoxItem);
-            }
-            if (listType.Equals("big"))
-            {
-                bigList.Items.Add(listBoxItem);
-            }
-            if (listType.Equals("outdoor"))
-            {
-                outdoorList.Items.Add(listBoxItem);
-            }*/
+            
         }
 
         public void BuyButton_Click(object sender, RoutedEventArgs e)
@@ -192,7 +182,7 @@ namespace TheStore
                 this.Hide();
                 createNewUser.Show();
             }
-            if(loggedInUser[0] != null)
+            if (loggedInUser[0] != null)
             {
                 OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser);
                 orderWindow.Show();
@@ -221,10 +211,12 @@ namespace TheStore
         private void ItemButton_Click(object sender, RoutedEventArgs e)
         {
             Button butt = (Button)sender;
-            DockPanel dock = (DockPanel)butt.Parent;
-            TextBlock itenName = (TextBlock)dock.Children[0];
-            string name = itenName.Text;
-            foreach(Item item in allItems)
+            Grid grid = (Grid)butt.Parent;
+            TextBlock itemName = (TextBlock)grid.Children[0];
+            string name = itemName.Text;
+            ListBoxItem listBoxItem = (ListBoxItem)grid.Parent;
+            ListBox list = (ListBox)listBoxItem.Parent;
+            foreach (Item item in allItems)
             {
                 if (item.Name.Equals(name))
                 {
@@ -233,13 +225,25 @@ namespace TheStore
                     myCart.Add(clonedItem);
                     item.Quantity--;
                     MessageBox.Show(item.Name + " added to shopping cart" + "current quantity is: " + item.Quantity);
+                    if (item.Quantity <= 0)
+                    {
+                        itemName.Foreground = Brushes.Red;
+                        grid.Children.Remove(butt);
+                        TextBlock soldOut = new TextBlock();
+                        soldOut.Text = "Sold Out";
+                        soldOut.FontSize = 14;
+                        soldOut.Foreground = Brushes.Red;
+                        soldOut.HorizontalAlignment = HorizontalAlignment.Right;
+                        grid.Children.Add(soldOut);
+                        list.Items.Refresh();
+                    }
                 }
             }
         }
 
         private void mailBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 logButton_Click(this, e);
             }
