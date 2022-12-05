@@ -139,12 +139,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\cart.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\thunder.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
@@ -174,6 +168,9 @@
     <Content Include="Files\ShippingInfo.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\MainWindow.png" />
+    <Resource Include="Images\thunder.png" />
+    <Resource Include="Images\cart.png" />
     <Resource Include="Images\Toys\ABC Blocks.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

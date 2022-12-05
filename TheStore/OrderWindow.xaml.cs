@@ -206,5 +206,22 @@ namespace TheStore
         {
             PopulateTextBoxes();
         }
+
+        private void PaymentButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBox.Show("Varor kommer att skickas till: " + shippingInfoList[0] + " " + shippingInfoList[1] + " " + shippingInfoList[2] + " " + shippingInfoList[3]);
+            }
+            catch (ArgumentOutOfRangeException a)
+            {
+                if (a == null)
+                {
+                    throw;
+                }
+                MessageBox.Show("Du måste fylla i vart dina varor skall skeppas till innan du kan betala!");
+            }
+            
+        }
     }
 }
