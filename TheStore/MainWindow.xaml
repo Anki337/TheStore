@@ -6,12 +6,16 @@
         xmlns:local="clr-namespace:TheStore"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Images/MainWindow.png" Stretch="UniformToFill"/>
+    </Window.Background>
     <Window.Resources>
         <!--I Windows resources kan jag bygga templates som gäller för hela sidan.-->
         <Style TargetType="TextBlock" x:Key="itemName">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="gold"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="FontWeight" Value="Bold"/>
@@ -29,6 +33,7 @@
             <Setter Property="Content" Value="Add to Cart"/>
             <Setter Property="Width" Value="80"/>
             <Setter Property="Margin" Value="5"/>
+            <Setter Property="Foreground" Value="AntiqueWhite"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Cursor" Value="Hand"/>
@@ -39,7 +44,7 @@
         </Style>
 
         <Style TargetType="ListBox">
-            <Setter Property="Background" Value="Beige"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Height" Value="300"/>
@@ -83,23 +88,23 @@
 
             <Label VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20">
                 <StackPanel Orientation="Horizontal">
-                    <AccessText>
+                    <AccessText Foreground="White">
                         The Store
                     </AccessText>
                     <Image Source="pack://application:,,,/Images/thunder.png"></Image>
                 </StackPanel>
             </Label>
-            <Button x:Name="logButton" Click="logButton_Click"  Grid.Column="6" Grid.Row="0" Margin=" 1,1,1,1" VerticalAlignment="center" Height="25">
+            <Button x:Name="logButton" Click="logButton_Click" Foreground="AntiqueWhite" Grid.Column="6" Grid.Row="0" Margin=" 1,1,1,1" VerticalAlignment="center" Height="25">
                 Log In
             </Button>
-            <Button x:Name="logOutButton" Click="logOutButton_Click"  Grid.Column="6" Grid.Row="0" Margin=" 1,1,1,1" VerticalAlignment="center" Height="25" Visibility="Hidden">
+            <Button x:Name="logOutButton" Click="logOutButton_Click" Foreground="AntiqueWhite" Grid.Column="6" Grid.Row="0" Margin=" 1,1,1,1" VerticalAlignment="center" Height="25" Visibility="Hidden">
                 Log Out
             </Button>
-            <Button x:Name="createButton" Click="createButton_Click"  Grid.Column="6" Grid.Row="1" Margin=" 1,1,1,1" VerticalAlignment="center" Height="25">
+            <Button x:Name="createButton" Click="createButton_Click" Foreground="AntiqueWhite" Grid.Column="6" Grid.Row="1" Margin=" 1,1,1,1" VerticalAlignment="center" Height="25">
                 Create User
             </Button>
             <TextBox x:Name="mailBox" KeyDown="mailBox_KeyDown" Grid.Column="5" Grid.Row="0" Margin="1,1,1,1" TextAlignment="Left" VerticalAlignment="Center" Height="25">
-                Mäjladress
+                Email
             </TextBox>
             <PasswordBox x:Name="pwBox" KeyDown="mailBox_KeyDown" Grid.Column="5" Grid.Row="1" Margin="1,1,1,1" Height="25">
             </PasswordBox>
@@ -109,9 +114,9 @@
                     <TextBlock x:Name="userNameText" Text=""></TextBlock>
                 </StackPanel>
             </Label>
-            <Label Grid.Row="1" Grid.Column="6" HorizontalAlignment="Left" Margin="42,30,0,0" Grid.RowSpan="2" Width="65">
-                <Button x:Name="shoppingCart" Click="shoppingCart_Click" MouseEnter="shoppingCart_MouseEnter" BorderThickness="0" Height="25" Width="51">
-                    <Image Height="45" VerticalAlignment="Center" Source="pack://application:,,,/Images/cart.jpg" Width="51"></Image>
+            <Label Grid.Row="1" Grid.Column="6" HorizontalAlignment="Left" Margin="46,23,0,-17" Grid.RowSpan="2" Width="84">
+                <Button x:Name="shoppingCart" Click="shoppingCart_Click" MouseEnter="shoppingCart_MouseEnter" BorderThickness="0" Height="44" Width="62" OpacityMask="#FFF9F9F9" BorderBrush="{x:Null}" Background="{x:Null}">
+                    <Image Height="55" VerticalAlignment="Center" Source="pack://application:,,,/Images/cart.png" Width="50"></Image>
                 </Button>
             </Label>
         </Grid>
@@ -137,9 +142,9 @@
             </Grid.ColumnDefinitions>
             <!--Område för Body startar-->
             <!--Stack för kategori Outdoor -->
-            <StackPanel x:Name="Outdoor" Orientation="Vertical" Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" Grid.ColumnSpan="2" Background="Beige">
+            <StackPanel x:Name="Outdoor" Orientation="Vertical" Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" Grid.ColumnSpan="2" Background="Transparent">
                 <Border Margin="10, 10, 10, 0" CornerRadius="5">
-                    <Label Content="Outdoor Toys" Style="{StaticResource CategoryLabel}">
+                    <Label Content="Outdoor Toys" Foreground="AntiqueWhite" Style="{StaticResource CategoryLabel}">
                     </Label>
                 </Border>
                 <ListBox x:Name="outdoorList">
@@ -157,9 +162,9 @@
                 </ListBox>
             </StackPanel>
             <!--Stack för kategori Big -->
-            <StackPanel x:Name="Big" Orientation="Vertical" Grid.Column="2" Grid.Row="0" Grid.RowSpan="6" Grid.ColumnSpan="2" Background="Beige">
+            <StackPanel x:Name="Big" Orientation="Vertical" Grid.Column="2" Grid.Row="0" Grid.RowSpan="6" Grid.ColumnSpan="2" Background="Transparent">
                 <Border  Margin="10, 10, 10, 0" CornerRadius="5">
-                    <Label Content="Big toys" Style="{StaticResource CategoryLabel}">
+                    <Label Content="Big toys" Foreground="AntiqueWhite" Style="{StaticResource CategoryLabel}">
                     </Label>
                 </Border>
                 <ListBox x:Name="bigList">
@@ -174,9 +179,9 @@
                 </ListBox>
             </StackPanel>
             <!--Stack för kategori Small -->
-            <StackPanel x:Name="Small" Orientation="Vertical" Grid.Column="4" Grid.Row="0" Grid.RowSpan="6" Grid.ColumnSpan="2" Background="Beige">
+            <StackPanel x:Name="Small" Orientation="Vertical" Grid.Column="4" Grid.Row="0" Grid.RowSpan="6" Grid.ColumnSpan="2" Background="Transparent">
                 <Border  Margin="10, 10, 10, 0" CornerRadius="5">
-                    <Label Content="Small toys" Style="{StaticResource CategoryLabel}">
+                    <Label Content="Small toys" Foreground="AntiqueWhite" Style="{StaticResource CategoryLabel}">
                     </Label>
                 </Border>
                 <ListBox x:Name="smallList">
@@ -204,9 +209,7 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="BuyButton" Grid.Column="0" Grid.ColumnSpan="1" Click="BuyButton_Click">Buy Toy</Button>
-            <Button x:Name="Test1" Grid.Column="1" Grid.ColumnSpan="1" Click="Test1_Click">Test1</Button>
-            <Button x:Name="Test2" Grid.Column="2" Grid.ColumnSpan="1" Click="Test2_Click">Test2</Button>
+            <Button x:Name="BuyButton" Foreground="AntiqueWhite" Height="25" Width="100" Grid.Column="1" Grid.ColumnSpan="1" Click="BuyButton_Click">Buy Toy</Button>
             <!--Område för footer slutar-->
         </Grid>
     </Grid>
