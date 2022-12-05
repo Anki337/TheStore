@@ -221,7 +221,7 @@ namespace TheStore
                 }
                 MessageBox.Show("Du måste fylla i vart dina varor skall skeppas till innan du kan betala!");
             }
-            
+            ClearAllFields();
         }
     }
 }

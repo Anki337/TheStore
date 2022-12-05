@@ -89,7 +89,7 @@
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Border CornerRadius="5" Margin="5,5,5,5" Background="LightGray">
+                                                <Border CornerRadius="5" Margin="5,5,5,5" Background="Transparent">
                                                     <Label Content="{Binding Path=Name}">
 
                                                     </Label>
@@ -107,7 +107,7 @@
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal" Background="Transparent">
-                                                <Border CornerRadius="5" Margin="5,5,5,5" Background="LightGray">
+                                                <Border CornerRadius="5" Margin="5,5,5,5" Background="Transparent">
                                                     <Label Content="{Binding Path=Quantity}">
 
                                                     </Label>
