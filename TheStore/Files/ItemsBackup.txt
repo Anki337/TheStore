@@ -11,3 +11,16 @@ Bouncy ball,Small ball to bounce around,75,5,2,Small
 Bouncy ball,Small ball to bounce around,75,5,2,Small
 Bouncy ball,Small ball to bounce around,75,5,2,Small
 Bouncy ball,Small ball to bounce around,75,5,2,Small
+
+ABC Blocks,Learn your ABC!,8,500,7,Small
+Action Man,The gratest hero of all time!,8,200,10,Small
+Air Plane,Takes you anywhere,5,100,10,Outdoor
+Alien Ship,Takes you home, 10,2000,4,Outdoor
+Ball,Really bouncy,2,1,5,Outdoor
+Beach Ball,Inflatable fun!,1,1,1,Outdoor
+Boat,Does not sink in your sink,1,1,1,Small
+Building Blocks,You can build anything you want,1,1,1,Small
+Bunny,Jump around,1,1,1,Small
+Car,Crash into anything,1,1,1,Big
+Crib Toy,Keeps the small one distracted,2,2,2,Small
+Dog,Better than a cat,3,3,3,Big
