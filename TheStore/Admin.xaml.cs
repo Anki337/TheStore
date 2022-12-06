@@ -38,6 +38,7 @@ namespace TheStore
         private void itemCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             itemStack.Visibility = Visibility.Visible;
+            newItemStack.Visibility = Visibility.Visible;
             userStack.Visibility = Visibility.Hidden;
             Item item = itemCombo.SelectedItem as Item;
             itemName.Text = item.Name;
@@ -53,108 +54,100 @@ namespace TheStore
         {
             userStack.Visibility = Visibility.Visible;
             itemStack.Visibility = Visibility.Hidden;
+            newItemStack.Visibility = Visibility.Hidden;
             User user = userCombo.SelectedItem as User;
             userName.Text = user.Name;
             userPassword.Text = user.Password;
             userEmail.Text = user.Email;
             userAdress.Text = user.Address;
             userPhone.Text = user.Phone.ToString();
+            if (user.IsAdmin == true)
+            {
+                userIsAdmin.IsChecked = true;
+                userIsNotAdmin.IsChecked = false;
+            }
+            else
+            {
+                userIsNotAdmin.IsChecked = true;
+                userIsAdmin.IsChecked = false;
+            }
 
         }
 
         private void ChangeItemButton_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            StackPanel stack = (StackPanel)button.Parent;
-            TextBox textBox = (TextBox)stack.Children[1];
             Item item = itemCombo.SelectedItem as Item;
-            if (textBox.Name.Equals("itemName"))
+            item.Name = itemName.Text;
+            item.Description = itemDescription.Text;
+            try
             {
-                item.Name = textBox.Text;
+                item.Quantity = Convert.ToInt32(itemQuantity.Text);
+                item.Price = Convert.ToInt32(itemPrice.Text);
+                item.Weight = Convert.ToInt32(itemWeight.Text);
             }
-            if (textBox.Name.Equals("itemDescription"))
+            catch (Exception f)
             {
-                item.Description = textBox.Text;
+                MessageBox.Show(f.Message);
+
             }
-            if (textBox.Name.Equals("itemQuantity"))
-            {
-                try
-                {
-                    item.Quantity = Convert.ToInt32(textBox.Text);
-
-                }
-                catch (Exception f)
-                {
-                    MessageBox.Show(f.Message);
-
-                }
-            }
-            if (textBox.Name.Equals("itemPrice"))
-            {
-                try
-                {
-                    item.Price = Convert.ToInt32(textBox.Text);
-
-                }
-                catch (Exception f)
-                {
-                    MessageBox.Show(f.Message);
-
-                }
-            }
-            if (textBox.Name.Equals("itemWeight"))
-            {
-                try
-                {
-                    item.Weight = Convert.ToInt32(textBox.Text);
-
-                }
-                catch (Exception f)
-                {
-                    MessageBox.Show(f.Message);
-
-                }
-            }
-            if (textBox.Name.Equals("itemCategory"))
-            {
-                item.Category = textBox.Text;
-            }
+            item.Category = itemCategory.Text;
         }
 
         private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            StackPanel stack = (StackPanel)button.Parent;
-            TextBox textBox = (TextBox)stack.Children[1];
-            User user = itemCombo.SelectedItem as User;
-            if (textBox.Name.Equals("userName"))
-            {
-                user.Name = textBox.Text;
-            }
-            if (textBox.Name.Equals("userPassword"))
-            {
-                user.Password = textBox.Text;
-            }
-            if (textBox.Name.Equals("userEmail"))
-            {
-                user.Email = textBox.Text;
-            }
-            if (textBox.Name.Equals("userAdress"))
-            {
-                user.Address = textBox.Text;
-            }
-            if (textBox.Name.Equals("userPhone"))
-            {
+            User user = userCombo.SelectedItem as User;
+                user.Name = userName.Text;
+                user.Password = userPassword.Text;
+                user.Email = userEmail.Text;
+                user.Address = userAdress.Text;
                 try
                 {
-                    user.Phone = Convert.ToInt16(textBox.Text);
+                    user.Phone = Convert.ToInt32(userPhone.Text);
                 }
                 catch (Exception f)
                 {
                     MessageBox.Show(f.Message);
-
                 }
+
+            if (userIsAdmin.IsChecked == true)
+            {
+                user.IsAdmin = true;
             }
+            else
+            {
+                user.IsAdmin=false;
+            }
+        }
+
+        private void createNewItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Button button = sender as Button;
+                StackPanel stack = (StackPanel)button.Parent;
+                string name = newItemName.Text;
+                string description = newItemDescription.Text;
+
+                int quantity = Convert.ToInt32(newItemQuantity.Text);
+                int price = Convert.ToInt32(newItemPrice.Text);
+                double weight = Convert.ToDouble(newItemWeight.Text);
+                string category = newItemCategory.Text;
+
+                Item item = new Item(name, description, quantity, price, weight, category);
+                allItems.Add(item);
+                MessageBox.Show(name + " was created succesfully");
+            }
+            catch (Exception f)
+            {
+                MessageBox.Show(f.Message);
+            }
+
+        }
+
+        private void goBack_Click(object sender, RoutedEventArgs e)
+        {
+            parent.Show();
+            this.Close();
         }
     }
 }

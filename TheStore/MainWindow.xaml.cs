@@ -53,13 +53,6 @@ namespace TheStore
             thread2.Start();
             thread1.Join();
             thread2.Join();
-            foreach (User user in userList)
-            {
-                if (user.Email.Equals("max@max.com"))
-                {
-                    adminList.Add(user);
-                }
-            }
         }
 
         private void ShowData()
@@ -83,12 +76,16 @@ namespace TheStore
                     logButton.Visibility = Visibility.Collapsed;
                     createButton.Visibility = Visibility.Collapsed;
                     logOutButton.Visibility = Visibility.Visible;
-                    if (adminList.Contains(user))
+                    if (user.IsAdmin==true)
                     {
                         adminButton.Visibility = Visibility.Visible;
+
                     }
+                    /*if (adminList.Contains(user))
+                    {
+                    }*/
                 }
-                
+
             }
         }
         private void createButton_Click(object sender, RoutedEventArgs e)
@@ -123,6 +120,7 @@ namespace TheStore
             logButton.Visibility = Visibility.Visible;
             createButton.Visibility = Visibility.Visible;
             logOutButton.Visibility = Visibility.Collapsed;
+            adminButton.Visibility = Visibility.Collapsed;
         }
 
         private void listAllItemsInMainWindowBody()
@@ -164,27 +162,37 @@ namespace TheStore
             textBlock.HorizontalAlignment = HorizontalAlignment.Left;
             Button button = new Button();
             button.HorizontalAlignment = HorizontalAlignment.Right;
-            System.Windows.Controls.Image image = new System.Windows.Controls.Image()
+            System.Windows.Controls.Image image;
+            try
             {
-                Name = "pic",
-                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Toys/" + item.Name + ".png")),
-                Stretch = Stretch.Uniform
-            };
+                image = new System.Windows.Controls.Image()
+                {
+                    Name = "pic",
+                    Source = new BitmapImage(new Uri("pack://application:,,,/Images/Toys/" + item.Name + ".png")),
+                    Stretch = Stretch.Uniform
+                };
+            }
+            catch
+            {
+                image = new System.Windows.Controls.Image()
+                {
+                    Name = "pic",
+                    Source = new BitmapImage(new Uri("pack://application:,,,/Images/thunder.png")),
+                    Stretch = Stretch.Uniform
+                };
+            }
             image.Height = 30;
             image.Width = 30;
             image.HorizontalAlignment = HorizontalAlignment.Center;
-
             textBlock.Text = item.Name;
             textBlock.ToolTip = item.Description;
             textBlock.Style = (Style)Resources["itemName"];
             button.Style = (Style)Resources["itemButton"];
-            
             itemgrid.Children.Add(textBlock);
             itemgrid.Children.Add(image);
             itemgrid.Children.Add(button);
             listBoxItem.Content = itemgrid;
             listType.Items.Add(listBoxItem);
-            
         }
 
         public void BuyButton_Click(object sender, RoutedEventArgs e)
@@ -284,5 +292,6 @@ namespace TheStore
             this.Hide();
 
         }
+
     }
 }
