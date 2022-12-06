@@ -45,7 +45,7 @@ namespace TheStore
         {
             FileManager fileManager = new FileManager();
             Thread mainThread = Thread.CurrentThread;
-            Thread thread1 = new Thread(() => fileManager.readFromFile("Items", AllItems));
+            Thread thread1 = new Thread(() => fileManager.readFromFile("Items", allItems));
             Thread thread2 = new Thread(() => fileManager.readFromFile("Users", userList));
             thread1.IsBackground = true;
             thread2.IsBackground = true;
@@ -53,13 +53,6 @@ namespace TheStore
             thread2.Start();
             thread1.Join();
             thread2.Join();
-            foreach (User user in userList)
-            {
-                if (user.Email.Equals("max@max.com"))
-                {
-                    adminList.Add(user);
-                }
-            }
         }
 
         private void ShowData()
@@ -83,10 +76,14 @@ namespace TheStore
                     logButton.Visibility = Visibility.Collapsed;
                     createButton.Visibility = Visibility.Collapsed;
                     logOutButton.Visibility = Visibility.Visible;
-                    if (adminList.Contains(user))
+                    if (user.IsAdmin==true)
                     {
                         adminButton.Visibility = Visibility.Visible;
+
                     }
+                    /*if (adminList.Contains(user))
+                    {
+                    }*/
                 }
 
             }
@@ -123,11 +120,12 @@ namespace TheStore
             logButton.Visibility = Visibility.Visible;
             createButton.Visibility = Visibility.Visible;
             logOutButton.Visibility = Visibility.Collapsed;
+            adminButton.Visibility = Visibility.Collapsed;
         }
 
         private void listAllItemsInMainWindowBody()
         {
-            foreach (Item item in AllItems)
+            foreach (Item item in allItems)
             {
                 Label toyName = new Label();
                 Label saldo = new Label();
@@ -172,7 +170,6 @@ namespace TheStore
                     Name = "pic",
                     Source = new BitmapImage(new Uri("pack://application:,,,/Images/Toys/" + item.Name + ".png")),
                     Stretch = Stretch.Uniform
-
                 };
             }
             catch
@@ -182,26 +179,20 @@ namespace TheStore
                     Name = "pic",
                     Source = new BitmapImage(new Uri("pack://application:,,,/Images/thunder.png")),
                     Stretch = Stretch.Uniform
-
                 };
             }
             image.Height = 30;
             image.Width = 30;
             image.HorizontalAlignment = HorizontalAlignment.Center;
-
-
-
             textBlock.Text = item.Name;
             textBlock.ToolTip = item.Description;
             textBlock.Style = (Style)Resources["itemName"];
             button.Style = (Style)Resources["itemButton"];
-
             itemgrid.Children.Add(textBlock);
             itemgrid.Children.Add(image);
             itemgrid.Children.Add(button);
             listBoxItem.Content = itemgrid;
             listType.Items.Add(listBoxItem);
-
         }
 
         public void BuyButton_Click(object sender, RoutedEventArgs e)
@@ -246,7 +237,7 @@ namespace TheStore
             string name = itemName.Text;
             ListBoxItem listBoxItem = (ListBoxItem)grid.Parent;
             ListBox list = (ListBox)listBoxItem.Parent;
-            foreach (Item item in AllItems)
+            foreach (Item item in allItems)
             {
                 if (item.Name.Equals(name))
                 {
@@ -296,7 +287,7 @@ namespace TheStore
 
         private void adminButton_Click(object sender, RoutedEventArgs e)
         {
-            Admin admin = new Admin(this, AllItems, userList);
+            Admin admin = new Admin(this, allItems, userList);
             admin.Show();
             this.Hide();
 

@@ -61,6 +61,16 @@ namespace TheStore
             userEmail.Text = user.Email;
             userAdress.Text = user.Address;
             userPhone.Text = user.Phone.ToString();
+            if (user.IsAdmin == true)
+            {
+                isAdmin.IsChecked = true;
+                isNotAdmin.IsChecked = false;
+            }
+            else
+            {
+                isNotAdmin.IsChecked = true;
+                isAdmin.IsChecked = false;
+            }
 
         }
 
@@ -128,10 +138,12 @@ namespace TheStore
             Button button = sender as Button;
             StackPanel stack = (StackPanel)button.Parent;
             TextBox textBox = (TextBox)stack.Children[1];
-            User user = itemCombo.SelectedItem as User;
+            RadioButton radioButton1 = (RadioButton)stack.Children[2];
+            RadioButton radioButton2 = (RadioButton)stack.Children[3];
+            User user = userCombo.SelectedItem as User;
             if (textBox.Name.Equals("userName"))
             {
-                user.Name = textBox.Text;
+                user.Name = userName.Text;
             }
             if (textBox.Name.Equals("userPassword"))
             {
@@ -157,25 +169,35 @@ namespace TheStore
 
                 }
             }
+            if (radioButton1.IsChecked==true)
+            {
+                user.IsAdmin = Convert.ToBoolean(radioButton1.IsChecked);
+            }
+            if (radioButton2.IsChecked ==true)
+            {
+                user.IsAdmin = Convert.ToBoolean(radioButton2.IsChecked);
+            }
         }
 
         private void createNewItem_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            StackPanel stack = (StackPanel)button.Parent;
-            string name = newItemName.Text;
-            string description = newItemDescription.Text;
-            int quantity = Convert.ToInt32(newItemQuantity.Text);
-            int price = Convert.ToInt32(newItemPrice.Text);
-            double weight = Convert.ToDouble(newItemWeight.Text);
-            string category = newItemCategory.Text;
             try
             {
+                Button button = sender as Button;
+                StackPanel stack = (StackPanel)button.Parent;
+                string name = newItemName.Text;
+                string description = newItemDescription.Text;
+
+                int quantity = Convert.ToInt32(newItemQuantity.Text);
+                int price = Convert.ToInt32(newItemPrice.Text);
+                double weight = Convert.ToDouble(newItemWeight.Text);
+                string category = newItemCategory.Text;
+
                 Item item = new Item(name, description, quantity, price, weight, category);
                 allItems.Add(item);
                 MessageBox.Show(name + " was created succesfully");
             }
-            catch(Exception f)
+            catch (Exception f)
             {
                 MessageBox.Show(f.Message);
             }

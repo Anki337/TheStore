@@ -17,6 +17,7 @@ namespace TheStore
         private string _email;
         private string _address;
         private double _phone;
+        private bool _isAdmin;
 
         //public getters and setters of Class User  
         public string Name
@@ -56,14 +57,16 @@ namespace TheStore
         }
         public string Address { get => _address; set => _address = value; }
         public double Phone { get => _phone; set => _phone = value; }
+        public bool IsAdmin { get => _isAdmin; set => _isAdmin = value; }
 
-        public User(string Name, string Password, string Email, string Address, double Phone)
+        public User(string Name, string Password, string Email, string Address, double Phone, bool IsAdmin)
         {
             this.Name = Name;
             this.Password = Password;
             this.Email = Email;
             this.Address = Address;
             this.Phone = Phone;
+            this.IsAdmin = IsAdmin;
         }
 
  
@@ -71,7 +74,7 @@ namespace TheStore
         {
             return new User(Name: words[0], Password: words[1],
                             Email: words[2], Address: words[3],
-                            Phone: Convert.ToDouble(words[4]));
+                            Phone: Convert.ToDouble(words[4]), IsAdmin: Convert.ToBoolean(words[5]));
         }
         public User()
         {
@@ -80,7 +83,7 @@ namespace TheStore
 
         public override string ToString()
         {
-            string line = Name + "," + Password + "," + Email + "," + Address + "," + Convert.ToString(Phone) + "\r\n";
+            string line = Name + "," + Password + "," + Email + "," + Address + "," + Convert.ToString(Phone) + "," + Convert.ToString(IsAdmin) + "\r\n";
             return line;
         }
 
