@@ -63,119 +63,59 @@ namespace TheStore
             userPhone.Text = user.Phone.ToString();
             if (user.IsAdmin == true)
             {
-                isAdmin.IsChecked = true;
-                isNotAdmin.IsChecked = false;
+                userIsAdmin.IsChecked = true;
+                userIsNotAdmin.IsChecked = false;
             }
             else
             {
-                isNotAdmin.IsChecked = true;
-                isAdmin.IsChecked = false;
+                userIsNotAdmin.IsChecked = true;
+                userIsAdmin.IsChecked = false;
             }
 
         }
 
         private void ChangeItemButton_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            StackPanel stack = (StackPanel)button.Parent;
-            TextBox textBox = (TextBox)stack.Children[1];
             Item item = itemCombo.SelectedItem as Item;
-            if (textBox.Name.Equals("itemName"))
+            item.Name = itemName.Text;
+            item.Description = itemDescription.Text;
+            try
             {
-                item.Name = textBox.Text;
+                item.Quantity = Convert.ToInt32(itemQuantity.Text);
+                item.Price = Convert.ToInt32(itemPrice.Text);
+                item.Weight = Convert.ToInt32(itemWeight.Text);
             }
-            if (textBox.Name.Equals("itemDescription"))
+            catch (Exception f)
             {
-                item.Description = textBox.Text;
+                MessageBox.Show(f.Message);
+
             }
-            if (textBox.Name.Equals("itemQuantity"))
-            {
-                try
-                {
-                    item.Quantity = Convert.ToInt32(textBox.Text);
-
-                }
-                catch (Exception f)
-                {
-                    MessageBox.Show(f.Message);
-
-                }
-            }
-            if (textBox.Name.Equals("itemPrice"))
-            {
-                try
-                {
-                    item.Price = Convert.ToInt32(textBox.Text);
-
-                }
-                catch (Exception f)
-                {
-                    MessageBox.Show(f.Message);
-
-                }
-            }
-            if (textBox.Name.Equals("itemWeight"))
-            {
-                try
-                {
-                    item.Weight = Convert.ToInt32(textBox.Text);
-
-                }
-                catch (Exception f)
-                {
-                    MessageBox.Show(f.Message);
-
-                }
-            }
-            if (textBox.Name.Equals("itemCategory"))
-            {
-                item.Category = textBox.Text;
-            }
+            item.Category = itemCategory.Text;
         }
 
         private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            StackPanel stack = (StackPanel)button.Parent;
-            TextBox textBox = (TextBox)stack.Children[1];
-            RadioButton radioButton1 = (RadioButton)stack.Children[2];
-            RadioButton radioButton2 = (RadioButton)stack.Children[3];
             User user = userCombo.SelectedItem as User;
-            if (textBox.Name.Equals("userName"))
-            {
                 user.Name = userName.Text;
-            }
-            if (textBox.Name.Equals("userPassword"))
-            {
-                user.Password = textBox.Text;
-            }
-            if (textBox.Name.Equals("userEmail"))
-            {
-                user.Email = textBox.Text;
-            }
-            if (textBox.Name.Equals("userAdress"))
-            {
-                user.Address = textBox.Text;
-            }
-            if (textBox.Name.Equals("userPhone"))
-            {
+                user.Password = userPassword.Text;
+                user.Email = userEmail.Text;
+                user.Address = userAdress.Text;
                 try
                 {
-                    user.Phone = Convert.ToInt16(textBox.Text);
+                    user.Phone = Convert.ToInt32(userPhone.Text);
                 }
                 catch (Exception f)
                 {
                     MessageBox.Show(f.Message);
-
                 }
-            }
-            if (radioButton1.IsChecked==true)
+
+            if (userIsAdmin.IsChecked == true)
             {
-                user.IsAdmin = Convert.ToBoolean(radioButton1.IsChecked);
+                user.IsAdmin = true;
             }
-            if (radioButton2.IsChecked ==true)
+            else
             {
-                user.IsAdmin = Convert.ToBoolean(radioButton2.IsChecked);
+                user.IsAdmin=false;
             }
         }
 

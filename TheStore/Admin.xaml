@@ -163,9 +163,8 @@
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock><Run Text="Admin"/></TextBlock>
-                        <TextBox Width="1"></TextBox>
-                        <RadioButton Name="isAdmin" Content="True"/>
-                        <RadioButton Name="isNotAdmin" Content="False"/>
+                        <RadioButton Name="userIsAdmin" Content="True"/>
+                        <RadioButton Name="userIsNotAdmin" Content="False"/>
                         <Button Click="ChangeUserButton_Click" Content="Change"/>
                     </StackPanel>
                 </ListBoxItem>
