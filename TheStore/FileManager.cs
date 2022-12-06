@@ -17,7 +17,7 @@ namespace TheStore
     {
         static DirectoryInfo currentdirectory = new DirectoryInfo(".");
 
-        public void readFromFile<T>(string fileName, List<T> listName) where T : IParsing<T>, new() //Reads a file fileName.txt and creates a list listName<Item> or listName<User>
+        internal void readFromFile<T>(string fileName, List<T> listName) where T : IParsing<T>, new() //Reads a file fileName.txt and creates a list listName<Item> or listName<User>
         {
             string path = currentdirectory.FullName + "\\Files" + @"\" + fileName + ".txt";
             T thing = new T();

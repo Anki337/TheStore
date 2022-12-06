@@ -59,7 +59,7 @@ namespace TheStore
             //returnText.Text = "Please enter a phonenumber";
             //returnText.Text = "Please enter the same password twice";
             //returnText.Text = "The password must be at least 6 characters long";
-
+            //while (userInput = true); inputDelagate(); possibly solve above input/output with a delegate
             user = new User(name, password, email, address, phone);
             userList.Add(user);
             loggedInUser[0] = user;
