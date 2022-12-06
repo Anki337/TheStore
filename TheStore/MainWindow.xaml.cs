@@ -29,6 +29,7 @@ namespace TheStore
     public partial class MainWindow : Window
     {
         private List<User> userList = new List<User>();
+        private List<User> adminList = new List<User>();
         private List<Item> allItems = new List<Item>();
         private List<Item> myCart = new List<Item>();
         private User[] loggedInUser = new User[1];
@@ -52,6 +53,13 @@ namespace TheStore
             thread2.Start();
             thread1.Join();
             thread2.Join();
+            foreach (User user in userList)
+            {
+                if (user.Email.Equals("max@max.com"))
+                {
+                    adminList.Add(user);
+                }
+            }
         }
 
         private void ShowData()
@@ -75,7 +83,12 @@ namespace TheStore
                     logButton.Visibility = Visibility.Collapsed;
                     createButton.Visibility = Visibility.Collapsed;
                     logOutButton.Visibility = Visibility.Visible;
+                    if (adminList.Contains(user))
+                    {
+                        adminButton.Visibility = Visibility.Visible;
+                    }
                 }
+                
             }
         }
         private void createButton_Click(object sender, RoutedEventArgs e)
@@ -262,6 +275,14 @@ namespace TheStore
                 }
             }
             shoppingCart.ToolTip = tooltip;
+        }
+
+        private void adminButton_Click(object sender, RoutedEventArgs e)
+        {
+            Admin admin = new Admin(this, allItems, userList);
+            admin.Show();
+            this.Hide();
+
         }
     }
 }
