@@ -45,7 +45,7 @@ namespace TheStore
         {
             FileManager fileManager = new FileManager();
             Thread mainThread = Thread.CurrentThread;
-            Thread thread1 = new Thread(() => fileManager.readFromFile("Items", allItems));
+            Thread thread1 = new Thread(() => fileManager.readFromFile("Items", AllItems));
             Thread thread2 = new Thread(() => fileManager.readFromFile("Users", userList));
             thread1.IsBackground = true;
             thread2.IsBackground = true;
@@ -88,7 +88,7 @@ namespace TheStore
                         adminButton.Visibility = Visibility.Visible;
                     }
                 }
-                
+
             }
         }
         private void createButton_Click(object sender, RoutedEventArgs e)
@@ -127,7 +127,7 @@ namespace TheStore
 
         private void listAllItemsInMainWindowBody()
         {
-            foreach (Item item in allItems)
+            foreach (Item item in AllItems)
             {
                 Label toyName = new Label();
                 Label saldo = new Label();
@@ -164,27 +164,44 @@ namespace TheStore
             textBlock.HorizontalAlignment = HorizontalAlignment.Left;
             Button button = new Button();
             button.HorizontalAlignment = HorizontalAlignment.Right;
-            System.Windows.Controls.Image image = new System.Windows.Controls.Image()
+            System.Windows.Controls.Image image;
+            try
             {
-                Name = "pic",
-                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Toys/" + item.Name + ".png")),
-                Stretch = Stretch.Uniform
-            };
+                image = new System.Windows.Controls.Image()
+                {
+                    Name = "pic",
+                    Source = new BitmapImage(new Uri("pack://application:,,,/Images/Toys/" + item.Name + ".png")),
+                    Stretch = Stretch.Uniform
+
+                };
+            }
+            catch
+            {
+                image = new System.Windows.Controls.Image()
+                {
+                    Name = "pic",
+                    Source = new BitmapImage(new Uri("pack://application:,,,/Images/thunder.png")),
+                    Stretch = Stretch.Uniform
+
+                };
+            }
             image.Height = 30;
             image.Width = 30;
             image.HorizontalAlignment = HorizontalAlignment.Center;
+
+
 
             textBlock.Text = item.Name;
             textBlock.ToolTip = item.Description;
             textBlock.Style = (Style)Resources["itemName"];
             button.Style = (Style)Resources["itemButton"];
-            
+
             itemgrid.Children.Add(textBlock);
             itemgrid.Children.Add(image);
             itemgrid.Children.Add(button);
             listBoxItem.Content = itemgrid;
             listType.Items.Add(listBoxItem);
-            
+
         }
 
         public void BuyButton_Click(object sender, RoutedEventArgs e)
@@ -229,7 +246,7 @@ namespace TheStore
             string name = itemName.Text;
             ListBoxItem listBoxItem = (ListBoxItem)grid.Parent;
             ListBox list = (ListBox)listBoxItem.Parent;
-            foreach (Item item in allItems)
+            foreach (Item item in AllItems)
             {
                 if (item.Name.Equals(name))
                 {
@@ -279,10 +296,11 @@ namespace TheStore
 
         private void adminButton_Click(object sender, RoutedEventArgs e)
         {
-            Admin admin = new Admin(this, allItems, userList);
+            Admin admin = new Admin(this, AllItems, userList);
             admin.Show();
             this.Hide();
 
         }
+
     }
 }

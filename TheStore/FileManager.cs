@@ -33,6 +33,7 @@ namespace TheStore
             }
             catch (Exception e)
             {
+                MessageBox.Show(thing.ToString());
                 MessageBox.Show(e.Message);
 
             }

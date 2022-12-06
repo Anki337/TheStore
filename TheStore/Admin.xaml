@@ -35,7 +35,11 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+
+        <Button Name="goBack" Content="Go Back" Click="goBack_Click"/>
+
         <WrapPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2"  Height="30">
             <TextBlock Text="Items" />
             <ComboBox Name="itemCombo" Grid.Column="0" Height="30" IsEditable="True" IsReadOnly="True" Text="Please Select Item" ItemsSource="{Binding Path=allItems}" DisplayMemberPath="Name" SelectionChanged="itemCombo_SelectionChanged" Width="150"  MaxDropDownHeight="298"/>
@@ -45,8 +49,8 @@
 
             <ComboBox Name="userCombo" ItemsSource="{Binding Path=userList}" IsEditable="True" IsReadOnly="True" Text="Please Select User" DisplayMemberPath="Name" SelectionChanged="userCombo_SelectionChanged" Width="150" />
         </WrapPanel>
-        <StackPanel  Grid.Column="1" Name="itemStack" Height="400" Orientation="Vertical" Visibility="Hidden">
-            <ListBox x:Name="itemListBox">
+        <StackPanel  Grid.Column="1" Grid.RowSpan="6" Name="itemStack" Height="400" Orientation="Vertical" Visibility="Hidden">
+            <ListBox x:Name="itemListBox" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock><Run Text="Name"/></TextBlock>
@@ -91,8 +95,36 @@
                 </ListBoxItem>
             </ListBox>
         </StackPanel>
-        <StackPanel  Grid.Column="1" Name="userStack" Height="400" Orientation="Vertical" Visibility="Hidden">
-            <ListBox x:Name="userListBox">
+        <StackPanel  Grid.Column="1" Grid.Row="5" Grid.RowSpan="6" Name="newItemStack" Height="400" Orientation="Vertical" Visibility="Hidden" >
+            <StackPanel>
+                <TextBlock><Run Text="Name"/></TextBlock>
+                <TextBox x:Name="newItemName" Text="Name of item"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock><Run Text="Description"/></TextBlock>
+                <TextBox x:Name="newItemDescription" Text="Description of item"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock><Run Text="Quantity"/></TextBlock>
+                <TextBox x:Name="newItemQuantity" Text="Quantity"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock><Run Text="Price"/></TextBlock>
+                <TextBox x:Name="newItemPrice" Text="Price"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock><Run Text="Weight"/></TextBlock>
+                <TextBox x:Name="newItemWeight" Text="Weight"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock><Run Text="Category"/></TextBlock>
+                <TextBox x:Name="newItemCategory" Text="Category"/>
+            </StackPanel>
+            <Button x:Name="createNewItem" Content="Create New Item" Click="createNewItem_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"/>
+
+        </StackPanel>
+        <StackPanel  Grid.Column="1" Grid.RowSpan="6" Name="userStack" Height="400" Orientation="Vertical" Visibility="Hidden">
+            <ListBox x:Name="userListBox" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock><Run Text="Name"/></TextBlock>

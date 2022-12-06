@@ -148,7 +148,7 @@
                     <Label Content="Outdoor Toys" Foreground="AntiqueWhite" Style="{StaticResource CategoryLabel}">
                     </Label>
                 </Border>
-                <ListBox x:Name="outdoorList">
+                <ListBox x:Name="outdoorList" ItemsSource="{Binding Path=AllItems}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

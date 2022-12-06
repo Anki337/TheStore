@@ -38,6 +38,7 @@ namespace TheStore
         private void itemCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             itemStack.Visibility = Visibility.Visible;
+            newItemStack.Visibility = Visibility.Visible;
             userStack.Visibility = Visibility.Hidden;
             Item item = itemCombo.SelectedItem as Item;
             itemName.Text = item.Name;
@@ -53,6 +54,7 @@ namespace TheStore
         {
             userStack.Visibility = Visibility.Visible;
             itemStack.Visibility = Visibility.Hidden;
+            newItemStack.Visibility = Visibility.Hidden;
             User user = userCombo.SelectedItem as User;
             userName.Text = user.Name;
             userPassword.Text = user.Password;
@@ -155,6 +157,35 @@ namespace TheStore
 
                 }
             }
+        }
+
+        private void createNewItem_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            StackPanel stack = (StackPanel)button.Parent;
+            string name = newItemName.Text;
+            string description = newItemDescription.Text;
+            int quantity = Convert.ToInt32(newItemQuantity.Text);
+            int price = Convert.ToInt32(newItemPrice.Text);
+            double weight = Convert.ToDouble(newItemWeight.Text);
+            string category = newItemCategory.Text;
+            try
+            {
+                Item item = new Item(name, description, quantity, price, weight, category);
+                allItems.Add(item);
+                MessageBox.Show(name + " was created succesfully");
+            }
+            catch(Exception f)
+            {
+                MessageBox.Show(f.Message);
+            }
+
+        }
+
+        private void goBack_Click(object sender, RoutedEventArgs e)
+        {
+            parent.Show();
+            this.Close();
         }
     }
 }

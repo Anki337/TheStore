@@ -1,7 +1,7 @@
 ABC Blocks,Learn your ABC!,8,500,7,Small
 Action Man,The gratest hero of all time!,8,200,10,Small
 Air Plane,Takes you anywhere,5,100,10,Outdoor
-Alien Ship,Takes you home, 10,2000,4,Outdoor
+Alien Ship,Takes you home,10,2000,4,Outdoor
 Ball,Really bouncy,2,1,5,Outdoor
 Beach Ball,Inflatable fun!,1,1,1,Outdoor
 Boat,Does not sink in your sink,1,1,1,Small
@@ -10,3 +10,40 @@ Bunny,Jump around,1,1,1,Small
 Car,Crash into anything,1,1,1,Big
 Crib Toy,Keeps the small one distracted,2,2,2,Small
 Dog,Better than a cat,3,3,3,Big
+Doll House,Where your favourite friends sleep,2,3,4,Small
+Doll,When you dont have anyone else,6,7,8,Small
+Elephant,Big and gray with a large trunk,7,8,9,Big
+Fish Bone,No meat left,6,7,8,Small
+Giraffe,Easy to choke,7,8,9,Outdoor
+Horse Tail,Look nice in front of your friends,78,67,65,Big
+IQ Test,Get disappointed!,4,5,6,Small
+Jenga,Maybe not for the ones with Parkinson,4,5,6,Big
+Kick Bike,A fun way to break a leg,9,8,7,Outdoor
+Lego,Create build step on it and scream,4,3,5,Small
+magnetic Board,Write anything you like,7,3,5,Small
+Monster Truck,The largest car of them all,9,3,5,Outdoor
+Mouse,Small and full with deceases,6,5,7,Outdoor
+Pacifier,Shuts up the little one,6,6,6,Small
+Penguin,Looks funny and can not fly,5,5,5,Outdoor
+Plane,Is it a boat or is it a train?,7,3,5,Outdoor
+Pusher,No one knows what this is,5,6,7,Big
+Puzzle,Find the missing piece,3,3,3,Small
+Pyramid,Who built them?,8,7,6,Big
+RC Car,Remotely controlled and remotley fun,3,4,5,Outdoor
+Robot,When will they controll us?,9,9,9,Big
+Rocking Horse,Rocks your socks off,7,3,6,Big
+Rubber Duck,Duck says quack makes you wanna...,7,5,6,Small
+Rubiks Cube,Impossible to solve,9,7,4,Small
+Sand Toy,Build whatever you want,3,4,5,Outdoor
+Spaceship,Beams you inte space,5,5,5,Outdoor
+Spinner,Makes ypur head spin,3,5,7,Small
+Spring,A part of Slinky,9,8,7,Small
+Sword,Win any argument with this,5,6,7,Outdoor
+Teddy Bear,Your only real friend,1,2,3,Big
+Toy Shop,This site IRL,6,7,8,Big
+Train,Does not derail,4,5,6,Small
+T-Rex,Small arms and a big mouth,8,7,6,Big
+Tricycle,Wear a helmet and go downhill,6,7,8,Outdoor
+Truck,Trucky McTruck Face,3,3,3,Outdoor
+Water Gun,Soak your friends,8,8,8,Outdoor
+Wool Ball,As much fun for your cat as it is for your grannie!,7,7,7,Small
