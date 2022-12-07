@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="OrderWindow" Height="600" Width="1000">
     <Window.Background>
-        <ImageBrush ImageSource="pack://application:,,,/Images/Checkout.png" Stretch="UniformToFill"/>
+        <ImageBrush ImageSource="pack://application:,,,/Images/NewestCheckout.png" Stretch="UniformToFill"/>
     </Window.Background>
     <Window.Resources>
         <Style TargetType="TextBox" BasedOn="{StaticResource OrderWindowTextBox}">
