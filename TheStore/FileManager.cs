@@ -29,7 +29,6 @@ namespace TheStore
                     listName.Add(thing.parse(line.Split(',')));
                 }
 
-
             }
             catch (Exception e)
             {
