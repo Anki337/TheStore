@@ -91,23 +91,19 @@ namespace TheStore
 
             }
             item.Category = itemCategory.Text;
+            MessageBox.Show(item.Name + " updated!");
         }
 
         private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
         {
             User user = userCombo.SelectedItem as User;
-                user.Name = userName.Text;
-                user.Password = userPassword.Text;
-                user.Email = userEmail.Text;
-                user.Address = userAdress.Text;
-                try
-                {
-                    user.Phone = Convert.ToInt32(userPhone.Text);
-                }
-                catch (Exception f)
-                {
-                    MessageBox.Show(f.Message);
-                }
+            user.Name = userName.Text;
+            user.Password = userPassword.Text;
+            user.Email = userEmail.Text;
+            user.Address = userAdress.Text;
+            
+                user.Phone = userPhone.Text;
+         
 
             if (userIsAdmin.IsChecked == true)
             {
@@ -115,8 +111,9 @@ namespace TheStore
             }
             else
             {
-                user.IsAdmin=false;
+                user.IsAdmin = false;
             }
+            MessageBox.Show(user.Name + " updated!");
         }
 
         private void createNewItem_Click(object sender, RoutedEventArgs e)

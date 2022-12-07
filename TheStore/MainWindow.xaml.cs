@@ -29,7 +29,6 @@ namespace TheStore
     public partial class MainWindow : Window
     {
         private List<User> userList = new List<User>();
-        private List<User> adminList = new List<User>();
         private List<Item> allItems = new List<Item>();
         private List<Item> myCart = new List<Item>();
         private User[] loggedInUser = new User[1];
@@ -76,9 +75,10 @@ namespace TheStore
                     logButton.Visibility = Visibility.Collapsed;
                     createButton.Visibility = Visibility.Collapsed;
                     logOutButton.Visibility = Visibility.Visible;
-                    if (user.IsAdmin==true)
+                    if (user.IsAdmin == true)
                     {
                         adminButton.Visibility = Visibility.Visible;
+                        ReloadItems.Visibility = Visibility.Visible;
 
                     }
                     /*if (adminList.Contains(user))
@@ -121,6 +121,7 @@ namespace TheStore
             createButton.Visibility = Visibility.Visible;
             logOutButton.Visibility = Visibility.Collapsed;
             adminButton.Visibility = Visibility.Collapsed;
+            ReloadItems.Visibility = Visibility.Collapsed;
         }
 
         private void listAllItemsInMainWindowBody()
@@ -293,5 +294,14 @@ namespace TheStore
 
         }
 
+        private void ReloadItems_Click(object sender, RoutedEventArgs e)
+        {
+
+            outdoorList.Items.Clear();
+            bigList.Items.Clear();
+            smallList.Items.Clear();
+            listAllItemsInMainWindowBody();
+
+        }
     }
 }

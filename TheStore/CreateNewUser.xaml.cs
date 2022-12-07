@@ -50,7 +50,7 @@ namespace TheStore
             string name = firstNameBox.Text + " " + lastNameBox.Text;
             string email = emailBox.Text;
             string address = addressBox.Text;
-            double phone = double.Parse(phoneBox.Text);
+            string phone = phoneBox.Text;
             string password = passwordBoxOne.Password;
             bool isAdmin = false;
 

@@ -211,6 +211,7 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="BuyButton" Foreground="AntiqueWhite" Height="25" Width="100" Grid.Column="1" Grid.ColumnSpan="1" Click="BuyButton_Click">Buy Toy</Button>
+            <Button x:Name="ReloadItems" Content="Reload items" Click="ReloadItems_Click" Height="25" Width="100" Visibility="Hidden"/>
             <!--Område för footer slutar-->
         </Grid>
     </Grid>
