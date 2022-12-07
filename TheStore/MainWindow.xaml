@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
     <Window.Background>
-        <ImageBrush ImageSource="pack://application:,,,/Images/MainWindow.png" Stretch="UniformToFill"/>
+        <ImageBrush ImageSource="pack://application:,,,/Images/KidsToysMainWindow.png" Stretch="None"/>
     </Window.Background>
     <Window.Resources>
         <!--I Windows resources kan jag bygga templates som gäller för hela sidan.-->

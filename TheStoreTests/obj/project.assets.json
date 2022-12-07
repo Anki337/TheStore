@@ -6129,23 +6129,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jaama\\.nuget\\packages\\": {},
+    "C:\\Users\\david\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering grund 2\\Inlämningsuppgift\\The Store\\TheStoreTests\\TheStore.UnitTests.csproj",
+      "projectUniqueName": "C:\\Users\\david\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
       "projectName": "TheStore.UnitTests",
-      "projectPath": "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering grund 2\\Inlämningsuppgift\\The Store\\TheStoreTests\\TheStore.UnitTests.csproj",
-      "packagesPath": "C:\\Users\\jaama\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering grund 2\\Inlämningsuppgift\\The Store\\TheStoreTests\\obj\\",
+      "projectPath": "C:\\Users\\david\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
+      "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\david\\Source\\Repos\\TheStore\\TheStoreTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\jaama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6154,15 +6154,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering grund 2\\Inlämningsuppgift\\The Store\\TheStore\\TheStore.csproj": {
-              "projectPath": "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering grund 2\\Inlämningsuppgift\\The Store\\TheStore\\TheStore.csproj"
+            "C:\\Users\\david\\source\\repos\\TheStore\\TheStore\\TheStore.csproj": {
+              "projectPath": "C:\\Users\\david\\source\\repos\\TheStore\\TheStore\\TheStore.csproj"
             }
           }
         }
@@ -6214,7 +6213,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
