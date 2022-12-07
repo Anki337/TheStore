@@ -12,8 +12,8 @@ namespace TheStore.UnitTests
         public void UserToStringTest()
         {
             //Arrange - skapa förhållandena för testet.
-            User user = new User("David", "password", "Email@Email", "Adress", 0721882669);
-            string expected = "David" + "," + "password" + "," + "Email@Email" + "," + "Adress" + "," + "721882669" + "\r\n";
+            User user = new User("David", "password", "Email@Email", "Adress", 0721882669, true);
+            string expected = "David" + "," + "password" + "," + "Email@Email" + "," + "Adress" + "," + "721882669" + true + "\r\n";
             //Act - Kör funktionen vi vill testa
             string actual =  user.ToString();
             //Assert - Där vi anger vad vi vill ska komma ut ur testet.
@@ -31,7 +31,7 @@ namespace TheStore.UnitTests
         {
 
             //Arrange - skapa förhållandena för testet.
-            User user = new User("David", "password", "Email@Email", "Adress", 0721882669);
+            User user = new User("David", "password", "Email@Email", "Adress", 0721882669, true);
             string value1 = user.Name;
             string value2 = user.Password;
             string value3 = user.Email;
@@ -39,7 +39,7 @@ namespace TheStore.UnitTests
             double value5 = user.Phone;
             string expected = value1 + value2 + value3 + value4 + value5;
             //Act - Kör funktionen vi vill testa
-            var actual = "David" + "password" + "Email@Email" + "Adress" + 0721882669;
+            var actual = "David" + "password" + "Email@Email" + "Adress" + 0721882669 + true;
 
             //Assert - Där vi anger vad vi vill ska komma ut ur testet.
             Assert.Equal(expected, actual, ignoreCase:true);
