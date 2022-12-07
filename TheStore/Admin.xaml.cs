@@ -91,6 +91,7 @@ namespace TheStore
 
             }
             item.Category = itemCategory.Text;
+            MessageBox.Show(item.Name + " updated!");
         }
 
         private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
@@ -117,6 +118,7 @@ namespace TheStore
             {
                 user.IsAdmin=false;
             }
+            MessageBox.Show(user.Name + " updated!");
         }
 
         private void createNewItem_Click(object sender, RoutedEventArgs e)

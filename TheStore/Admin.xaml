@@ -55,43 +55,40 @@
                     <StackPanel>
                         <TextBlock><Run Text="Name"/></TextBlock>
                         <TextBox x:Name="itemName" Text="Name of item"/>
-                        <Button x:Name="ChangeButton" Click="ChangeItemButton_Click" Content="Change"/>
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock><Run Text="Description"/></TextBlock>
                         <TextBox x:Name="itemDescription" Text="Description of item"/>
-                        <Button  Click="ChangeItemButton_Click" Content="Change"/>
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock><Run Text="Quantity"/></TextBlock>
                         <TextBox x:Name="itemQuantity" Text="Quantity"/>
-                        <Button  Click="ChangeItemButton_Click" Content="Change"/>
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock><Run Text="Price"/></TextBlock>
                         <TextBox x:Name="itemPrice" Text="Price"/>
-                        <Button  Click="ChangeItemButton_Click" Content="Change"/>
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock><Run Text="Weight"/></TextBlock>
                         <TextBox x:Name="itemWeight" Text="Weight"/>
-                        <Button  Click="ChangeItemButton_Click" Content="Change"/>
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock><Run Text="Category"/></TextBlock>
                         <TextBox x:Name="itemCategory" Text="Category"/>
-                        <Button  Click="ChangeItemButton_Click" Content="Change"/>
                     </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Button Click="ChangeItemButton_Click" Content="Update Item"/>
                 </ListBoxItem>
             </ListBox>
         </StackPanel>
@@ -120,7 +117,7 @@
                 <TextBlock><Run Text="Category"/></TextBlock>
                 <TextBox x:Name="newItemCategory" Text="Category"/>
             </StackPanel>
-            <Button x:Name="createNewItem" Content="Create New Item" Click="createNewItem_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="createNewItem" Content="Create New Item" Click="createNewItem_Click"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="30"/>
 
         </StackPanel>
         <StackPanel  Grid.Column="1" Grid.RowSpan="6" Name="userStack" Height="400" Orientation="Vertical" Visibility="Hidden">
@@ -129,35 +126,30 @@
                     <StackPanel>
                         <TextBlock><Run Text="Name"/></TextBlock>
                         <TextBox x:Name="userName"/>
-                        <Button Click="ChangeUserButton_Click" Content="Change"/>
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock><Run Text="Password"/></TextBlock>
                         <TextBox x:Name="userPassword"/>
-                        <Button Click="ChangeUserButton_Click" Content="Change"/>
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock><Run Text="E-Mail"/></TextBlock>
                         <TextBox x:Name="userEmail"/>
-                        <Button Click="ChangeUserButton_Click" Content="Change"/>
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock><Run Text="Adress"/></TextBlock>
                         <TextBox x:Name="userAdress"/>
-                        <Button Click="ChangeUserButton_Click" Content="Change"/>
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem>
                     <StackPanel>
                         <TextBlock><Run Text="Phone"/></TextBlock>
                         <TextBox x:Name="userPhone"/>
-                        <Button Click="ChangeUserButton_Click" Content="Change"/>
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem>
@@ -165,8 +157,11 @@
                         <TextBlock><Run Text="Admin"/></TextBlock>
                         <RadioButton Name="userIsAdmin" Content="True"/>
                         <RadioButton Name="userIsNotAdmin" Content="False"/>
-                        <Button Click="ChangeUserButton_Click" Content="Change"/>
                     </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Button Click="ChangeUserButton_Click" Content="Update User"/>
+
                 </ListBoxItem>
             </ListBox>
         </StackPanel>
