@@ -59,7 +59,6 @@ namespace TheStore.UnitTests
                 new object[] { new string[] { "David3", "password1000", "mailmail@hopetihop", "Small lane at small town", "42875364298356920", "false" }, new User("David3", "password1000", "mailmail@hopetihop", "Small lane at small town", "42875364298356920", false) },
             };
 
-
         public static IEnumerable<object[]> Data2() =>
 
             new List<object[]>

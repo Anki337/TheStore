@@ -20,6 +20,7 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Security;
 using System.Diagnostics.Eventing.Reader;
 using System.Threading;
+using Application = System.Windows.Application;
 
 namespace TheStore
 {
@@ -28,21 +29,22 @@ namespace TheStore
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<User> userList = new List<User>();
-        private List<Item> allItems = new List<Item>();
-        private List<Item> myCart = new List<Item>();
+        private static List<User> userList = new List<User>();
+        private static List<Item> allItems = new List<Item>();
+        private static List<Item> myCart = new List<Item>();
         private User[] loggedInUser = new User[1];
-
 
         public MainWindow()
         {
             InitializeComponent();
             LoadData();
             ShowData();
+            //((App)Application.Current).mainWindow = this;
         }
         private void LoadData()
         {
-            FileManager fileManager = new FileManager();
+
+            FileManager fileManager = new FileManager(); 
             Thread mainThread = Thread.CurrentThread;
             Thread thread1 = new Thread(() => fileManager.readFromFile("Items", allItems));
             Thread thread2 = new Thread(() => fileManager.readFromFile("Users", userList));
@@ -52,11 +54,22 @@ namespace TheStore
             thread2.Start();
             thread1.Join();
             thread2.Join();
+
+            //ExitEventHandler exitEventHandler = new ExitEventHandler(this, ExitEventArgs);
+            //exitEventHandler += saveData(ExitEventArgs);
         }
 
         private void ShowData()
         {
             listAllItemsInMainWindowBody();
+        }
+
+
+        public static void onWindowClose()
+        {
+            FileManager fileManager = new FileManager();
+            fileManager.writeToFile("Items", allItems);
+            fileManager.writeToFile("Users", userList);
         }
         private void logButton_Click(object sender, RoutedEventArgs e)
         {
@@ -215,21 +228,6 @@ namespace TheStore
             //this.Hide();
         }
 
-
-        //these are testbuttons that are called from MainWindow (footer)
-        //FEEL FREE to use these testbuttons for implementation testing!
-        private void Test1_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (User user in userList)
-            {
-                Console.WriteLine(user.ToString());
-            }
-        }
-        private void Test2_Click(object sender, RoutedEventArgs e)
-        {
-            //fileManager.writeToFile("Users", userList);
-        }
-
         private void ItemButton_Click(object sender, RoutedEventArgs e)
         {
             Button butt = (Button)sender;
@@ -270,8 +268,7 @@ namespace TheStore
                 logButton_Click(this, e);
             }
 
-        }
-
+        }    
         private void shoppingCart_MouseEnter(object sender, MouseEventArgs e)
         {
             string tooltip = "Shoppingcart i empty. Click on a toy to add it to your cart!";

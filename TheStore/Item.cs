@@ -55,7 +55,7 @@ namespace TheStore
         {
 
             string line = Name + "," + Description + "," + Convert.ToString(Quantity) + "," + Convert.ToString(Price) + "," + Convert.ToString(Weight) + "," + Category + "\r\n";
-
+            
             return line;
         }
 
