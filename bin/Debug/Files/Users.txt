@@ -1,7 +1,0 @@
-Max,bananer,max@max.com,Stan,735040590
-Johan Johansson,qwerty123,johan@son,Street 2,12345678
-Max Maxsson,qwerty123,max@son,Street 5,23456789
-David Davidsson,qwerty123,david@son,Small road,34567890
-Trampo Line,qwerty123,@5,Middle earth,45678901
-Tree House,qwerty123,@5,Big junction,56789012
-Chain Saw,qwerty123,@5,No idea,67890123
