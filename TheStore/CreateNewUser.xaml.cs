@@ -44,6 +44,7 @@ namespace TheStore
             parent = mainWindow;
             wantsToCheckOut=true;
             this.myCart = myCart;
+
             this.allItems = allItems;
 
         }
@@ -68,7 +69,7 @@ namespace TheStore
             }
             else if (phoneBox.Text.Equals(""))
             {
-                returnText.Text = "Please enter a phonenumber";
+                returnText.Text = "Please enter a phone number";
                 return;
             }
             else if (passwordBoxOne.Password.Equals("") || passwordBoxTwo.Password.Equals("") || !passwordBoxOne.Password.Equals(passwordBoxTwo.Password))
@@ -145,7 +146,7 @@ namespace TheStore
         {
             parent.Show();
         }
-        //private void ClickCheckOutButton()  {}
+        
 
     }
 }
