@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RTWoB5f5RpIRL6Ao89LUtoNhTe1PsrExRJCyjPAkCGAWe6bjG7CyJkuONtOAHkFp8Qj3X33JeIMvLaJvExgDgQ==",
+  "dgSpecHash": "vWg2swUodwbh3tquEyOnfE7xvr0eZzao0ulIeiLIo2SNFpXu8ytHU2xKluFIstwcuUJW0mx8iRwcYpQX7o2+OA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\linnea\\Source\\Repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
+  "projectFilePath": "C:\\Users\\linnea\\source\\repos\\TheStore_old3\\TheStoreTests\\TheStore.UnitTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\linnea\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\linnea\\.nuget\\packages\\microsoft.codecoverage\\17.3.2\\microsoft.codecoverage.17.3.2.nupkg.sha512",

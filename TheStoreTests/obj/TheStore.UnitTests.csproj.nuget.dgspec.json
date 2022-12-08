@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\linnea\\Source\\Repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj": {}
+    "C:\\Users\\linnea\\source\\repos\\TheStore_old3\\TheStoreTests\\TheStore.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\linnea\\Source\\Repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj": {
+    "C:\\Users\\linnea\\source\\repos\\TheStore_old3\\TheStoreTests\\TheStore.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\linnea\\Source\\Repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\linnea\\source\\repos\\TheStore_old3\\TheStoreTests\\TheStore.UnitTests.csproj",
         "projectName": "TheStore.UnitTests",
-        "projectPath": "C:\\Users\\linnea\\Source\\Repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
+        "projectPath": "C:\\Users\\linnea\\source\\repos\\TheStore_old3\\TheStoreTests\\TheStore.UnitTests.csproj",
         "packagesPath": "C:\\Users\\linnea\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\linnea\\Source\\Repos\\TheStore\\TheStoreTests\\obj\\",
+        "outputPath": "C:\\Users\\linnea\\source\\repos\\TheStore_old3\\TheStoreTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\linnea\\Source\\Repos\\TheStore\\TheStore\\TheStore.csproj": {
-                "projectPath": "C:\\Users\\linnea\\Source\\Repos\\TheStore\\TheStore\\TheStore.csproj"
+              "C:\\Users\\linnea\\source\\repos\\TheStore_old3\\TheStore\\TheStore.csproj": {
+                "projectPath": "C:\\Users\\linnea\\source\\repos\\TheStore_old3\\TheStore\\TheStore.csproj"
               }
             }
           }
@@ -89,11 +89,11 @@
         }
       }
     },
-    "C:\\Users\\linnea\\Source\\Repos\\TheStore\\TheStore\\TheStore.csproj": {
+    "C:\\Users\\linnea\\source\\repos\\TheStore_old3\\TheStore\\TheStore.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\linnea\\Source\\Repos\\TheStore\\TheStore\\TheStore.csproj",
+        "projectUniqueName": "C:\\Users\\linnea\\source\\repos\\TheStore_old3\\TheStore\\TheStore.csproj",
         "projectName": "TheStore",
-        "projectPath": "C:\\Users\\linnea\\Source\\Repos\\TheStore\\TheStore\\TheStore.csproj",
+        "projectPath": "C:\\Users\\linnea\\source\\repos\\TheStore_old3\\TheStore\\TheStore.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}
