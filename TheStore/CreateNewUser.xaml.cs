@@ -26,6 +26,7 @@ namespace TheStore
         private List<User> userList;
         private User[] loggedInUser;
         List<Item> myCart;
+        List<Item> allItems;
         User user;
         MainWindow parent;
 
@@ -37,12 +38,15 @@ namespace TheStore
             this.loggedInUser = loggedInUser;
             wantsToCheckOut = false;
         }
-        public CreateNewUser(MainWindow mainWindow, List<Item> myCart )
+        public CreateNewUser(MainWindow mainWindow, List<Item> myCart, List<Item>allItems )
         {
             InitializeComponent();
             parent = mainWindow;
             wantsToCheckOut=true;
             this.myCart = myCart;
+
+            this.allItems = allItems;
+
         }
 
         private void clickSubmitButton(object sender, RoutedEventArgs e)
@@ -101,7 +105,7 @@ namespace TheStore
         {
             if (wantsToCheckOut == true)
             {
-                OrderWindow orderWindow = new OrderWindow(parent, myCart, loggedInUser);
+                OrderWindow orderWindow = new OrderWindow(parent, myCart, loggedInUser, allItems);
                 orderWindow.Show();
                 this.Close();
             }
@@ -137,5 +141,12 @@ namespace TheStore
             parent.Show();
             this.Close();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            parent.Show();
+        }
+        
+
     }
 }

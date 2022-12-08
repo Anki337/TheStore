@@ -100,13 +100,13 @@ namespace TheStore
 
             if (loggedInUser[0] == null)
             {
-                CreateNewUser createNewUser = new CreateNewUser(this, myCart);
+                CreateNewUser createNewUser = new CreateNewUser(this, myCart, allItems);
                 this.Hide();
                 createNewUser.Show();
             }
             if (loggedInUser[0] != null)
             {
-                OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser);
+                OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser, allItems);
                 orderWindow.Show();
                 this.Hide();
             }
@@ -164,6 +164,7 @@ namespace TheStore
             Button button = new Button();
             button.HorizontalAlignment = HorizontalAlignment.Right;
             System.Windows.Controls.Image image;
+            
             try
             {
                 image = new System.Windows.Controls.Image()
@@ -194,19 +195,30 @@ namespace TheStore
             itemgrid.Children.Add(button);
             listBoxItem.Content = itemgrid;
             listType.Items.Add(listBoxItem);
+            if (item.Quantity <= 0)
+            {
+                textBlock.Foreground = Brushes.Red;
+                itemgrid.Children.Remove(button);
+                TextBlock soldOut = new TextBlock();
+                soldOut.Text = "Sold Out";
+                soldOut.FontSize = 14;
+                soldOut.Foreground = Brushes.Red;
+                soldOut.HorizontalAlignment = HorizontalAlignment.Right;
+                itemgrid.Children.Add(soldOut);
+            }
         }
 
         public void BuyButton_Click(object sender, RoutedEventArgs e)
         {
             if (loggedInUser[0] == null)
             {
-                CreateNewUser createNewUser = new CreateNewUser(this, myCart);
+                CreateNewUser createNewUser = new CreateNewUser(this, myCart, allItems);
                 this.Hide();
                 createNewUser.Show();
             }
             if (loggedInUser[0] != null)
             {
-                OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser);
+                OrderWindow orderWindow = new OrderWindow(this, myCart, loggedInUser, allItems);
                 orderWindow.Show();
                 this.Hide();
             }
@@ -229,7 +241,29 @@ namespace TheStore
                 {
                     Item clonedItem = item.clone();
                     clonedItem.Quantity = 1;
-                    myCart.Add(clonedItem);
+                    if (myCart.Count == 0)
+                    {
+                        myCart.Add(clonedItem);
+
+                    }
+                    else if (myCart.Count > 0)
+                    {
+                        bool newItem = true;
+                        foreach (Item cartItem in myCart)
+                        {
+                            if (clonedItem.Name.Equals(cartItem.Name))
+                            {
+                                cartItem.Quantity++;
+                                newItem = false;
+                                break;
+                            }
+                        }
+                        if (newItem)
+                        {
+                            myCart.Add(clonedItem);
+                        }
+                    }
+
                     item.Quantity--;
                     MessageBox.Show(item.Name + " added to shopping cart" + "current quantity is: " + item.Quantity);
                     if (item.Quantity <= 0)
@@ -247,6 +281,8 @@ namespace TheStore
                 }
             }
         }
+
+ 
 
         private void mailBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -286,6 +322,14 @@ namespace TheStore
             bigList.Items.Clear();
             smallList.Items.Clear();
             listAllItemsInMainWindowBody();
+
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            FileManager fm = new FileManager();
+            fm.writeToFile("Users", userList);
+            fm.writeToFile("Items", allItems);
 
         }
     }
