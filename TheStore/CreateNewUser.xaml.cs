@@ -45,7 +45,50 @@ namespace TheStore
             this.myCart = myCart;
 
         }
+
         private void clickSubmitButton(object sender, RoutedEventArgs e)
+        {
+
+            if (firstNameBox.Text == "" || lastNameBox.Text == "")
+            {
+                returnText.Text = "Please enter your first and last name";
+                return;
+            }
+            else if (emailBox.Text.Equals("") && !emailBox.Text.Contains("@"))
+            {
+                returnText.Text = "Please enter a correct email address";
+                return;
+            }
+            else if (addressBox.Text.Equals("") || addressBox.Text.Contains(","))
+            {
+                returnText.Text = "Please enter a correct address";
+                return;
+            }
+            else if (phoneBox.Text.Equals(""))
+            {
+                returnText.Text = "Please enter a phonenumber";
+                return;
+            }
+            else if (passwordBoxOne.Password.Equals("") || passwordBoxTwo.Password.Equals("") || !passwordBoxOne.Password.Equals(passwordBoxTwo.Password))
+            {
+                returnText.Text = "Please enter the same password twice";
+                return;
+            }
+            else if (passwordBoxOne.Password.Length < 6)
+            {
+                returnText.Text = "The password must be at least 6 caracters long";
+                return;
+            }
+            else
+            {
+                createUser();
+                userList.Add(user);
+                loggedInUser[0] = user;
+                userWantsToCheckOut();
+            }
+        }
+
+        private void createUser() 
         {
             string name = firstNameBox.Text + " " + lastNameBox.Text;
             string email = emailBox.Text;
@@ -53,32 +96,23 @@ namespace TheStore
             string phone = phoneBox.Text;
             string password = passwordBoxOne.Password;
             bool isAdmin = false;
-
-            //returnText.Text = "Please enter your first and last name";
-            //returnText.Text = "Please enter a correct email address";
-            //returnText.Text = "Please enter an address";
-            //returnText.Text = "Please enter a phonenumber";
-            //returnText.Text = "Please enter the same password twice";
-            //returnText.Text = "The password must be at least 6 characters long";
-
             user = new User(name, password, email, address, phone, isAdmin);
-            userList.Add(user);
-            loggedInUser[0] = user;
-            returnText.Text = "Registration success";
-            submitButton.Visibility = Visibility.Collapsed;
-            //resetButton.Visibility = Visibility.Collapsed;
-            cancelButton.Visibility = Visibility.Collapsed;
-            goBackButton.Visibility = Visibility.Visible;
+        }
+        private void userWantsToCheckOut()
+        {
             if (wantsToCheckOut == true)
             {
                 OrderWindow orderWindow = new OrderWindow(parent, myCart, loggedInUser);
                 orderWindow.Show();
                 this.Close();
             }
-            if(wantsToCheckOut == false)
+            if (wantsToCheckOut == false)
             {
-                parent.Show();
-                this.Close();
+                returnText.Text = "Registration success";
+                submitButton.Visibility = Visibility.Collapsed;
+                resetButton.Visibility = Visibility.Collapsed;
+                cancelButton.Visibility = Visibility.Collapsed;
+                ContinueShoppingButton.Visibility = Visibility.Visible;
             }
         }
 
@@ -92,6 +126,7 @@ namespace TheStore
             {
                 pBox.Clear();
             }
+            returnText.Text = "";
         }
         private void clickCancelButton(object sender, RoutedEventArgs e)
         {
@@ -100,10 +135,8 @@ namespace TheStore
         }
         private void ClickContinueShoppingButton(object sender, RoutedEventArgs e)
         {
-            returnText.Text = "Continue shopping";
             parent.Show();
             this.Close();
         }
-        //private void ClickCheckOutButton()  {}
     }
 }

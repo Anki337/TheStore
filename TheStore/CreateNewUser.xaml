@@ -31,7 +31,7 @@
                 <PasswordBox Height="20" x:Name="passwordBoxTwo" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 10 20 0"/>
             </StackPanel>
             <Button Height="20" x:Name="submitButton" Click ="clickSubmitButton" Width="100" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50 0 200 30" Background="Green" Visibility="Visible"/>
-            <Button Height="20" x:Name="goBackButton" Click ="ClickContinueShoppingButton" Width="100" Content="Go Back" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50 0 200 30" Background="Green" Visibility="Hidden"/>
+            <Button Height="20" x:Name="ContinueShoppingButton" Click ="ClickContinueShoppingButton" Width="100" Content="Continue shopping" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50 0 200 30" Background="Green" Visibility="Hidden"/>
             <Button Height="20" x:Name="resetButton" Click ="clickResetButton" Width="100" Content="Reset" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20 0 200 30" Background="Yellow" Visibility="Visible"/>
             <Button Height="20" x:Name="cancelButton" Click="clickCancelButton" Width="100" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="40 0 0 30" Background="red" Visibility="Visible"/>
         </Grid>
