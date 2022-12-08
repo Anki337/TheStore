@@ -175,6 +175,7 @@
     <Content Include="Files\ShippingInfo.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\CreateNewUser.png" />
     <Resource Include="Images\NewestCheckout.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

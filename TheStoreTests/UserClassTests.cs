@@ -50,6 +50,7 @@ namespace TheStore.UnitTests
                 new object[] { new string[] { "Linnea", "XyZ$$$/djf", "Email@Email", "Adress", "01382657420", "false" }, new User("Linnea", "XyZ$$$/djf", "Email@Email", "Adress", "01382657420", false) },
                 new object[] { new string[] { "David2", "qwerty", "david23@gmail.com", "Street56, 2657 37 Summerland", "7", "false" }, new User("David2", "qwerty", "david23@gmail.com", "Street56, 2657 37 Summerland", "7", false) },
                 new object[] { new string[] { "David3", "password1000", "mailmail@hopetihop", "Small lane at small town", "42875364298356920", "false" }, new User("David3", "password1000", "mailmail@hopetihop", "Small lane at small town", "42875364298356920", false) },
+                new object[] { new string[] { "", "", "", "", "", "false" }, new User("", "", "", "", "", false) },
             };
 
         public static IEnumerable<object[]> Data2() =>
@@ -62,6 +63,8 @@ namespace TheStore.UnitTests
                 new object[] { new User("Linnea", "XyZ$$$/djf", "Email@Email", "Address", "1382657420", false), "Linnea,XyZ$$$/djf,Email@Email,Address,1382657420,False\r\n" },
                 new object[] { new User("David3", "password1000", "mailmail@hopetihop", "Small lane at small town", "98356923", false), "David3,password1000,mailmail@hopetihop,Small lane at small town,98356923,False\r\n" },
                 new object[] { new User("David2", "qwerty", "david23@gmail.com", "Street56 2657 37 Summerland", "7", false), "David2,qwerty,david23@gmail.com,Street56 2657 37 Summerland,7,False\r\n" },
+                new object[] { new User("Null", "Nullinull", "", "Street Nullzone", "0", false), "Null,Nullinull,,Street Nullzone,0,False\r\n" },
+
             };
     }
 }
