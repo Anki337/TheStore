@@ -10,10 +10,7 @@
         Width="1000" 
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen" Closing="Window_Closing">
-
-
-        Title="MainWindow" Height="600" Width="1000" >
-
+        
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/Images/KidsToysMainWindow.png" Stretch="UniformToFill"/>
     </Window.Background>
