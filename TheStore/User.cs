@@ -83,7 +83,7 @@ namespace TheStore
 
         public override string ToString()
         {
-            string line = Name + "," + Password + "," + Email + "," + Address + "," + Phone + "," + Convert.ToString(IsAdmin) + "\r\n";
+            string line = Name + "," + Password + "," + Email + "," + Address + "," + Phone + "," + IsAdmin + "\r\n";
             return line;
         }
 
