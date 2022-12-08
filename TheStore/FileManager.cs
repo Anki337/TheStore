@@ -25,11 +25,17 @@ namespace TheStore
             {
                 string[] lines = File.ReadAllLines(path);
                 foreach (string line in lines)
-                    
-                    listName.Add(thing.parse(line.Split(',')));   
+                {
+                    listName.Add(thing.parse(line.Split(',')));
+                }
+
+
             }
-            catch (Exception e) { 
+            catch (Exception e)
+            {
+                MessageBox.Show(thing.ToString());
                 MessageBox.Show(e.Message);
+
             }
             foreach (T t in listName)
                 Console.WriteLine(t);
@@ -38,10 +44,10 @@ namespace TheStore
         {
             string path = currentdirectory.FullName + "\\Files\\" + fileName + ".txt";
             string line = null;
-      
-            foreach(T thing in listName)
+
+            foreach (T thing in listName)
                 line += thing.ToString();
-               
+
             File.WriteAllText(path, line);
         }
     }

@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:TheStore"
         mc:Ignorable="d"
         Title="OrderWindow" Height="600" Width="1000">
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Images/NewestCheckout.png" Stretch="UniformToFill"/>
+    </Window.Background>
     <Window.Resources>
         <Style TargetType="TextBox" BasedOn="{StaticResource OrderWindowTextBox}">
         </Style>
@@ -37,19 +40,13 @@
                 <!--Område för header startar-->
                 <Label VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20">
                     <StackPanel Orientation="Horizontal">
-                        <AccessText>
+                        <AccessText Foreground="White">
                             The Store
                         </AccessText>
                         <Image Source="pack://application:,,,/Images/thunder.png"></Image>
                     </StackPanel>
                 </Label>
-                <Label FontSize="15" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="0,0,5,0">Welcome</TextBlock>
-                        <TextBlock x:Name="userNameText">Max</TextBlock>
-                    </StackPanel>
-                </Label>
-                <Button x:Name="ContinueShopping" Content="Continue Shopping!" Grid.Row="2" Grid.Column="6" Width="120" Height="20" Click="ContinueShopping_Click" />
+
                 <!--Område för header slutar-->
             </Grid>
 
@@ -59,9 +56,7 @@
                     <ColumnDefinition Width="9*"/>
                 </Grid.ColumnDefinitions>
                 <!--Område för Body startar-->
-                <Grid.Background>
-                    <ImageBrush ImageSource="pack://application:,,,/Images/Checkout.png" Stretch="UniformToFill"/>
-                </Grid.Background>
+
                 <Grid x:Name="PurchasedItems" HorizontalAlignment="Left"
                       VerticalAlignment="Center" Height="300" Width="750" Margin="125,0,0,0">
                     <Grid VerticalAlignment="Center">
@@ -90,11 +85,11 @@
                                 <Label Foreground="wheat" 
                                   FontWeight="Bold" FontFamily="Comic Sans MS"
                                 >Leksak</Label>
-                                <ListBox x:Name="itemNameWindow" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
+                                <ListBox x:Name="itemNameWindow" ScrollViewer.HorizontalScrollBarVisibility="Auto" Background="Transparent" >
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Border CornerRadius="5" Margin="5,5,5,5" Background="LightGray">
+                                                <Border CornerRadius="5" Margin="5,5,5,5" Background="Transparent">
                                                     <Label Content="{Binding Path=Name}">
 
                                                     </Label>
@@ -108,11 +103,11 @@
                                 <Label Foreground="Wheat" 
                                   FontWeight="Bold" FontFamily="Comic Sans MS"
                                 >Antal</Label>
-                                <ListBox x:Name="itemQuantityWindow" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
+                                <ListBox x:Name="itemQuantityWindow" ScrollViewer.HorizontalScrollBarVisibility="auto" >
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Border CornerRadius="5" Margin="5,5,5,5" Background="LightGray">
+                                            <StackPanel Orientation="Horizontal" Background="Transparent">
+                                                <Border CornerRadius="5" Margin="5,5,5,5" Background="Transparent">
                                                     <Label Content="{Binding Path=Quantity}">
 
                                                     </Label>
@@ -140,24 +135,24 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Margin="5,0,0,0" Foreground="Wheat" FontWeight="Bold" TextDecorations="Underline" 
                                        FontStyle="Italic" FontSize="11" FontFamily="Comic Sans MS" Grid.ColumnSpan="2">Privatperson</TextBlock>
-                            <TextBlock Margin="5 25 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8" Grid.ColumnSpan="2">Adress:</TextBlock>
-                            <TextBlock Margin="5 45 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8" Grid.ColumnSpan="2">Post nr:</TextBlock>
-                            <TextBlock Margin="5 65 0 0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8" Grid.ColumnSpan="2">Ort:</TextBlock>
-                            <TextBlock Margin="5,87,0,0" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8" Grid.ColumnSpan="2">Telefon Nr:</TextBlock>
-                            <TextBox x:Name="OrderWinAdress"  Margin="8,25,0,178" TextChanged="OrderWinAdress_TextChanged" 
+                            <TextBlock Margin="5,66,0,-41" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="11" Grid.ColumnSpan="2">Adress:</TextBlock>
+                            <TextBlock Margin="5,94,0,-49" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="11" Grid.ColumnSpan="2">Post nr:</TextBlock>
+                            <TextBlock Margin="5,122,0,-57" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="11" Grid.ColumnSpan="2">Ort:</TextBlock>
+                            <TextBlock Margin="5,151,0,-64" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="11" Grid.ColumnSpan="2">Telefon Nr:</TextBlock>
+                            <TextBox x:Name="OrderWinAdress" Height="20" Margin="4,64,4,133" TextChanged="OrderWinAdress_TextChanged" 
                                      Grid.Column="1"/>
-                            <TextBox x:Name="OrderWinPostNr"  Margin="8,45,0,158" TextChanged="OrderWinPostNr_TextChanged" 
+                            <TextBox x:Name="OrderWinPostNr" Height="20" Margin="4,93,4,105" TextChanged="OrderWinPostNr_TextChanged" 
                                      Grid.Column="1"/>
-                            <TextBox x:Name="OrderWinOrt"  Margin="8,65,0,138" TextChanged="OrderWinOrt_TextChanged"
+                            <TextBox x:Name="OrderWinOrt" Height="20" Margin="4,121,4,78" TextChanged="OrderWinOrt_TextChanged"
                                      Grid.Column="1"/>
-                            <TextBox x:Name="OrderWinTele"  Margin="8,85,0,118" TextChanged="OrderWinTele_TextChanged"
+                            <TextBox x:Name="OrderWinTele" Height="20" Margin="4,150,4,48" TextChanged="OrderWinTele_TextChanged"
                                      Grid.Column="1"/>
                             <Button Height="20" Width="100" Content="Save" x:Name="SaveButton" Click="SaveButton_Click"                             
-                             Background="Wheat" Grid.Column="1" Margin="14,107,14,91"></Button>
+                             Background="Wheat" Margin="14,188,14,10" Grid.Column="1"/>
                             <ComboBox x:Name="SavedInfoComboBox" Width="100" Height="20"
                                       HorizontalAlignment="Left" VerticalAlignment="Top" 
                                       BorderBrush="#FF1B45C7" FontSize="10" Grid.Column="1" 
@@ -181,19 +176,19 @@
                                 <ColumnDefinition Width="5*"/>
                                 <ColumnDefinition Width="45*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox x:Name="CardName"  Margin="32,50,31,153" Grid.ColumnSpan="3" TextChanged="CardName_TextChanged" ></TextBox>
-                            <TextBox x:Name="CardNum" Margin="32,80,31,123" Grid.ColumnSpan="3" TextChanged="CardNum_TextChanged" ></TextBox>
-                            <TextBox x:Name="CardDate1" Width="50" TextChanged="CardDate1_TextChanged" Margin="32,112,51,91" />
-                            <TextBox x:Name="CardDate2" Width="50" TextChanged="CardDate2_TextChanged" Margin="102,112,31,91" Grid.ColumnSpan="3" />
-                            <TextBox x:Name="CardCvv" Width="50" Margin="32,140,31,63" Grid.ColumnSpan="3" TextChanged="CardCvv_TextChanged" />
-                            <TextBlock Margin="53,37,2,161" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8" Height="20">Name of Cardholder:</TextBlock>
-                            <TextBlock Margin="67,67,38,131" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8" Height="20" Grid.ColumnSpan="3">Card Number</TextBlock>
-                            <TextBlock Margin="67,95,38,103" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8"  Height="20" Grid.ColumnSpan="3">Expiration date(Y/M)</TextBlock>
-                            <TextBlock Margin="74,127,31,71" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
-                                       FontSize="8"  Height="20" Grid.ColumnSpan="3">Card Cvv:</TextBlock>
+                            <TextBox x:Name="CardName" Height="20" Margin="32,50,31,146" Grid.ColumnSpan="3" TextChanged="CardName_TextChanged" ></TextBox>
+                            <TextBox x:Name="CardNum" Height="20" Margin="32,92,31,108" Grid.ColumnSpan="3" TextChanged="CardNum_TextChanged" ></TextBox>
+                            <TextBox x:Name="CardDate1" Height="20" Text="Year" Width="50" TextChanged="CardDate1_TextChanged" Margin="32,130,51,68" />
+                            <TextBox x:Name="CardDate2" Height="20" Text="Month" Width="50" TextChanged="CardDate2_TextChanged" Margin="102,130,31,68" Grid.ColumnSpan="3" />
+                            <TextBox x:Name="CardCvv" Height="NaN" Width="50" Margin="67,170,16,28" TextChanged="CardCvv_TextChanged" />
+                            <TextBlock Margin="42,37,2,167" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="9" Grid.ColumnSpan="2">Name of Cardholder:</TextBlock>
+                            <TextBlock Margin="67,76,38,131" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="9" Grid.ColumnSpan="3" RenderTransformOrigin="0.463,0.901">Card Number:</TextBlock>
+                            <TextBlock Margin="63,115,41,88" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="9" Grid.ColumnSpan="3">Expiration date:</TextBlock>
+                            <TextBlock Margin="74,155,31,43" Foreground="White" FontWeight="Bold" TextDecorations="Underline"
+                                       FontSize="9"  Height="20" Grid.ColumnSpan="3">Card Cvv:</TextBlock>
                             <ComboBox x:Name="PaymentBox" Width="120" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"
                                       Margin="32,0,0,0" Text="" BorderBrush="#FF1B45C7" FontSize="10"
                                       ItemsSource="{Binding ComboBoxPay, RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Mode=OneWay}" Grid.ColumnSpan="3">
@@ -218,7 +213,22 @@
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="7*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.ColumnSpan="2">footer</Button>
+                <Button x:Name="ContinueShopping" Foreground="AntiqueWhite" Content="Continue Shopping!" Width="120" Height="25" Click="ContinueShopping_Click" Margin="150,33,30,42" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="#FFD4D3F5" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="PaymentButton" Foreground="AntiqueWhite" Content="Confirm Payment" Grid.Column="1" Width="120" Height="25" Margin="410,33,170,42" Click="PaymentButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="#FFD4D3F5" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
                 <!--Område för footer slutar-->
             </Grid>
         </Grid>

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\David\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj": {}
+    "C:\\Users\\linnea\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\David\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj": {
+    "C:\\Users\\linnea\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\David\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\linnea\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
         "projectName": "TheStore.UnitTests",
-        "projectPath": "C:\\Users\\David\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
-        "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\David\\source\\repos\\TheStore\\TheStoreTests\\obj\\",
+        "projectPath": "C:\\Users\\linnea\\source\\repos\\TheStore\\TheStoreTests\\TheStore.UnitTests.csproj",
+        "packagesPath": "C:\\Users\\linnea\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\linnea\\source\\repos\\TheStore\\TheStoreTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\linnea\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,15 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\David\\source\\repos\\TheStore\\TheStore\\TheStore.csproj": {
-                "projectPath": "C:\\Users\\David\\source\\repos\\TheStore\\TheStore\\TheStore.csproj"
+              "C:\\Users\\linnea\\source\\repos\\TheStore\\TheStore\\TheStore.csproj": {
+                "projectPath": "C:\\Users\\linnea\\source\\repos\\TheStore\\TheStore\\TheStore.csproj"
               }
             }
           }
@@ -86,15 +85,15 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\David\\source\\repos\\TheStore\\TheStore\\TheStore.csproj": {
+    "C:\\Users\\linnea\\source\\repos\\TheStore\\TheStore\\TheStore.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\David\\source\\repos\\TheStore\\TheStore\\TheStore.csproj",
+        "projectUniqueName": "C:\\Users\\linnea\\source\\repos\\TheStore\\TheStore\\TheStore.csproj",
         "projectName": "TheStore",
-        "projectPath": "C:\\Users\\David\\source\\repos\\TheStore\\TheStore\\TheStore.csproj",
+        "projectPath": "C:\\Users\\linnea\\source\\repos\\TheStore\\TheStore\\TheStore.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}

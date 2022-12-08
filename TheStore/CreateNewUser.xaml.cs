@@ -50,8 +50,9 @@ namespace TheStore
             string name = firstNameBox.Text + " " + lastNameBox.Text;
             string email = emailBox.Text;
             string address = addressBox.Text;
-            double phone = double.Parse(phoneBox.Text);
+            string phone = phoneBox.Text;
             string password = passwordBoxOne.Password;
+            bool isAdmin = false;
 
             //returnText.Text = "Please enter your first and last name";
             //returnText.Text = "Please enter a correct email address";
@@ -60,7 +61,7 @@ namespace TheStore
             //returnText.Text = "Please enter the same password twice";
             //returnText.Text = "The password must be at least 6 characters long";
 
-            user = new User(name, password, email, address, phone);
+            user = new User(name, password, email, address, phone, isAdmin);
             userList.Add(user);
             loggedInUser[0] = user;
             returnText.Text = "Registration success";
