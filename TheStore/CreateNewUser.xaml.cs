@@ -104,6 +104,11 @@ namespace TheStore
             parent.Show();
             this.Close();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            parent.Show();
+        }
         //private void ClickCheckOutButton()  {}
     }
 }

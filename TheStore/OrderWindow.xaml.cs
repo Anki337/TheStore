@@ -223,5 +223,10 @@ namespace TheStore
             }
             ClearAllFields();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            parent.Show();
+        }
     }
 }

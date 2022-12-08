@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheStore"
         mc:Ignorable="d"
-        Title="OrderWindow" Height="600" Width="1000">
+        Title="OrderWindow" Height="600" Width="1000" Closing="Window_Closing">
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/Images/NewestCheckout.png" Stretch="UniformToFill"/>
     </Window.Background>

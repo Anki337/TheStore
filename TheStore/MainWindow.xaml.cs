@@ -303,5 +303,13 @@ namespace TheStore
             listAllItemsInMainWindowBody();
 
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            FileManager fm = new FileManager();
+            fm.writeToFile("Users", userList);
+            fm.writeToFile("Items", allItems);
+
+        }
     }
 }
