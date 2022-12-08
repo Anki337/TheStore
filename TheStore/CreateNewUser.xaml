@@ -5,22 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheStore"
         mc:Ignorable="d"
-        Title="CreateNewUser" Height="450" Width="800">
+
+        Title="CreateNewUser" Height="600" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="Window_Closing">
+
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Images/OrderWindow.png" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="pack://application:,,,/Images/CreateNewUser.png" Stretch="UniformToFill"/>
         </Grid.Background>
 
-        <Grid Height="300" Width="600">
-            <TextBlock Height="25" x:Name="firstName" HorizontalAlignment="left" Text="First Name:" Margin="50 5 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="white" FontFamily="Arial"/>
-            <TextBlock Height="25" x:Name="lastName" HorizontalAlignment="left" Text="Last Name:" Margin="50 35 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="White" FontFamily="Arial"/>
-            <TextBlock Height="25" x:Name="Email" HorizontalAlignment="left" Text="Email Adress:" Margin="50 65 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="White" FontFamily="Arial"/>
-            <TextBlock Height="25" x:Name="Adress" HorizontalAlignment="left" Text="Adress:" Margin="50 95 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="White" FontFamily="Arial"/>
-            <TextBlock Height="25" x:Name="Phone" HorizontalAlignment="left" Text="Phone:" Margin="50 125 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="White" FontFamily="Arial"/>
-            <TextBlock Height="25" x:Name="passwordOne" HorizontalAlignment="left" Text="Password:" Margin="50 155 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="White" FontFamily="Arial"/>
-            <TextBlock Height="25" x:Name="passwordTwo" HorizontalAlignment="left" Text="Confirm Password:" Margin="50 185 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="White" FontFamily="Arial"/>
-            <TextBlock Height="25" x:Name="returnText" HorizontalAlignment="Left" Text="" Margin="50 215 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="White" FontFamily="Arial" />
+        <Grid Height="300" Width="600" Margin="200,162,200,122">
+            <TextBlock Height="25" x:Name="firstName" HorizontalAlignment="left" Text="First Name:" Margin="50 5 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="black" FontFamily="Arial"/>
+            <TextBlock Height="25" x:Name="lastName" HorizontalAlignment="left" Text="Last Name:" Margin="50 35 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="black" FontFamily="Arial"/>
+            <TextBlock Height="25" x:Name="Email" HorizontalAlignment="left" Text="Email Adress:" Margin="50 65 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="black" FontFamily="Arial"/>
+            <TextBlock Height="25" x:Name="Adress" HorizontalAlignment="left" Text="Adress:" Margin="50 95 0 0" VerticalAlignment="top" FontSize="15" FontWeight="SemiBold" Foreground="black" FontFamily="Arial"/>
+            <TextBlock Height="25" x:Name="Phone" HorizontalAlignment="left" Text="Phone:" Margin="50 125 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="black" FontFamily="Arial"/>
+            <TextBlock Height="25" x:Name="passwordOne" HorizontalAlignment="left" Text="Password:" Margin="50 155 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="black" FontFamily="Arial"/>
+            <TextBlock Height="25" x:Name="passwordTwo" HorizontalAlignment="left" Text="Confirm Password:" Margin="50 185 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="black" FontFamily="Arial"/>
+            <TextBlock Height="25" x:Name="returnText" HorizontalAlignment="Left" Text="" Margin="50 215 0 0" VerticalAlignment="top" FontSize="15" FontWeight="Bold" Foreground="black" FontFamily="Arial" />
             <StackPanel x:Name="boxes">
                 <TextBox Height="20" x:Name="firstNameBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 2 20 0" />
                 <TextBox Height="20" x:Name="lastNameBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 10 20 0" />
@@ -31,7 +33,7 @@
                 <PasswordBox Height="20" x:Name="passwordBoxTwo" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="5 10 20 0"/>
             </StackPanel>
             <Button Height="20" x:Name="submitButton" Click ="clickSubmitButton" Width="100" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50 0 200 30" Background="Green" Visibility="Visible"/>
-            <Button Height="20" x:Name="goBackButton" Click ="ClickContinueShoppingButton" Width="100" Content="Go Back" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50 0 200 30" Background="Green" Visibility="Hidden"/>
+            <Button Height="20" x:Name="ContinueShoppingButton" Click ="ClickContinueShoppingButton" Width="100" Content="Continue shopping" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50 0 200 30" Background="Green" Visibility="Hidden"/>
             <Button Height="20" x:Name="resetButton" Click ="clickResetButton" Width="100" Content="Reset" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20 0 200 30" Background="Yellow" Visibility="Visible"/>
             <Button Height="20" x:Name="cancelButton" Click="clickCancelButton" Width="100" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="40 0 0 30" Background="red" Visibility="Visible"/>
         </Grid>

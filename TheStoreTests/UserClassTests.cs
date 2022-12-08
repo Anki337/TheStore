@@ -37,13 +37,6 @@ namespace TheStore.UnitTests
 
             //Assert
             Assert.True(actual.Equals(expected, StringComparison.Ordinal));
-
-            /* Function tested:
-            public override string ToString()
-            {
-               string line = Name + "," + Password + "," + Email + "," + Address + "," + Convert.ToString(Phone) + "\r\n";
-               return line;
-            } */
         }
 
 
@@ -57,19 +50,21 @@ namespace TheStore.UnitTests
                 new object[] { new string[] { "Linnea", "XyZ$$$/djf", "Email@Email", "Adress", "01382657420", "false" }, new User("Linnea", "XyZ$$$/djf", "Email@Email", "Adress", "01382657420", false) },
                 new object[] { new string[] { "David2", "qwerty", "david23@gmail.com", "Street56, 2657 37 Summerland", "7", "false" }, new User("David2", "qwerty", "david23@gmail.com", "Street56, 2657 37 Summerland", "7", false) },
                 new object[] { new string[] { "David3", "password1000", "mailmail@hopetihop", "Small lane at small town", "42875364298356920", "false" }, new User("David3", "password1000", "mailmail@hopetihop", "Small lane at small town", "42875364298356920", false) },
+                new object[] { new string[] { "", "", "", "", "", "false" }, new User("", "", "", "", "", false) },
             };
-
 
         public static IEnumerable<object[]> Data2() =>
 
             new List<object[]>
 
             {
-                new object[] { new User("David", "password", "Email@Email", "Adress", "721882669", false), "David,password,Email@Email,Adress,721882669,false\r\n" },
-                new object[] { new User("Max", "123456", "Email@email.com", "A very very long address Soooo long sooooo long zzzzzzzzzzz", "72", false), "Max,123456,Email@email.com,A very very long address Soooo long sooooo long zzzzzzzzzzz,72,false\r\n" },
-                new object[] { new User("Linnea", "XyZ$$$/djf", "Email@Email", "Address", "1382657420", false), "Linnea,XyZ$$$/djf,Email@Email,Address,1382657420,false\r\n" },
-                new object[] { new User("David3", "password1000", "mailmail@hopetihop", "Small lane at small town", "98356923", false), "David3,password1000,mailmail@hopetihop,Small lane at small town,98356923,false\r\n" },
-                new object[] { new User("David2", "qwerty", "david23@gmail.com", "Street56 2657 37 Summerland", "7", false), "David2,qwerty,david23@gmail.com,Street56 2657 37 Summerland,7,false\r\n" },
+                new object[] { new User("David", "password", "Email@Email", "Adress", "721882669", false), "David,password,Email@Email,Adress,721882669,False\r\n" },
+                new object[] { new User("Max", "123456", "Email@email.com", "A very very long address Soooo long sooooo long zzzzzzzzzzz", "72", false), "Max,123456,Email@email.com,A very very long address Soooo long sooooo long zzzzzzzzzzz,72,False\r\n" },
+                new object[] { new User("Linnea", "XyZ$$$/djf", "Email@Email", "Address", "1382657420", false), "Linnea,XyZ$$$/djf,Email@Email,Address,1382657420,False\r\n" },
+                new object[] { new User("David3", "password1000", "mailmail@hopetihop", "Small lane at small town", "98356923", false), "David3,password1000,mailmail@hopetihop,Small lane at small town,98356923,False\r\n" },
+                new object[] { new User("David2", "qwerty", "david23@gmail.com", "Street56 2657 37 Summerland", "7", false), "David2,qwerty,david23@gmail.com,Street56 2657 37 Summerland,7,False\r\n" },
+                new object[] { new User("Null", "Nullinull", "", "Street Nullzone", "0", false), "Null,Nullinull,,Street Nullzone,0,False\r\n" },
+
             };
     }
 }
