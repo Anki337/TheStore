@@ -37,13 +37,6 @@ namespace TheStore.UnitTests
 
             //Assert
             Assert.True(actual.Equals(expected, StringComparison.Ordinal));
-
-            /* Function tested:
-            public override string ToString()
-            {
-               string line = Name + "," + Password + "," + Email + "," + Address + "," + Convert.ToString(Phone) + "\r\n";
-               return line;
-            } */
         }
 
 
@@ -60,7 +53,6 @@ namespace TheStore.UnitTests
                 new object[] { new string[] { "", "", "", "", "", "false" }, new User("", "", "", "", "", false) },
             };
 
-
         public static IEnumerable<object[]> Data2() =>
 
             new List<object[]>
@@ -72,6 +64,7 @@ namespace TheStore.UnitTests
                 new object[] { new User("David3", "password1000", "mailmail@hopetihop", "Small lane at small town", "98356923", false), "David3,password1000,mailmail@hopetihop,Small lane at small town,98356923,False\r\n" },
                 new object[] { new User("David2", "qwerty", "david23@gmail.com", "Street56 2657 37 Summerland", "7", false), "David2,qwerty,david23@gmail.com,Street56 2657 37 Summerland,7,False\r\n" },
                 new object[] { new User("Null", "Nullinull", "", "Street Nullzone", "0", false), "Null,Nullinull,,Street Nullzone,0,False\r\n" },
+
             };
     }
 }
