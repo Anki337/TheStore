@@ -215,21 +215,6 @@ namespace TheStore
             //this.Hide();
         }
 
-
-        //these are testbuttons that are called from MainWindow (footer)
-        //FEEL FREE to use these testbuttons for implementation testing!
-        private void Test1_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (User user in userList)
-            {
-                Console.WriteLine(user.ToString());
-            }
-        }
-        private void Test2_Click(object sender, RoutedEventArgs e)
-        {
-            //fileManager.writeToFile("Users", userList);
-        }
-
         private void ItemButton_Click(object sender, RoutedEventArgs e)
         {
             Button butt = (Button)sender;
