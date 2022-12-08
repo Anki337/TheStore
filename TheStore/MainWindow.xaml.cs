@@ -244,7 +244,29 @@ namespace TheStore
                 {
                     Item clonedItem = item.clone();
                     clonedItem.Quantity = 1;
-                    myCart.Add(clonedItem);
+                    if (myCart.Count == 0)
+                    {
+                        myCart.Add(clonedItem);
+
+                    }
+                    if (myCart.Count > 0)
+                    {
+                        bool newItem = true;
+                        foreach (Item cartItem in myCart)
+                        {
+                            if (clonedItem.Name.Equals(cartItem.Name))
+                            {
+                                cartItem.Quantity++;
+                                newItem = false;
+                                break;
+                            }
+                        }
+                        if (newItem)
+                        {
+                            myCart.Add(clonedItem);
+                        }
+                    }
+
                     item.Quantity--;
                     MessageBox.Show(item.Name + " added to shopping cart" + "current quantity is: " + item.Quantity);
                     if (item.Quantity <= 0)
