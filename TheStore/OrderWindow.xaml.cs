@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using System.Net.Security;
 
 namespace TheStore
 {
@@ -29,11 +30,12 @@ namespace TheStore
         List<string> shippingInfoList = new List<string>();
         List<string> cardInfoList = new List<string>(); // 
         List<Item> myCart;
+        List<Item> allItems;
         User[] loggedInUser;
         User user;
-        Window parent;     
-        ObservableCollection<string> comboBoxPay = new ObservableCollection<string>();      
-        
+        Window parent;
+        ObservableCollection<string> comboBoxPay = new ObservableCollection<string>();
+
         public string AdressInput { get; set; }
         public string PostNrInput { get; set; }
         public string OrtInput { get; set; }
@@ -44,7 +46,7 @@ namespace TheStore
         public string CardNumInput { get; set; }
         public string CardDateInput { get; set; }
         public string CardCvvInput { get; set; }
-        public ObservableCollection<string> ComboBoxPay  
+        public ObservableCollection<string> ComboBoxPay
         {
             get { return comboBoxPay; }
             set
@@ -52,14 +54,15 @@ namespace TheStore
                 comboBoxPay = value;
             }
         }
-     
+
         //Constructor that uses array LoggedInUser and myCartList referensed(sent) from Main Window
-        public OrderWindow(MainWindow mainWindow, List<Item> myCart, User[] loggedInUser)
+        public OrderWindow(MainWindow mainWindow, List<Item> myCart, User[] loggedInUser, List<Item> allItems)
         {
             InitializeComponent();
             parent = mainWindow;
             this.myCart = myCart;
             this.loggedInUser = loggedInUser;
+            this.allItems = allItems;
             itemNameWindow.ItemsSource = myCart;
             itemNameWindow.Items.Refresh();
             itemQuantityWindow.ItemsSource = myCart;
@@ -67,9 +70,9 @@ namespace TheStore
             item1.Content = loggedInUser[0].Name;
             SavedInfoComboBox.Items.Refresh();
             ComboBoxInfo();
-            
+
         }
-        
+
         private void ContinueShopping_Click(object sender, RoutedEventArgs e)
         {
             parent.Show();
@@ -84,7 +87,7 @@ namespace TheStore
             cardInfoList.Add(CardCvvInput);
             shippingInfoList.Add(AdressInput);
             shippingInfoList.Add(PostNrInput);
-            shippingInfoList.Add(OrtInput);          
+            shippingInfoList.Add(OrtInput);
             shippingInfoList.Add(TelefonNrInput);
         }
 
@@ -103,21 +106,21 @@ namespace TheStore
             }
             catch (IndexOutOfRangeException e)
             {
-                if (e == null) 
+                if (e == null)
                 {
-                   throw;
+                    throw;
                 }
                 MessageBox.Show("Du har inte fyllt i några fält att spara!");
             }
-            
+
         }
 
 
         public void ComboBoxInfo()
         {
             string[] comboBoxList = new string[] { "Klarnare, Lån", "MasterofCards, Kredit med 200% ränta", "Bankkonto, Tillgångar", "Visaren, Kreditkort", "Megacard, Kredit", "Blackcard, Tillgångar", "Kasscard, Kreditkort" };
-            
-            
+
+
             foreach (string item in comboBoxList)
             {
                 ComboBoxPay.Add(item);
@@ -131,7 +134,7 @@ namespace TheStore
             string[] Customers = shippingInfoList.ToArray();
             File.WriteAllLines(shippInfo, Customers);
         }
-        
+
         private void OrderWinAdress_TextChanged(object sender, TextChangedEventArgs e)
         {
             AdressInput = OrderWinAdress.Text;
@@ -165,7 +168,7 @@ namespace TheStore
                 TextBoxInfo();
                 MessageBox.Show("Användare sparad!" + " " + "med info" + " " + shippingInfoList[0] + " " + shippingInfoList[1] + " " + shippingInfoList[2] + " " + shippingInfoList[3] + " !");
                 WriteShippingListToFile();
-                
+
             }
             ClearAllFields();
 
@@ -222,6 +225,45 @@ namespace TheStore
                 MessageBox.Show("Du måste fylla i vart dina varor skall skeppas till innan du kan betala!");
             }
             ClearAllFields();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            parent.Show();
+        }
+
+        private void deleteItem()
+        {
+
+        }
+
+        private void itemLabel_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Label label = (Label)sender;
+            List<Item> remove = new List<Item>();
+            foreach (Item item in myCart)
+            {
+                if (label.Content.Equals(item.Name))
+                {
+                    item.Quantity--;
+                    foreach (Item oldItem in allItems)
+                    {
+                        if (item.Name.Equals(oldItem.Name))
+                        {
+                            oldItem.Quantity++;
+                        }
+                    }
+                    itemNameWindow.Items.Refresh();
+                    itemQuantityWindow.Items.Refresh();
+                    if (item.Quantity == 0)
+                    {
+
+                        remove.Add(item);
+                    }
+                }
+            }
+            Item removItem = remove.FirstOrDefault();
+            myCart.Remove(removItem);
         }
     }
 }

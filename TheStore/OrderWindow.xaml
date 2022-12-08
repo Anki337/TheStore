@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheStore"
         mc:Ignorable="d"
-        Title="OrderWindow" Height="600" Width="1000">
+        Title="OrderWindow" Height="600" Width="1000" Closing="Window_Closing">
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/Images/NewestCheckout.png" Stretch="UniformToFill"/>
     </Window.Background>
@@ -81,41 +81,46 @@
                         <!--Här börjar första stackpanel för vad och hur många man har beställt av varje leksak.-->
                         <StackPanel Margin="5 0 0 0" x:Name="PurchasedItemsList" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5"
                                     Orientation="Horizontal" Grid.ColumnSpan="2">
-                            <StackPanel x:Name="ToysInCart" Width="140">
-                                <Label Foreground="wheat" 
+                                <StackPanel x:Name="ToysInCart">
+                                    <Label Foreground="wheat" 
                                   FontWeight="Bold" FontFamily="Comic Sans MS"
                                 >Leksak</Label>
-                                <ListBox x:Name="itemNameWindow" ScrollViewer.HorizontalScrollBarVisibility="Auto" Background="Transparent" >
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Border CornerRadius="5" Margin="5,5,5,5" Background="Transparent">
-                                                    <Label Content="{Binding Path=Name}">
+                                    <ListBox x:Name="itemNameWindow" Width="100" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Auto" Background="Transparent" >
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Border CornerRadius="5" Margin="5,5,5,5" Background="Transparent">
+                                                        <Label MouseDoubleClick="itemLabel_MouseDoubleClick" ToolTip="Double click to remove item" x:Name="itemLabel" Content="{Binding Path=Name}">
 
-                                                    </Label>
-                                                </Border>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-                            </StackPanel>
-                            <StackPanel x:Name="NumberOfGoods">
-                                <Label Foreground="Wheat" 
+                                                        </Label>
+
+                                                    </Border>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </StackPanel>
+                                <StackPanel x:Name="NumberOfGoods">
+                                    <Label Foreground="Wheat" 
                                   FontWeight="Bold" FontFamily="Comic Sans MS"
                                 >Antal</Label>
-                                <ListBox x:Name="itemQuantityWindow" ScrollViewer.HorizontalScrollBarVisibility="auto" >
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" Background="Transparent">
-                                                <Border CornerRadius="5" Margin="5,5,5,5" Background="Transparent">
-                                                    <Label Content="{Binding Path=Quantity}">
+                                    <ListBox x:Name="itemQuantityWindow" Width="50" ScrollViewer.HorizontalScrollBarVisibility="auto" >
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Background="Transparent">
+                                                    <Border CornerRadius="5" Margin="5,5,5,5" Background="Transparent">
+                                                        <Label Content="{Binding Path=Quantity}">
 
-                                                    </Label>
-                                                </Border>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
+                                                        </Label>
+                                                    </Border>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                            
+                                        </ListBox.ItemTemplate>
+                                        
+                                    </ListBox>
+                                
+                                
                             </StackPanel>
                         </StackPanel>
                         <!--Slut på produktspecifikation-->
